@@ -1,40 +1,6 @@
 import json
 
 EXCLUDE_KEYWORDS = [
-    "BEST",
-    "ベスト",
-    "総集編",
-    "総集",
-    "VR",
-    "福袋",
-    "BOX",
-    "DXBOX",
-
-    "4時間以上作品",
-    "8時間以上作品",
-    "16時間以上作品",
-
-    "10時間",
-    "12時間",
-    "16時間",
-    "20時間",
-
-    "10作品",
-    "12作品",
-    "20作品",
-
-    "一挙",
-    "完全収録",
-    "永久保存版"
-]
-
-with open(
-    "data/works.json",
-    "r",
-    encoding="utf-8"
-import json
-
-EXCLUDE_KEYWORDS = [
 "BEST",
 "ベスト",
 "総集編",
