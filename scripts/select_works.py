@@ -1,11 +1,13 @@
 import json
 import re
 from collections import defaultdict
+from datetime import datetime
 
 TOP_N = 10
 
 MAX_SERIES = 2
 MAX_MAKER = 3
+DAYS_LIMIT = 60
 
 SERIES_PATTERNS = [
     "マジックミラー号",
@@ -27,7 +29,6 @@ SERIES_PATTERNS = [
 
 def get_genres(work):
     genres = []
-
     raw = work.get("raw", {})
     iteminfo = raw.get("iteminfo", {})
 
@@ -61,14 +62,47 @@ def detect_series(title):
         if pattern in title:
             return pattern
 
-    # No.246 / Vol.9 / File25 以降を削って、同系統タイトルをまとめる
-    cleaned = re.sub(r"(No\.?\s*\d+|Vol\.?\s*\d+|File\s*\d+|第\d+弾).*", "", title, flags=re.IGNORECASE)
+    cleaned = re.sub(
+        r"(No\.?\s*\d+|Vol\.?\s*\d+|File\s*\d+|第\d+弾).*",
+        "",
+        title,
+        flags=re.IGNORECASE
+    )
 
-    # 記号以降が長い場合も、先頭だけでシリーズ判定
     cleaned = re.sub(r"[【\[].*$", "", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
 
     return cleaned[:24] if cleaned else title[:24]
+
+
+def get_recently_used_content_ids():
+    try:
+        with open("data/used_works.json", "r", encoding="utf-8") as f:
+            used_data = json.load(f)
+    except FileNotFoundError:
+        return set()
+
+    used_works = used_data.get("works", [])
+    today = datetime.now()
+
+    recent_ids = set()
+
+    for item in used_works:
+        content_id = item.get("content_id")
+        used_at = item.get("used_at")
+
+        if not content_id or not used_at:
+            continue
+
+        try:
+            used_date = datetime.strptime(used_at, "%Y-%m-%d")
+        except Exception:
+            continue
+
+        if (today - used_date).days < DAYS_LIMIT:
+            recent_ids.add(content_id)
+
+    return recent_ids
 
 
 with open("data/current_theme.json", "r", encoding="utf-8") as f:
@@ -87,11 +121,14 @@ candidate_map = {
     for work in candidate_works
 }
 
+recently_used_ids = get_recently_used_content_ids()
+
 selected = []
 
 series_count = defaultdict(int)
 maker_count = defaultdict(int)
 
+skipped_used = 0
 skipped_series = 0
 skipped_maker = 0
 
@@ -100,6 +137,11 @@ for scored in scored_works:
     work = candidate_map.get(content_id)
 
     if not work:
+        continue
+
+    # 60日以内に使った作品は除外
+    if content_id in recently_used_ids:
+        skipped_used += 1
         continue
 
     genres = get_genres(work)
@@ -152,6 +194,7 @@ with open("data/selected_article_works.json", "w", encoding="utf-8") as f:
 
 print(f"theme: {theme.get('name')}")
 print(f"selected: {len(selected)}")
+print(f"skipped_used: {skipped_used}")
 print(f"skipped_series: {skipped_series}")
 print(f"skipped_maker: {skipped_maker}")
 print("series_count:")
