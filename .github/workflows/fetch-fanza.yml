@@ -53,6 +53,9 @@ jobs:
       - name: Fetch extras
         run: python scripts/fetch_extra.py
 
+      - name: Save history
+        run: python scripts/save_history.py
+
       - name: Commit data
         run: |
           git config user.name "github-actions"
