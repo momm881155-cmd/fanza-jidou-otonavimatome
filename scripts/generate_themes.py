@@ -1,6 +1,6 @@
 import json
 
-MIN_COUNT = 5
+MIN_COUNT = 20
 
 EXCLUDE_GENRES = {
     "ハイビジョン",
