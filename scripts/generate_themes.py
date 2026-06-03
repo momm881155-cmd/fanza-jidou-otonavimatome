@@ -2,7 +2,7 @@ import json
 from itertools import combinations
 
 MIN_GENRE_COUNT = 10
-MIN_THEME_WORKS = 10
+MIN_THEME_WORKS = 7
 
 EXCLUDE_GENRES = {
     "ハイビジョン",
