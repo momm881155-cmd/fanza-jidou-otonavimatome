@@ -6,11 +6,10 @@ EXCLUDE_KEYWORDS = [
     "総集編",
     "総集",
     "VR",
-    "4時間以上",
-    "8時間以上",
-    "16時間以上",
+    "4時間以上作品",
+    "8時間以上作品",
+    "16時間以上作品",
     "長尺",
-    "複数話",
     "福袋",
     "BOX",
     "DXBOX"
@@ -28,7 +27,14 @@ filtered = []
 for work in works:
 
     title = work.get("title", "")
-    genres = work.get("genres", [])
+
+    genres = []
+
+    raw = work.get("raw", {})
+    iteminfo = raw.get("iteminfo", {})
+
+    for g in iteminfo.get("genre", []):
+        genres.append(g.get("name", ""))
 
     text = title + " " + " ".join(genres)
 
@@ -37,12 +43,11 @@ for work in works:
     for keyword in EXCLUDE_KEYWORDS:
         if keyword.lower() in text.lower():
             exclude = True
+            print(f"exclude: {title}")
             break
 
-    if exclude:
-        continue
-
-    filtered.append(work)
+    if not exclude:
+        filtered.append(work)
 
 with open(
     "data/selected_candidates.json",
