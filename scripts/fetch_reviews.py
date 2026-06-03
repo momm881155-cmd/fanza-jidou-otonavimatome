@@ -6,6 +6,11 @@ import requests
 
 GRAPHQL_URL = "https://api.video.dmm.co.jp/graphql"
 
+SELECTED_WORKS_PATH = "data/selected_article_works.json"
+REVIEWS_PATH = "data/reviews.json"
+
+SLEEP_SECONDS = 0.5
+
 HEADERS = {
     "accept": "application/json",
     "content-type": "application/json",
@@ -32,11 +37,22 @@ query UserReviews($id: ID!, $sort: ReviewSort!, $offset: Int!) {
 """
 
 
-def fetch_reviews(content_id: str) -> list[dict[str, Any]]:
-    """
-    指定作品のレビューを取得
-    """
+def load_json(path: str, default: Any = None) -> Any:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        if default is not None:
+            return default
+        raise
 
+
+def save_json(path: str, data: Any) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def fetch_reviews(content_id: str) -> list[dict[str, Any]]:
     payload = {
         "operationName": "UserReviews",
         "query": QUERY,
@@ -66,19 +82,19 @@ def fetch_reviews(content_id: str) -> list[dict[str, Any]]:
 
 
 def main() -> None:
-    with open(
-        "data/selected_candidates.json",
-        "r",
-        encoding="utf-8",
-    ) as f:
-        works = json.load(f)
+    selected_works = load_json(SELECTED_WORKS_PATH, default=[])
 
     reviews_db: dict[str, list[dict[str, Any]]] = {}
 
-    for work in works:
+    fetched = 0
+    failed = 0
+    skipped = 0
+
+    for work in selected_works:
         content_id = work.get("content_id")
 
         if not content_id:
+            skipped += 1
             continue
 
         print(f"[REVIEW] {content_id}")
@@ -86,28 +102,26 @@ def main() -> None:
         try:
             reviews = fetch_reviews(content_id)
             reviews_db[content_id] = reviews
+            fetched += 1
 
-            print(f"  -> {len(reviews)} reviews")
+            print(f"  -> count={len(reviews)}")
 
         except Exception as e:
-            print(f"  -> ERROR: {e}")
+            failed += 1
             reviews_db[content_id] = []
 
-        time.sleep(0.5)
+            print(f"  -> ERROR: {type(e).__name__}")
 
-    with open(
-        "data/reviews.json",
-        "w",
-        encoding="utf-8",
-    ) as f:
-        json.dump(
-            reviews_db,
-            f,
-            ensure_ascii=False,
-            indent=2,
-        )
+        time.sleep(SLEEP_SECONDS)
 
-    print(f"\nsaved reviews={len(reviews_db)}")
+    save_json(REVIEWS_PATH, reviews_db)
+
+    print("")
+    print(f"selected={len(selected_works)}")
+    print(f"fetched={fetched}")
+    print(f"failed={failed}")
+    print(f"skipped={skipped}")
+    print(f"saved_reviews={len(reviews_db)}")
 
 
 if __name__ == "__main__":
