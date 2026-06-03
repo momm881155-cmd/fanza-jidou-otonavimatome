@@ -27,6 +27,8 @@ jobs:
           FANZA_API_ID: ${{ secrets.FANZA_API_ID }}
           FANZA_AFFILIATE_ID: ${{ secrets.FANZA_AFFILIATE_ID }}
         run: python scripts/fetch_fanza.py
+        - name: Fetch reviews
+  run: python scripts/fetch_reviews.py
 
       - name: Commit data
         run: |
