@@ -6,6 +6,7 @@ EXCLUDE_GENRES = {
     "ハイビジョン",
     "4K",
     "4時間以上作品",
+    "8時間以上作品",
     "16時間以上作品",
     "8KVR",
     "ハイクオリティVR",
@@ -16,7 +17,8 @@ EXCLUDE_GENRES = {
     "福袋",
     "AI生成作品",
     "独占配信",
-    "単体作品"
+    "単体作品",
+    "デジモ"
 }
 
 with open("data/genre_counts.json", "r", encoding="utf-8") as f:
