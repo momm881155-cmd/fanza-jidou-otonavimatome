@@ -13,7 +13,7 @@ params = {
     "site": "FANZA",
     "service": "digital",
     "floor": "videoa",
-    "hits": 10,
+    "hits": 50,
     "sort": "rank",
     "keyword": "素人",
     "output": "json"
@@ -29,14 +29,14 @@ works = []
 
 for item in data.get("result", {}).get("items", []):
 
-    work = {
-        "content_id": item.get("content_id"),
-        "title": item.get("title"),
-        "maker": item.get("maker", {}).get("name"),
-        "date": item.get("date"),
-        "url": item.get("affiliateURL"),
-        "image": item.get("imageURL", {}).get("large")
-    }
+   work = {
+    "content_id": item.get("content_id"),
+    "title": item.get("title"),
+    "date": item.get("date"),
+    "url": item.get("affiliateURL"),
+    "image": item.get("imageURL", {}).get("large"),
+    "raw": item
+}
 
     works.append(work)
 
