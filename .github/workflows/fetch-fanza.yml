@@ -31,10 +31,13 @@ jobs:
       - name: Fetch reviews
         run: python scripts/fetch_reviews.py
 
+      - name: Fetch extras
+        run: python scripts/fetch_extra.py
+
       - name: Commit data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/works.json data/reviews.json
+          git add data/works.json data/reviews.json data/extra.json
           git commit -m "Update FANZA data" || echo "No changes"
           git push
