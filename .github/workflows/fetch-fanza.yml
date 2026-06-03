@@ -40,6 +40,9 @@ jobs:
       - name: Score works
         run: python scripts/score_works.py
 
+      - name: Select theme
+        run: python scripts/select_theme.py
+
       - name: Commit data
         run: |
           git config user.name "github-actions"
@@ -49,5 +52,6 @@ jobs:
           git add data/extra.json
           git add data/selected_candidates.json
           git add data/scored_works.json
+          git add data/current_theme.json
           git commit -m "Update FANZA data" || echo "No changes"
           git push
