@@ -4,6 +4,7 @@ from collections import defaultdict
 from datetime import datetime
 
 TOP_N = 10
+MIN_SELECTED = 7
 
 MAX_SERIES = 2
 MAX_MAKER = 3
@@ -139,14 +140,12 @@ for scored in scored_works:
     if not work:
         continue
 
-    # 60日以内に使った作品は除外
     if content_id in recently_used_ids:
         skipped_used += 1
         continue
 
     genres = get_genres(work)
 
-    # テーマ必須ジャンルを全部持っている作品だけ通す
     if not all(req in genres for req in required):
         continue
 
@@ -154,12 +153,10 @@ for scored in scored_works:
     series = detect_series(title)
     maker = get_maker(work)
 
-    # 同一シリーズ・企画の偏り防止
     if series_count[series] >= MAX_SERIES:
         skipped_series += 1
         continue
 
-    # 同一メーカーの偏り防止
     if maker and maker_count[maker] >= MAX_MAKER:
         skipped_maker += 1
         continue
@@ -188,10 +185,6 @@ for scored in scored_works:
         break
 
 
-with open("data/selected_article_works.json", "w", encoding="utf-8") as f:
-    json.dump(selected, f, ensure_ascii=False, indent=2)
-
-
 print(f"theme: {theme.get('name')}")
 print(f"selected: {len(selected)}")
 print(f"skipped_used: {skipped_used}")
@@ -201,3 +194,9 @@ print("series_count:")
 print(json.dumps(dict(series_count), ensure_ascii=False, indent=2))
 print("maker_count:")
 print(json.dumps(dict(maker_count), ensure_ascii=False, indent=2))
+
+if len(selected) < MIN_SELECTED:
+    raise Exception(f"Not enough selected works: {len(selected)}")
+
+with open("data/selected_article_works.json", "w", encoding="utf-8") as f:
+    json.dump(selected, f, ensure_ascii=False, indent=2)
