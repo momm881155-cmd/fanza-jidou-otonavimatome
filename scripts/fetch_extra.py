@@ -13,20 +13,7 @@ HEADERS = {
 }
 
 QUERY = """
-query ContentPageData(
-  $id: ID!,
-  $isLoggedIn: Boolean!,
-  $isAmateur: Boolean!,
-  $isAnime: Boolean!,
-  $isAv: Boolean!,
-  $isCinema: Boolean!,
-  $isSP: Boolean!,
-  $pattern: ShelfGenreCurationPattern!,
-  $shouldFetchCuratedGenreIdsForShelf: Boolean!,
-  $shouldFetchRelatedTags: Boolean!,
-  $shouldGetBookmark: Boolean!,
-  $shouldGetLegacyBookmark: Boolean!
-) {
+query ContentPageData($id: ID!) {
   ppvContent(id: $id) {
     id
     description
@@ -40,27 +27,19 @@ query ContentPageData(
 with open("data/works.json", "r", encoding="utf-8") as f:
     works = json.load(f)
 
+print(f"works count: {len(works)}")
+
 extras = {}
 
-for work in works[:10]:  # 最初は10件だけ
-    content_id = work["content_id"]
+for work in works[:10]:
+    content_id = work.get("content_id")
+    print(f"fetch extra: {content_id}")
 
     payload = {
         "operationName": "ContentPageData",
         "query": QUERY,
         "variables": {
-            "id": content_id,
-            "isAmateur": False,
-            "isAnime": False,
-            "isAv": True,
-            "isCinema": False,
-            "isLoggedIn": False,
-            "isSP": True,
-            "pattern": "NICHE",
-            "shouldFetchCuratedGenreIdsForShelf": False,
-            "shouldFetchRelatedTags": False,
-            "shouldGetBookmark": False,
-            "shouldGetLegacyBookmark": False
+            "id": content_id
         }
     }
 
@@ -72,12 +51,19 @@ for work in works[:10]:  # 最初は10件だけ
             timeout=30
         )
 
+        print(f"status: {r.status_code}")
+
         data = r.json()
 
-        content = (
-            data.get("data", {})
-            .get("ppvContent", {})
-        )
+        if "errors" in data:
+            print("errors:")
+            print(json.dumps(data["errors"], ensure_ascii=False, indent=2))
+
+        content = data.get("data", {}).get("ppvContent")
+
+        if not content:
+            print(f"no content: {content_id}")
+            continue
 
         extras[content_id] = {
             "description": content.get("description"),
@@ -86,19 +72,10 @@ for work in works[:10]:  # 最初は10件だけ
             "monthly_rank": content.get("monthlyRanking")
         }
 
-        print(content_id)
-
     except Exception as e:
-        print(content_id, e)
+        print(f"exception: {content_id} {e}")
 
-with open(
-    "data/extra.json",
-    "w",
-    encoding="utf-8"
-) as f:
-    json.dump(
-        extras,
-        f,
-        ensure_ascii=False,
-        indent=2
-    )
+with open("data/extra.json", "w", encoding="utf-8") as f:
+    json.dump(extras, f, ensure_ascii=False, indent=2)
+
+print(f"saved extras: {len(extras)}")
