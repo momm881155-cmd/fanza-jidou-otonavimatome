@@ -1,4 +1,5 @@
 import json
+from collections import defaultdict
 
 EXCLUDE_KEYWORDS = [
     "BEST",
@@ -33,6 +34,9 @@ with open("data/works.json", "r", encoding="utf-8") as f:
     works = json.load(f)
 
 filtered = []
+excluded = 0
+
+exclude_stats = defaultdict(int)
 
 for work in works:
 
@@ -44,7 +48,9 @@ for work in works:
     iteminfo = raw.get("iteminfo", {})
 
     for g in iteminfo.get("genre", []):
-        genres.append(g.get("name", ""))
+        name = g.get("name")
+        if name:
+            genres.append(name)
 
     text = title + " " + " ".join(genres)
 
@@ -53,7 +59,8 @@ for work in works:
     for keyword in EXCLUDE_KEYWORDS:
         if keyword.lower() in text.lower():
             exclude = True
-            print(f"exclude: {title}")
+            excluded += 1
+            exclude_stats[keyword] += 1
             break
 
     if not exclude:
@@ -72,4 +79,13 @@ with open(
     )
 
 print(f"works={len(works)}")
+print(f"excluded={excluded}")
 print(f"filtered={len(filtered)}")
+
+print("exclude_stats:")
+for keyword, count in sorted(
+    exclude_stats.items(),
+    key=lambda x: x[1],
+    reverse=True
+):
+    print(f"{keyword}: {count}")
