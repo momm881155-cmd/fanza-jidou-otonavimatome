@@ -20,19 +20,14 @@ jobs:
           python-version: "3.11"
 
       - name: Install packages
-        run: pip install requests
+        run: |
+          pip install requests
 
       - name: Fetch FANZA works
         env:
           FANZA_API_ID: ${{ secrets.FANZA_API_ID }}
           FANZA_AFFILIATE_ID: ${{ secrets.FANZA_AFFILIATE_ID }}
         run: python scripts/fetch_fanza.py
-
-      - name: Fetch reviews
-        run: python scripts/fetch_reviews.py
-
-      - name: Fetch extras
-        run: python scripts/fetch_extra.py
 
       - name: Filter works
         run: python scripts/filter_works.py
@@ -52,6 +47,12 @@ jobs:
       - name: Select works
         run: python scripts/select_works.py
 
+      - name: Fetch reviews
+        run: python scripts/fetch_reviews.py
+
+      - name: Fetch extras
+        run: python scripts/fetch_extra.py
+
       - name: Commit data
         run: |
           git config user.name "github-actions"
@@ -66,6 +67,14 @@ jobs:
           git add data/genre_counts.json
           git add data/themes.json
           git add data/selected_article_works.json
+          git add data/used_works.json
+          git add data/used_themes.json
+          git add data/article_history.json
 
-          git commit -m "Update FANZA data" || echo "No changes"
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+
+          git commit -m "Update FANZA data"
           git push
