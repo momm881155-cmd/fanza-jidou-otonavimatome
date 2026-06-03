@@ -1,57 +1,117 @@
 import json
 import math
+from typing import Any
 
-with open("data/selected_candidates.json", "r", encoding="utf-8") as f:
-    works = json.load(f)
+CANDIDATES_PATH = "data/selected_candidates.json"
+SCORED_PATH = "data/scored_works.json"
 
-with open("data/extra.json", "r", encoding="utf-8") as f:
-    extras = json.load(f)
 
-scored = []
+def load_json(path: str, default: Any = None) -> Any:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        if default is not None:
+            return default
+        raise
 
-for work in works:
-    content_id = work.get("content_id")
+
+def to_int(value: Any) -> int:
+    try:
+        return int(value or 0)
+    except Exception:
+        return 0
+
+
+def to_float(value: Any) -> float:
+    try:
+        return float(value or 0)
+    except Exception:
+        return 0.0
+
+
+def get_review_info(work: dict[str, Any]) -> tuple[int, float]:
     raw = work.get("raw", {})
-
     review = raw.get("review", {})
-    review_count = int(review.get("count") or 0)
-    review_average = float(review.get("average") or 0)
 
-    extra = extras.get(content_id, {})
-    favorite_count = int(extra.get("favorite_count") or 0)
-    weekly_rank = extra.get("weekly_rank")
+    review_count = to_int(review.get("count"))
+    review_average = to_float(review.get("average"))
 
-    rating_score = review_average * 10
-    review_score = min(math.log1p(review_count) * 10, 30)
-    favorite_score = min(math.log1p(favorite_count) * 5, 40)
+    return review_count, review_average
 
-    if weekly_rank:
-        weekly_score = max(0, 30 - int(weekly_rank) * 0.3)
-    else:
-        weekly_score = 0
+
+def calculate_score(
+    review_count: int,
+    review_average: float,
+) -> float:
+    rating_score = 0
+    review_count_score = 0
+
+    if review_count > 0 and review_average > 0:
+        rating_score = review_average * 10
+
+    review_count_score = min(math.log1p(review_count) * 12, 40)
+
+    # レビュー件数が少ない高評価の過大評価を防ぐ
+    confidence_bonus = 0
+
+    if review_count >= 10:
+        confidence_bonus = 15
+    elif review_count >= 5:
+        confidence_bonus = 8
+    elif review_count >= 3:
+        confidence_bonus = 4
 
     total_score = (
         rating_score
-        + review_score
-        + favorite_score
-        + weekly_score
+        + review_count_score
+        + confidence_bonus
     )
 
-    scored.append({
-        "content_id": content_id,
-        "title": work.get("title"),
-        "score": round(total_score, 2),
-        "review_average": review_average,
-        "review_count": review_count,
-        "favorite_count": favorite_count,
-        "weekly_rank": weekly_rank,
-        "url": work.get("url"),
-        "image": work.get("image")
-    })
+    return round(total_score, 2)
 
-scored.sort(key=lambda x: x["score"], reverse=True)
 
-with open("data/scored_works.json", "w", encoding="utf-8") as f:
-    json.dump(scored, f, ensure_ascii=False, indent=2)
+def main() -> None:
+    works = load_json(CANDIDATES_PATH, default=[])
 
-print(f"scored={len(scored)}")
+    scored = []
+
+    for work in works:
+        content_id = work.get("content_id")
+
+        if not content_id:
+            continue
+
+        review_count, review_average = get_review_info(work)
+
+        score = calculate_score(
+            review_count=review_count,
+            review_average=review_average,
+        )
+
+        scored.append({
+            "content_id": content_id,
+            "title": work.get("title"),
+            "score": score,
+            "review_average": review_average,
+            "review_count": review_count,
+            "url": work.get("url"),
+            "image": work.get("image"),
+        })
+
+    scored.sort(
+        key=lambda x: (
+            x.get("score", 0),
+            x.get("review_count", 0),
+        ),
+        reverse=True,
+    )
+
+    with open(SCORED_PATH, "w", encoding="utf-8") as f:
+        json.dump(scored, f, ensure_ascii=False, indent=2)
+
+    print(f"scored={len(scored)}")
+
+
+if __name__ == "__main__":
+    main()
