@@ -2,6 +2,7 @@ import json
 import re
 from collections import defaultdict
 from datetime import datetime
+from typing import Any
 
 TOP_N = 10
 MIN_SELECTED = 7
@@ -30,71 +31,26 @@ SERIES_PATTERNS = [
 ]
 
 GENRE_ALIASES = {
-    "素人": [
-        "素人",
-        "しろうと",
-        "シロウト",
-        "応募素人",
-        "初撮り",
-        "素人娘",
-    ],
-    "人妻・主婦": [
-        "人妻・主婦",
-        "人妻",
-        "主婦",
-        "奥様",
-        "既婚者",
-    ],
-    "女子大生": [
-        "女子大生",
-        "大学生",
-    ],
-    "熟女": [
-        "熟女",
-    ],
-    "ナンパ": [
-        "ナンパ",
-        "街角ナンパ",
-        "素人ナンパ",
-    ],
-    "初撮り": [
-        "初撮り",
-        "初撮り素人",
-    ],
-    "美少女": [
-        "美少女",
-    ],
-    "ギャル": [
-        "ギャル",
-        "黒ギャル",
-    ],
+    "素人": ["素人", "しろうと", "シロウト", "応募素人", "初撮り", "素人娘"],
+    "巨乳": ["巨乳", "爆乳"],
+    "人妻・主婦": ["人妻・主婦", "人妻", "主婦", "奥様", "既婚者"],
+    "女子大生": ["女子大生", "大学生"],
+    "熟女": ["熟女"],
+    "ナンパ": ["ナンパ", "街角ナンパ", "素人ナンパ"],
+    "初撮り": ["初撮り", "初撮り素人"],
+    "美少女": ["美少女"],
+    "ギャル": ["ギャル", "黒ギャル"],
 }
 
 THEME_EXCLUDES = {
-    "人妻・主婦": [
-        "女子校生",
-        "女子大生",
-    ],
-    "女子大生": [
-        "人妻・主婦",
-        "人妻",
-        "主婦",
-        "熟女",
-    ],
-    "女子校生": [
-        "人妻・主婦",
-        "人妻",
-        "主婦",
-        "熟女",
-    ],
-    "熟女": [
-        "女子校生",
-        "女子大生",
-    ],
+    "人妻・主婦": ["女子校生", "女子大生"],
+    "女子大生": ["人妻・主婦", "人妻", "主婦", "熟女"],
+    "女子校生": ["人妻・主婦", "人妻", "主婦", "熟女"],
+    "熟女": ["女子校生", "女子大生"],
 }
 
 
-def load_json(path, default=None):
+def load_json(path: str, default: Any = None) -> Any:
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -104,25 +60,22 @@ def load_json(path, default=None):
         raise
 
 
-def save_json(path, data):
+def save_json(path: str, data: Any) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def get_genres(work):
-    genres = []
+def get_genres(work: dict[str, Any]) -> list[str]:
     raw = work.get("raw", {})
     iteminfo = raw.get("iteminfo", {})
-
-    for genre in iteminfo.get("genre", []):
-        name = genre.get("name")
-        if name:
-            genres.append(name)
-
-    return genres
+    return [
+        g.get("name")
+        for g in iteminfo.get("genre", [])
+        if g.get("name")
+    ]
 
 
-def get_maker(work):
+def get_maker(work: dict[str, Any]) -> str:
     raw = work.get("raw", {})
     iteminfo = raw.get("iteminfo", {})
     maker_info = iteminfo.get("maker")
@@ -136,38 +89,32 @@ def get_maker(work):
     return ""
 
 
-def normalize_text(text):
-    if not text:
-        return ""
-
-    return str(text).strip()
+def normalize_text(text: Any) -> str:
+    return str(text or "").strip()
 
 
-def has_genre(required_genre, genres):
+def has_genre(required_genre: str | None, genres: list[str]) -> bool:
     if not required_genre:
         return True
 
     aliases = GENRE_ALIASES.get(required_genre, [required_genre])
     normalized_genres = [normalize_text(g) for g in genres]
 
-    for alias in aliases:
-        if alias in normalized_genres:
-            return True
+    return any(alias in normalized_genres for alias in aliases)
+
+
+def has_conflict_theme_genre(theme_genres: list[str], genres: list[str]) -> bool:
+    for theme_genre in theme_genres:
+        exclude_genres = THEME_EXCLUDES.get(theme_genre, [])
+
+        for genre in genres:
+            if genre in exclude_genres:
+                return True
 
     return False
 
 
-def has_conflict_theme_genre(theme_genre, genres):
-    exclude_genres = THEME_EXCLUDES.get(theme_genre, [])
-
-    for genre in genres:
-        if genre in exclude_genres:
-            return True
-
-    return False
-
-
-def detect_series(title):
+def detect_series(title: str) -> str:
     if not title:
         return "unknown"
 
@@ -185,10 +132,14 @@ def detect_series(title):
     cleaned = re.sub(r"[【\[].*$", "", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
 
-    return cleaned[:24] if cleaned else title[:24]
+    if not cleaned:
+        return "unknown"
+
+    # タイトル全文をログに出さないため、実体は内部制御用だけにする
+    return f"title_prefix_{abs(hash(cleaned[:24]))}"
 
 
-def get_recently_used_content_ids():
+def get_recently_used_content_ids() -> set[str]:
     used_data = load_json("data/used_works.json", default={"works": []})
     used_works = used_data.get("works", [])
     today = datetime.now()
@@ -213,46 +164,116 @@ def get_recently_used_content_ids():
     return recent_ids
 
 
-def get_theme_info(theme):
-    """
-    新形式:
-    {
-      "name": "素人×人妻・主婦おすすめ10選",
-      "base_genre": "素人",
-      "theme_genre": "人妻・主婦"
-    }
+def get_theme_genres(theme: dict[str, Any]) -> tuple[str, list[str]]:
+    base_genre = theme.get("base_genre", "素人")
 
-    旧形式:
-    {
-      "name": "...",
-      "required": ["素人", "人妻・主婦"]
-    }
-    """
+    if theme.get("theme_genres"):
+        return base_genre, theme.get("theme_genres", [])
 
-    base_genre = theme.get("base_genre")
-    theme_genre = theme.get("theme_genre")
-
-    if base_genre or theme_genre:
-        return base_genre or "素人", theme_genre
+    if theme.get("theme_genre"):
+        return base_genre, [theme.get("theme_genre")]
 
     required = theme.get("required", [])
 
-    if "素人" in required:
-        others = [g for g in required if g != "素人"]
-        return "素人", others[0] if others else None
-
     if required:
-        return "素人", required[0]
+        theme_genres = [
+            g for g in required
+            if g != base_genre
+        ]
+        return base_genre, theme_genres
 
-    return "素人", None
+    return base_genre, []
 
 
-def main():
+def passes_theme_rules(
+    scored: dict[str, Any],
+    theme: dict[str, Any],
+) -> bool:
+    min_review_count = theme.get("min_review_count")
+
+    if min_review_count is not None:
+        if int(scored.get("review_count") or 0) < int(min_review_count):
+            return False
+
+    min_favorite_count = theme.get("min_favorite_count")
+
+    if min_favorite_count is not None:
+        if int(scored.get("favorite_count") or 0) < int(min_favorite_count):
+            return False
+
+    if theme.get("require_weekly_rank"):
+        if not scored.get("weekly_rank"):
+            return False
+
+    if theme.get("require_monthly_rank"):
+        if not scored.get("monthly_rank"):
+            return False
+
+    return True
+
+
+def sort_scored_works(
+    scored_works: list[dict[str, Any]],
+    sort_key: str,
+) -> list[dict[str, Any]]:
+    if sort_key == "review_count":
+        return sorted(
+            scored_works,
+            key=lambda x: (
+                x.get("review_count") or 0,
+                x.get("score") or 0,
+            ),
+            reverse=True,
+        )
+
+    if sort_key == "favorite_count":
+        return sorted(
+            scored_works,
+            key=lambda x: (
+                x.get("favorite_count") or 0,
+                x.get("score") or 0,
+            ),
+            reverse=True,
+        )
+
+    if sort_key == "weekly_rank":
+        return sorted(
+            scored_works,
+            key=lambda x: (
+                x.get("weekly_rank") is not None,
+                -(int(x.get("weekly_rank") or 999999)),
+                x.get("score") or 0,
+            ),
+            reverse=True,
+        )
+
+    if sort_key == "monthly_rank":
+        return sorted(
+            scored_works,
+            key=lambda x: (
+                x.get("monthly_rank") is not None,
+                -(int(x.get("monthly_rank") or 999999)),
+                x.get("score") or 0,
+            ),
+            reverse=True,
+        )
+
+    return sorted(
+        scored_works,
+        key=lambda x: x.get("score") or 0,
+        reverse=True,
+    )
+
+
+def main() -> None:
     theme = load_json("data/current_theme.json")
-    scored_works = load_json("data/scored_works.json")
-    candidate_works = load_json("data/selected_candidates.json")
+    scored_works = load_json("data/scored_works.json", default=[])
+    candidate_works = load_json("data/selected_candidates.json", default=[])
 
-    base_genre, theme_genre = get_theme_info(theme)
+    base_genre, theme_genres = get_theme_genres(theme)
+    sort_key = theme.get("sort_key", "score")
+
+    scored_works = sort_scored_works(scored_works, sort_key)
 
     candidate_map = {
         work.get("content_id"): work
@@ -271,6 +292,7 @@ def main():
     skipped_no_candidate = 0
     skipped_no_base = 0
     skipped_no_theme = 0
+    skipped_theme_rule = 0
     skipped_theme_conflict = 0
     skipped_series = 0
     skipped_maker = 0
@@ -287,17 +309,22 @@ def main():
             skipped_used += 1
             continue
 
+        if not passes_theme_rules(scored, theme):
+            skipped_theme_rule += 1
+            continue
+
         genres = get_genres(work)
 
         if not has_genre(base_genre, genres):
             skipped_no_base += 1
             continue
 
-        if theme_genre and not has_genre(theme_genre, genres):
-            skipped_no_theme += 1
-            continue
+        if theme_genres:
+            if not all(has_genre(g, genres) for g in theme_genres):
+                skipped_no_theme += 1
+                continue
 
-        if theme_genre and has_conflict_theme_genre(theme_genre, genres):
+        if has_conflict_theme_genre(theme_genres, genres):
             skipped_theme_conflict += 1
             continue
 
@@ -321,8 +348,12 @@ def main():
             "review_count": scored.get("review_count"),
             "favorite_count": scored.get("favorite_count"),
             "weekly_rank": scored.get("weekly_rank"),
+            "monthly_rank": scored.get("monthly_rank"),
             "base_genre": base_genre,
-            "theme_genre": theme_genre,
+            "theme_genres": theme_genres,
+            "theme_genre": theme_genres[0] if theme_genres else None,
+            "theme_type": theme.get("type", "genre"),
+            "sort_key": sort_key,
             "series": series,
             "maker": maker,
             "genres": genres,
@@ -338,21 +369,22 @@ def main():
         if len(selected) >= TOP_N:
             break
 
-    print(f"theme: {theme.get('name')}")
-    print(f"base_genre: {base_genre}")
-    print(f"theme_genre: {theme_genre}")
-    print(f"selected: {len(selected)}")
-    print(f"skipped_no_candidate: {skipped_no_candidate}")
-    print(f"skipped_used: {skipped_used}")
-    print(f"skipped_no_base: {skipped_no_base}")
-    print(f"skipped_no_theme: {skipped_no_theme}")
-    print(f"skipped_theme_conflict: {skipped_theme_conflict}")
-    print(f"skipped_series: {skipped_series}")
-    print(f"skipped_maker: {skipped_maker}")
-    print("series_count:")
-    print(json.dumps(dict(series_count), ensure_ascii=False, indent=2))
-    print("maker_count:")
-    print(json.dumps(dict(maker_count), ensure_ascii=False, indent=2))
+    print(f"theme={theme.get('name')}")
+    print(f"theme_type={theme.get('type', 'genre')}")
+    print(f"sort_key={sort_key}")
+    print(f"base_genre={base_genre}")
+    print(f"theme_genres={theme_genres}")
+    print(f"selected={len(selected)}")
+    print(f"skipped_no_candidate={skipped_no_candidate}")
+    print(f"skipped_used={skipped_used}")
+    print(f"skipped_no_base={skipped_no_base}")
+    print(f"skipped_no_theme={skipped_no_theme}")
+    print(f"skipped_theme_rule={skipped_theme_rule}")
+    print(f"skipped_theme_conflict={skipped_theme_conflict}")
+    print(f"skipped_series={skipped_series}")
+    print(f"skipped_maker={skipped_maker}")
+    print(f"series_groups={len(series_count)}")
+    print(f"maker_groups={len(maker_count)}")
 
     if len(selected) < MIN_SELECTED:
         raise Exception(f"Not enough selected works: {len(selected)}")
