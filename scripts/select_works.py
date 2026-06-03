@@ -27,6 +27,25 @@ SERIES_PATTERNS = [
     "ナンパJAPAN",
 ]
 
+THEME_EXCLUDES = {
+    "人妻・主婦": [
+        "女子校生",
+        "女子大生"
+    ],
+    "女子大生": [
+        "人妻・主婦",
+        "熟女"
+    ],
+    "女子校生": [
+        "人妻・主婦",
+        "熟女"
+    ],
+    "熟女": [
+        "女子校生",
+        "女子大生"
+    ]
+}
+
 
 def get_genres(work):
     genres = []
@@ -106,6 +125,16 @@ def get_recently_used_content_ids():
     return recent_ids
 
 
+def has_conflict_theme_genre(required, genres):
+    for req in required:
+        exclude_genres = THEME_EXCLUDES.get(req, [])
+
+        if any(g in exclude_genres for g in genres):
+            return True
+
+    return False
+
+
 with open("data/current_theme.json", "r", encoding="utf-8") as f:
     theme = json.load(f)
 
@@ -130,6 +159,7 @@ series_count = defaultdict(int)
 maker_count = defaultdict(int)
 
 skipped_used = 0
+skipped_theme_conflict = 0
 skipped_series = 0
 skipped_maker = 0
 
@@ -147,6 +177,10 @@ for scored in scored_works:
     genres = get_genres(work)
 
     if not all(req in genres for req in required):
+        continue
+
+    if has_conflict_theme_genre(required, genres):
+        skipped_theme_conflict += 1
         continue
 
     title = scored.get("title") or ""
@@ -188,6 +222,7 @@ for scored in scored_works:
 print(f"theme: {theme.get('name')}")
 print(f"selected: {len(selected)}")
 print(f"skipped_used: {skipped_used}")
+print(f"skipped_theme_conflict: {skipped_theme_conflict}")
 print(f"skipped_series: {skipped_series}")
 print(f"skipped_maker: {skipped_maker}")
 print("series_count:")
