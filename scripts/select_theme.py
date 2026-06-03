@@ -10,7 +10,7 @@ THEMES_PATH = "data/themes.json"
 USED_THEMES_PATH = "data/used_themes.json"
 CURRENT_THEME_PATH = "data/current_theme.json"
 
-MIN_COUNT_HINT = 10
+MIN_COUNT_HINT = 7
 
 TYPE_WEIGHTS = {
     "genre": 40,
