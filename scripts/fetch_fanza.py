@@ -29,14 +29,14 @@ works = []
 
 for item in data.get("result", {}).get("items", []):
 
-   work = {
-    "content_id": item.get("content_id"),
-    "title": item.get("title"),
-    "date": item.get("date"),
-    "url": item.get("affiliateURL"),
-    "image": item.get("imageURL", {}).get("large"),
-    "raw": item
-}
+    work = {
+        "content_id": item.get("content_id"),
+        "title": item.get("title"),
+        "date": item.get("date"),
+        "url": item.get("affiliateURL"),
+        "image": item.get("imageURL", {}).get("large"),
+        "raw": item
+    }
 
     works.append(work)
 
