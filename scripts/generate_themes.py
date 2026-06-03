@@ -3,7 +3,7 @@ from itertools import combinations
 from typing import Any
 
 MIN_GENRE_COUNT = 10
-MIN_THEME_WORKS = 10
+MIN_THEME_WORKS = 7
 
 THEMES_PATH = "data/themes.json"
 GENRE_COUNTS_PATH = "data/genre_counts.json"
