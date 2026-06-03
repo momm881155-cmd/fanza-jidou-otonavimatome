@@ -52,6 +52,9 @@ jobs:
       - name: Select works
         run: python scripts/select_works.py
 
+      - name: Save history
+        run: python scripts/save_history.py
+
       - name: Commit data
         run: |
           git config user.name "github-actions"
@@ -66,6 +69,8 @@ jobs:
           git add data/genre_counts.json
           git add data/themes.json
           git add data/selected_article_works.json
+          git add data/used_themes.json
+          git add data/used_works.json
 
           git commit -m "Update FANZA data" || echo "No changes"
           git push
