@@ -27,13 +27,14 @@ jobs:
           FANZA_API_ID: ${{ secrets.FANZA_API_ID }}
           FANZA_AFFILIATE_ID: ${{ secrets.FANZA_AFFILIATE_ID }}
         run: python scripts/fetch_fanza.py
-        - name: Fetch reviews
-  run: python scripts/fetch_reviews.py
+
+      - name: Fetch reviews
+        run: python scripts/fetch_reviews.py
 
       - name: Commit data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/works.json
-          git commit -m "Update FANZA works" || echo "No changes"
+          git add data/works.json data/reviews.json
+          git commit -m "Update FANZA data" || echo "No changes"
           git push
