@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×妄想族",
+  "type": "genre",
+  "name": "素人×女子大生",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "妄想族"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "女子大生",
   "required": [
     "素人",
-    "巨乳",
-    "妄想族"
+    "女子大生"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 50
 }
