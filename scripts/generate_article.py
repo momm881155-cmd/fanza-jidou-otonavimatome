@@ -1,5 +1,6 @@
 import os
 import json
+import re
 from pathlib import Path
 from google import genai
 
@@ -17,15 +18,82 @@ def load_json(name):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def sanitize_text(text):
+    if text is None:
+        return text
+    text = str(text)
+
+    replacements = {
+        "中出し": "フィニッシュ",
+        "生中出し": "フィニッシュ",
+        "生ハメ": "密着シーン",
+        "SEX": "親密シーン",
+        "セックス": "親密シーン",
+        "フェラ": "奉仕シーン",
+        "チンポ": "男性向け要素",
+        "チ●ポ": "男性向け要素",
+        "オマ○コ": "女性向け要素",
+        "マ〇コ": "女性向け要素",
+        "潮吹き": "リアクション",
+        "顔射": "フィニッシュ演出",
+        "ごっくん": "奉仕描写",
+        "精子": "フィニッシュ描写",
+        "射精": "フィニッシュ",
+        "巨根": "男性向け要素",
+        "乳首": "身体表現",
+        "爆乳": "グラマラス",
+        "巨乳": "グラマラス",
+        "ハメ撮り": "主観系",
+        "オナニー": "ソロシーン",
+        "3P": "複数人シーン",
+        "4P": "複数人シーン",
+        "調教": "強めの展開",
+        "首絞め": "強めの展開",
+        "レイプ": "強制系",
+        "凌辱": "強制系",
+        "痴漢": "接触系",
+        "痴女": "積極的な女性",
+        "盗撮": "ドキュメント風",
+        "のぞき": "ドキュメント風",
+        "露出": "屋外系",
+        "野外": "屋外系",
+        "不倫": "背徳系",
+        "NTR": "背徳系",
+        "人妻": "既婚女性",
+        "熟女": "大人女性",
+    }
+
+    for before, after in replacements.items():
+        text = text.replace(before, after)
+
+    return text
+
+def sanitize_obj(obj):
+    if isinstance(obj, dict):
+        return {k: sanitize_obj(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [sanitize_obj(v) for v in obj]
+    if isinstance(obj, str):
+        return sanitize_text(obj)
+    return obj
+
 current_theme = load_json("current_theme.json")
 works = load_json("selected_article_works.json")
 reviews = load_json("reviews.json")
+
+safe_theme = sanitize_obj(current_theme)
+safe_works = sanitize_obj(works)
+safe_reviews = sanitize_obj(reviews)
 
 prompt = f"""
 あなたは成人向けアフィリエイトブログのSEO編集者です。
 
 以下のテーマ・作品データ・レビュー傾向をもとに、
 WordPressにそのまま貼れる記事本文を作成してください。
+
+【重要】
+入力データ内の一部表現は安全化のため置換されています。
+記事では露骨な行為描写を新規生成せず、作品の特徴・比較・向き不向きを中心に整理してください。
 
 【最重要ルール】
 ・出力は記事本文のみ
@@ -56,8 +124,7 @@ WordPressにそのまま貼れる記事本文を作成してください。
 ・関連記事はURLを作らず、関連テーマ案を3つ出す
 ・冷静な比較解説を基本にする
 ・少し熱量はあるが、煽りすぎない
-・「抜きやすさ」「没入感」「リアル感」「背徳感」「疑似恋愛感」などの判断軸を使う
-・ただし露骨な行為描写は新規生成しない
+・判断軸は「選びやすさ」「没入感」「リアル感」「背徳感」「疑似恋愛感」を使う
 
 【ショートコードルール】
 各作品の冒頭は必ず以下の形式にする。
@@ -82,7 +149,6 @@ urlには作品データのurlを入れる。
 
 【順位ルール】
 作品データの並び順をランキング順位とする。
-
 1件目 → number="01"
 2件目 → number="02"
 3件目 → number="03"
@@ -93,9 +159,6 @@ urlには作品データのurlを入れる。
 8件目 → number="08"
 9件目 → number="09"
 10件目 → number="10"
-
-作品数に応じて、01から最後の作品まで自動採番する。
-numberは固定値を使わず、必ず順位に応じて自動採番すること。
 
 【装飾ルール】
 おすすめポイントは以下の形式。
@@ -147,7 +210,6 @@ numberは固定値を使わず、必ず順位に応じて自動採番するこ�
 
 【記事構成】
 導入文 400〜700字。
-読者の悩みを代弁し、今回のテーマで何を比較する記事なのかを説明する。
 
 <!-- wp:heading {{"textAlign":"center"}} -->
 <h2 class="wp-block-heading has-text-align-center">テーマに合うおすすめ作品一覧</h2>
@@ -156,7 +218,6 @@ numberは固定値を使わず、必ず順位に応じて自動採番するこ�
 各作品をランキング順に紹介する。
 
 作品ごとに以下を必ず入れる。
-
 1. [fanza_heading]
 2. [fanza_item]
 3. 作品紹介本文 2〜4段落
@@ -170,10 +231,6 @@ numberは固定値を使わず、必ず順位に応じて自動採番するこ�
 <h2 class="wp-block-heading">【比較】今回紹介したおすすめ作品</h2>
 <!-- /wp:heading -->
 
-比較表の前に、比較基準を1段落で説明する。
-
-比較表は以下のWordPressブロック形式で出力する。
-
 <!-- wp:table {{"className":"review-table"}} -->
 <figure class="wp-block-table review-table"><table class="has-fixed-layout"><thead><tr><th>作品</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>
 <tr><td>作品名</td><td>特徴</td><td>★★★★★<br>おすすめ理由</td></tr>
@@ -184,24 +241,20 @@ numberは固定値を使わず、必ず順位に応じて自動採番するこ�
 <h2 class="wp-block-heading">【まとめ】迷ったらまずは比較表から選ぶのがおすすめ</h2>
 <!-- /wp:heading -->
 
-総評では、今回のテーマでどんな人がどの作品を選ぶべきかを整理する。
-特におすすめの作品を2〜3本挙げて、選ぶ理由を説明する。
-
 <!-- wp:heading -->
 <h2 class="wp-block-heading">関連記事</h2>
 <!-- /wp:heading -->
 
 関連記事は、現時点ではURLを作らず、関連テーマ案を3件だけ出力する。
-存在しないURLは絶対に作らない。
 
 【テーマ】
-{json.dumps(current_theme, ensure_ascii=False, indent=2)}
+{json.dumps(safe_theme, ensure_ascii=False, indent=2)}
 
 【作品データ】
-{json.dumps(works, ensure_ascii=False, indent=2)}
+{json.dumps(safe_works, ensure_ascii=False, indent=2)}
 
 【レビュー情報】
-{json.dumps(reviews, ensure_ascii=False, indent=2)}
+{json.dumps(safe_reviews, ensure_ascii=False, indent=2)}
 """
 
 response = client.models.generate_content(
