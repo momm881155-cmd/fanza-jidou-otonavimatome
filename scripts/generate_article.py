@@ -207,7 +207,7 @@ numberは固定値を使わず、必ず順位に応じて自動採番するこ�
 存在しないURLは絶対に作らない。
 
 【参考記事本文】
-{style_sample[:50000]}
+{style_sample[:8000]}
 
 【テーマ】
 {json.dumps(current_theme, ensure_ascii=False, indent=2)}
@@ -224,13 +224,24 @@ response = client.models.generate_content(
     contents=prompt,
 )
 
+print("===== GEMINI RESPONSE =====")
+print(response)
+
+if response is None:
+    raise Exception("Gemini returned None")
+
+if not getattr(response, "text", None):
+    raise Exception(f"Gemini returned no text: {response}")
+
 article = response.text.strip()
 
 if not article:
     raise Exception("Gemini returned empty article")
 
 output_path = OUTPUT_DIR / "article.html"
+
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(article)
 
-print("記事生成完了:", output_path)
+print("記事生成完了")
+print(f"article_path={output_path}")
