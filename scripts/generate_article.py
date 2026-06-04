@@ -25,75 +25,80 @@ prompt = f"""
 あなたは成人向けアフィリエイトブログのSEO編集者です。
 
 以下のテーマ・作品データ・レビュー傾向をもとに、
-WordPressにそのまま貼れる記事本文をHTML形式で作成してください。
+WordPressにそのまま貼れる記事本文を作成してください。
 
-【記事方針】
-・検索ユーザーが作品を比較しやすい記事にする
-・作品情報の羅列ではなく比較と判断を重視する
-・レビュー本文は引用せず評価傾向として要約する
+【最重要ルール】
+・出力は記事本文のみ
+・前置きや説明は不要
+・h2タグを使う
+・作品見出しは必ず shortコード [fanza_heading] を使う
+・作品情報表示は必ず shortコード [fanza_item] を使う
+・作品ボタンは必ず shortコード [fanza_button] を使う
+・レビュー本文の直接引用は禁止
+・レビューは評価傾向として要約する
 ・露骨な性的描写や行為の詳細は新規生成しない
 ・未成年を示唆する表現は禁止
-・出力は記事本文のみ
-・前置きや補足説明は禁止
+・作品情報の羅列ではなく、比較・判断・向き不向きを重視する
 
-【SEOタイトル形式】
-素人×〇〇おすすめ10選｜サブタイトル
+【ショートコードルール】
+
+各作品の冒頭は必ず以下の形式にする。
+
+[fanza_heading number="01" title="作品名"]
+[fanza_item cid="content_id"]
+
+numberは順位に合わせて01、02、03のように2桁にする。
+titleには作品データのtitleをそのまま入れる。
+cidには作品データのcontent_idを入れる。
+
+作品紹介の最後には必ず以下を入れる。
+
+[fanza_button url="作品URL" text="動画を見る"]
+
+urlには作品データのurlを入れる。
 
 【記事構成】
 
 <h1>SEO向けタイトル</h1>
 
-導入文（400〜700文字）
+導入文 400〜700字
 
 <h2>今回のテーマと選定基準</h2>
 
-テーマの特徴
-選定基準
-どんな人向けか
+<p>今回のテーマの特徴、選定基準、どんな人向けかを説明する。</p>
 
 <h2>おすすめ作品一覧</h2>
 
 各作品は以下の形式で出力する。
 
-<h3>第1位：作品名</h3>
+[fanza_heading number="01" title="作品名"]
+[fanza_item cid="content_id"]
 
-作品の特徴を2〜4段落で解説する。
+<p>作品の特徴を2〜4段落で解説する。</p>
 
-<div class="information-box">
-<strong>おすすめポイント</strong>
+<h3>おすすめポイント</h3>
 <ul>
 <li>ポイント</li>
 <li>ポイント</li>
 <li>ポイント</li>
 </ul>
-</div>
 
-<div class="alert-box">
-<strong>気になるポイント</strong>
+<h3>気になるポイント</h3>
 <ul>
 <li>注意点</li>
 <li>注意点</li>
 </ul>
-</div>
 
-<div class="blank-box bb-key-color">
-<strong>こんな人におすすめ</strong>
+<h3>こんな人におすすめ</h3>
 <ul>
 <li>おすすめユーザー</li>
 <li>おすすめユーザー</li>
 <li>おすすめユーザー</li>
 </ul>
-</div>
 
-<p class="btn-wrap btn-wrap-key-color">
-<a href="作品URL" target="_blank" rel="nofollow sponsored noopener">FANZAで詳細を見る</a>
-</p>
-
-<hr>
+[fanza_button url="作品URL" text="動画を見る"]
 
 <h2>【比較】今回紹介したおすすめ作品</h2>
-
-以下の形式でHTMLテーブルを作成する。
 
 <table>
 <thead>
@@ -104,17 +109,24 @@ WordPressにそのまま貼れる記事本文をHTML形式で作成してくだ�
 </tr>
 </thead>
 <tbody>
-...
+<tr>
+<td>作品名</td>
+<td>特徴を簡潔に記載</td>
+<td>★★★★★</td>
+</tr>
 </tbody>
 </table>
 
 <h2>【まとめ】迷ったらまずは比較表から選ぶのがおすすめ</h2>
 
-比較しながら選び方を解説する。
+<p>今回の作品の選び方をまとめる。</p>
 
 <h2>関連記事</h2>
-
-関連テーマ案を3件出力する。
+<ul>
+<li>関連テーマ案1</li>
+<li>関連テーマ案2</li>
+<li>関連テーマ案3</li>
+</ul>
 
 【テーマ】
 {json.dumps(current_theme, ensure_ascii=False, indent=2)}
