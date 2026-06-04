@@ -458,6 +458,78 @@ if not getattr(response, "text", None):
 
 article = response.text.strip()
 
+article = post_process_article(article, article_works)
+
+def post_process_article(article, article_works):
+    import re
+
+    # GitHubの空アンカーを削除
+    article = re.sub(
+        r'<!-- wp:paragraph -->\s*<p><a href="https://github\.com/[^"]*"></a></p>\s*<!-- /wp:paragraph -->',
+        '',
+        article
+    )
+
+    # fanza_heading / fanza_item / fanza_button を shortcode ブロックに戻す
+    article = re.sub(
+        r'<!-- wp:paragraph -->\s*<p>(\[fanza_heading[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
+        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
+        article
+    )
+
+    article = re.sub(
+        r'<!-- wp:paragraph -->\s*<p>(\[fanza_item[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
+        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
+        article
+    )
+
+    # 壊れた fanza_button を作品データから正しいURLで作り直す
+    for work in article_works:
+        cid = work.get("content_id")
+        url = work.get("url")
+        if not cid or not url:
+            continue
+
+        # fanza_item の後に対応する作品ボタンを補正しやすくする
+        broken_button_pattern = r'<!-- wp:paragraph -->\s*<p>\[fanza_button url=".*?" text="動画を見る"\]</p>\s*<!-- /wp:paragraph -->'
+        correct_button = f'<!-- wp:shortcode -->\n[fanza_button url="{url}" text="動画を見る"]\n<!-- /wp:shortcode -->'
+        article = re.sub(broken_button_pattern, correct_button, article, count=1)
+
+    # おすすめポイント等の通常リストを青囲みに寄せる
+    article = article.replace(
+        '<!-- wp:list -->\n<ul class="wp-block-list">',
+        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">'
+    )
+
+    # 「強調」だけ黒太字になっているものを赤太字へ寄せる
+    article = re.sub(
+        r'「<strong>(.*?)</strong>」',
+        r'「<strong><span class="bold-red">\1</span></strong>」',
+        article
+    )
+
+    # title がない場合は先頭に追加
+    if "<!-- title:" not in article:
+        count = len(article_works)
+        first = article_works[0] if article_works else {}
+        theme = first.get("theme_genre") or "注目"
+        title = f"素人×{theme}おすすめ{count}選｜比較して選べる注目作品まとめ"
+        article = f"<!-- title: {title} -->\n" + article
+
+    # eye_catch がない場合は先頭に追加
+    if "<!-- eye_catch_image:" not in article:
+        image_work = next((w for w in article_works if w.get("image")), None)
+        if image_work:
+            image = image_work.get("image")
+            source = image_work.get("title")
+            article = (
+                f'<!-- eye_catch_image: {image} -->\n'
+                f'<!-- eye_catch_source: {source} -->\n'
+                + article
+            )
+
+    return article
+
 if not article:
     raise Exception("Gemini returned empty article")
 
