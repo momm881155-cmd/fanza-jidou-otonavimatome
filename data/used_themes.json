@@ -26,6 +26,18 @@
       "theme_genres": null,
       "count_hint": 31,
       "used_at": "2026-06-04"
+    },
+    {
+      "name": "素人×中出し×人妻・主婦",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "人妻・主婦"
+      ],
+      "count_hint": 50,
+      "used_at": "2026-06-04"
     }
   ]
 }
