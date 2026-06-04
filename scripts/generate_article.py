@@ -690,8 +690,17 @@ Markdownの太字や番号付きリストは使わない。
 
 【関連記事ルール】
 既存記事履歴にURL付き記事がある場合のみ、今回テーマと近いものを最大3件選んで関連記事として出力する。
+
+関連記事見出しは以下にする。
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">あわせて読みたい記事</h3>
+<!-- /wp:heading -->
+
+関連記事はul/li形式で出力する。
 URLがない記事、存在しないURL、架空URLは絶対に作らない。
-既存記事履歴に使えるURLがない場合は、関連記事本文は出力せず、related_theme_candidates のみ出力する。
+既存記事履歴に使えるURLがない場合は、関連記事本文は出力しない。
+related_theme_candidates も出力しない。
 
 【テーマ】
 {safe_theme}
