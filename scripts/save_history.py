@@ -6,6 +6,7 @@ CURRENT_THEME_PATH = "data/current_theme.json"
 SELECTED_WORKS_PATH = "data/selected_article_works.json"
 USED_THEMES_PATH = "data/used_themes.json"
 USED_WORKS_PATH = "data/used_works.json"
+ARTICLE_PATH = "data/generated_article.md"
 
 today = datetime.now().strftime("%Y-%m-%d")
 
@@ -21,6 +22,17 @@ def load_json(path: str, default: Any) -> Any:
 def save_json(path: str, data: Any) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def validate_article_exists() -> None:
+    try:
+        with open(ARTICLE_PATH, "r", encoding="utf-8") as f:
+            article = f.read().strip()
+    except FileNotFoundError:
+        raise Exception("generated_article.md not found. History will not be saved.")
+
+    if not article:
+        raise Exception("generated_article.md is empty. History will not be saved.")
 
 
 def save_theme_history() -> int:
@@ -107,6 +119,8 @@ def save_work_history() -> int:
 
 
 def main() -> None:
+    validate_article_exists()
+
     theme_added = save_theme_history()
     works_added = save_work_history()
 
