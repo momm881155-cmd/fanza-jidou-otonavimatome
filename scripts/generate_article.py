@@ -1,57 +1,140 @@
-import json
 import os
+import json
+from pathlib import Path
 from google import genai
 
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT / "data"
+OUTPUT_DIR = ROOT / "output"
+OUTPUT_DIR.mkdir(exist_ok=True)
 
-ARTICLE_PATH = "data/generated_article.md"
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+def load_json(name):
+    path = DATA_DIR / name
+    if not path.exists():
+        return None
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
-with open("data/current_theme.json", "r", encoding="utf-8") as f:
-    theme = json.load(f)
-
-with open("data/selected_article_works.json", "r", encoding="utf-8") as f:
-    works = json.load(f)
-
-with open("data/reviews.json", "r", encoding="utf-8") as f:
-    reviews = json.load(f)
+current_theme = load_json("current_theme.json")
+works = load_json("selected_article_works.json")
+reviews = load_json("reviews.json")
 
 prompt = f"""
-あなたはSEO記事編集者です。
-以下のテーマと作品データをもとに、WordPressに貼れる記事を作成してください。
+あなたは成人向けアフィリエイトブログのSEO編集者です。
 
-条件:
-- 露骨な描写は避ける
-- 作品情報を整理する
-- h2/h3を使う
-- 冒頭に300〜600字の導入文
-- 最後に総評
-- 作品ごとに向いている人・注意点を簡潔に書く
-- レビュー本文は引用しすぎず、傾向として要約する
+以下のテーマ・作品データ・レビュー傾向をもとに、
+WordPressにそのまま貼れる記事本文をHTML形式で作成してください。
 
-テーマ:
-{json.dumps(theme, ensure_ascii=False, indent=2)}
+【記事方針】
+・検索ユーザーが作品を比較しやすい記事にする
+・作品情報の羅列ではなく比較と判断を重視する
+・レビュー本文は引用せず評価傾向として要約する
+・露骨な性的描写や行為の詳細は新規生成しない
+・未成年を示唆する表現は禁止
+・出力は記事本文のみ
+・前置きや補足説明は禁止
 
-作品:
+【SEOタイトル形式】
+素人×〇〇おすすめ10選｜サブタイトル
+
+【記事構成】
+
+<h1>SEO向けタイトル</h1>
+
+導入文（400〜700文字）
+
+<h2>今回のテーマと選定基準</h2>
+
+テーマの特徴
+選定基準
+どんな人向けか
+
+<h2>おすすめ作品一覧</h2>
+
+各作品は以下の形式で出力する。
+
+<h3>第1位：作品名</h3>
+
+作品の特徴を2〜4段落で解説する。
+
+<div class="information-box">
+<strong>おすすめポイント</strong>
+<ul>
+<li>ポイント</li>
+<li>ポイント</li>
+<li>ポイント</li>
+</ul>
+</div>
+
+<div class="alert-box">
+<strong>気になるポイント</strong>
+<ul>
+<li>注意点</li>
+<li>注意点</li>
+</ul>
+</div>
+
+<div class="blank-box bb-key-color">
+<strong>こんな人におすすめ</strong>
+<ul>
+<li>おすすめユーザー</li>
+<li>おすすめユーザー</li>
+<li>おすすめユーザー</li>
+</ul>
+</div>
+
+<p class="btn-wrap btn-wrap-key-color">
+<a href="作品URL" target="_blank" rel="nofollow sponsored noopener">FANZAで詳細を見る</a>
+</p>
+
+<hr>
+
+<h2>【比較】今回紹介したおすすめ作品</h2>
+
+以下の形式でHTMLテーブルを作成する。
+
+<table>
+<thead>
+<tr>
+<th>作品</th>
+<th>特徴</th>
+<th>おすすめ度</th>
+</tr>
+</thead>
+<tbody>
+...
+</tbody>
+</table>
+
+<h2>【まとめ】迷ったらまずは比較表から選ぶのがおすすめ</h2>
+
+比較しながら選び方を解説する。
+
+<h2>関連記事</h2>
+
+関連テーマ案を3件出力する。
+
+【テーマ】
+{json.dumps(current_theme, ensure_ascii=False, indent=2)}
+
+【作品データ】
 {json.dumps(works, ensure_ascii=False, indent=2)}
 
-レビュー:
+【レビュー情報】
 {json.dumps(reviews, ensure_ascii=False, indent=2)}
 """
 
 response = client.models.generate_content(
-    model="gemini-1.5-flash",
+    model="gemini-2.5-flash",
     contents=prompt,
 )
 
-article = response.text.strip()
+article = response.text
 
-if not article:
-    raise Exception("Gemini returned empty article")
-
-with open(ARTICLE_PATH, "w", encoding="utf-8") as f:
+output_path = OUTPUT_DIR / "article.html"
+with open(output_path, "w", encoding="utf-8") as f:
     f.write(article)
 
-print("article generated")
-print(f"article_path={ARTICLE_PATH}")
+print("記事生成完了:", output_path)
