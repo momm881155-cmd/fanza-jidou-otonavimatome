@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import time
 from pathlib import Path
 from google import genai
 
@@ -11,12 +12,14 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
+
 def load_json(name, default=None):
     path = DATA_DIR / name
     if not path.exists():
         return default
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 def sanitize_text(text):
     if text is None:
@@ -114,6 +117,7 @@ def sanitize_text(text):
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
+
 def safe_list(values, limit=8):
     if not isinstance(values, list):
         return []
@@ -123,6 +127,7 @@ def safe_list(values, limit=8):
         if s:
             result.append(s)
     return result
+
 
 def collect_review_texts(content_id, reviews):
     texts = []
@@ -152,23 +157,25 @@ def collect_review_texts(content_id, reviews):
 
     return texts
 
+
 def infer_axis(genres, theme_genre):
     joined = " ".join(genres + [theme_genre])
 
     if "大人女性" in joined or "既婚女性" in joined:
-        return "落ち着いた雰囲気、生活感、リアル感"
+        return "落ち着いた雰囲気、生活感、説得力"
     if "主観系" in joined or "ドキュメント風" in joined:
-        return "距離感の近さ、臨場感、リアル感"
+        return "距離感の近さ、臨場感、自然な流れ"
     if "グラマラス" in joined:
         return "見た目のインパクト、視覚的な満足感"
     if "非日常系" in joined:
-        return "非日常感、関係性のスリル、没入感"
+        return "関係性のスリル、展開力、シチュエーション性"
     if "単体作品" in joined:
         return "出演者の魅力、作品全体のまとまり"
     if "素人" in joined:
-        return "自然な雰囲気、親近感、リアル感"
+        return "自然な雰囲気、親近感、素朴さ"
 
     return "ジャンルとの相性、見やすさ、総合バランス"
+
 
 def build_review_hint(raw_texts):
     safe_texts = []
@@ -181,6 +188,7 @@ def build_review_hint(raw_texts):
         return "レビュー本文は少なめ。評価点、レビュー件数、ジャンル、メーカー情報から特徴を整理する。"
 
     return " / ".join(safe_texts[:3])
+
 
 def build_article_works(works, reviews):
     internal = []
@@ -240,6 +248,7 @@ def build_article_works(works, reviews):
 
     return internal, prompt_items
 
+
 def normalize_history_items(history):
     if not history:
         return []
@@ -278,6 +287,7 @@ def normalize_history_items(history):
 
     return normalized[-30:]
 
+
 def guess_theme_name(current_theme, prompt_items):
     if isinstance(current_theme, dict):
         for key in ("theme", "theme_name", "name", "genre", "keyword"):
@@ -293,20 +303,104 @@ def guess_theme_name(current_theme, prompt_items):
 
     return "注目"
 
+
 def build_default_title(theme_name, count):
     return f"素人×{theme_name}おすすめ{count}選｜比較して選べる注目作品まとめ"
+
 
 def shortcode_heading(number, title):
     safe = str(title or "").replace('"', '&quot;')
     return f'<!-- wp:shortcode -->\n[fanza_heading number="{number}" title="{safe}"]\n<!-- /wp:shortcode -->'
 
+
 def shortcode_item(cid):
     return f'<!-- wp:shortcode -->\n[fanza_item cid="{cid}"]\n<!-- /wp:shortcode -->'
+
 
 def shortcode_button(url):
     return f'<!-- wp:shortcode -->\n[fanza_button url="{url}" text="動画を見る"]\n<!-- /wp:shortcode -->'
 
+
+def fix_markdown_artifacts(article):
+    article = article.replace("＊＊", "**")
+
+    article = re.sub(
+        r'\*\*(.+?)\*\*',
+        r'<strong><span class="bold-red">\1</span></strong>',
+        article
+    )
+
+    article = re.sub(r'^\s*#{1,6}\s*(.+)$', r'\1', article, flags=re.MULTILINE)
+
+    article = re.sub(
+        r'(?m)^\s*\d+\.\s+(.+)$',
+        r'<!-- wp:paragraph -->\n<p>\1</p>\n<!-- /wp:paragraph -->',
+        article
+    )
+
+    article = re.sub(r'(?m)^\s*[-*]\s+(.+)$', r'<li>\1</li>', article)
+
+    return article
+
+
+def fix_bold_red(article):
+    for _ in range(5):
+        article = article.replace('<span class="bold-red"><span class="bold-red">', '<span class="bold-red">')
+        article = article.replace('</span></span></strong>', '</span></strong>')
+
+    article = re.sub(
+        r'「<strong>(?!<span class="bold-red">)(.*?)</strong>」',
+        r'「<strong><span class="bold-red">\1</span></strong>」',
+        article
+    )
+
+    return article
+
+
+def style_section_lists(article):
+    styles = {
+        "おすすめポイント": ("icon-list-circle", "circle"),
+        "気になるポイント": ("icon-list-cross", "cross"),
+        "こんな人におすすめ": ("icon-list-thumb-up", "thumb"),
+    }
+
+    for heading, (style_class, _) in styles.items():
+        pattern = (
+            r'(<h4 class="wp-block-heading">' + re.escape(heading) + r'</h4>\s*'
+            r'<!-- /wp:heading -->\s*)'
+            r'<!-- wp:list(?: [^>]*)? -->\s*'
+            r'<ul class="[^"]*wp-block-list[^"]*">'
+        )
+
+        replacement = (
+            r'\1'
+            f'<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"{style_class}"}} -->\n'
+            f'<ul class="wp-block-list is-style-blank-box-blue has-border is-style-{style_class} has-list-style">'
+        )
+
+        article = re.sub(pattern, replacement, article, flags=re.DOTALL)
+
+    return article
+
+
+def remove_article_images(article):
+    article = re.sub(
+        r'<!-- wp:image[\s\S]*?<!-- /wp:image -->\s*',
+        '',
+        article
+    )
+    article = re.sub(
+        r'<figure class="wp-block-image[\s\S]*?</figure>\s*',
+        '',
+        article
+    )
+    return article
+
+
 def post_process_article(article, internal_works, theme_name):
+    article = fix_markdown_artifacts(article)
+    article = remove_article_images(article)
+
     article = re.sub(
         r'<!-- wp:paragraph -->\s*<p><a href="https://github\.com/[^"]*"></a></p>\s*<!-- /wp:paragraph -->',
         '',
@@ -337,33 +431,31 @@ def post_process_article(article, internal_works, theme_name):
         r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
         article
     )
-
-    for w in internal_works:
-        url = w.get("url") or "#"
-        correct = shortcode_button(url)
-        article = re.sub(
-            r'<!-- wp:paragraph -->\s*<p>\[fanza_button url=".*?" text="動画を見る"\]</p>\s*<!-- /wp:paragraph -->',
-            correct,
-            article,
-            count=1,
-            flags=re.DOTALL,
-        )
+    article = re.sub(
+        r'<!-- wp:paragraph -->\s*<p>(\[fanza_button[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
+        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
+        article
+    )
 
     article = article.replace(
         '<!-- wp:list -->\n<ul class="wp-block-list">',
         '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">'
     )
 
+    article = re.sub(
+        r'<!-- wp:list \{"className":"wp-block-list"\} -->\s*<ul class="wp-block-list">',
+        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">',
+        article
+    )
+
+    article = style_section_lists(article)
+
     article = article.replace(
         '<!-- wp:table -->\n<figure class="wp-block-table">',
         '<!-- wp:table {"className":"review-table"} -->\n<figure class="wp-block-table review-table">'
     )
 
-    article = re.sub(
-        r'「<strong>(.*?)</strong>」',
-        r'「<strong><span class="bold-red">\1</span></strong>」',
-        article
-    )
+    article = fix_bold_red(article)
 
     if "<!-- title:" not in article:
         article = f"<!-- title: {build_default_title(theme_name, len(internal_works))} -->\n" + article
@@ -378,6 +470,7 @@ def post_process_article(article, internal_works, theme_name):
             )
 
     return article
+
 
 current_theme = load_json("current_theme.json", {})
 works = load_json("selected_article_works.json", [])
@@ -411,6 +504,27 @@ prompt = f"""
 ・記事本文内にアイキャッチ画像、メイン画像、サンプル画像を挿入しない
 ・画像はWordPressのfeatured_mediaで設定する前提とする
 
+【出力禁止ルール】
+以下のMarkdown記法は禁止。
+・#
+・##
+・###
+・####
+・*
+・**
+・***
+・1.
+・2.
+・3.
+・- 
+・Markdownリンク
+
+必ずWordPressブロックHTMLのみで出力すること。
+番号付きリストは禁止。
+Markdownの太字は禁止。
+作品名を直接書く場合は、本文内の通常説明では「作品01」「作品02」のように表記する。
+比較表やまとめで作品リンクを出す場合は、必ず [WORK_LINK_番号] を使う。
+
 【プレースホルダールール】
 作品見出し、作品情報、作品ボタン、作品リンクは必ず以下のプレースホルダーを使う。
 URLやショートコードを自分で作らない。
@@ -428,29 +542,16 @@ URLやショートコードを自分で作らない。
 2位以降も、02、03、04のように作品データのnumberに合わせる。
 
 【タイトル・アイキャッチルール】
-
 本文の最初に必ず以下を出力する。
 
 <!-- title: SEOタイトル -->
 
 SEOタイトルは必ずテーマに合わせて毎回考えること。
-
-タイトル形式例
-
-素人×奉仕おすすめ10選｜献身的な距離感を楽しめる人気作品まとめ
-
-素人×恋人感おすすめ7選｜リアルな関係性を味わえる注目作品まとめ
-
-素人×巨乳おすすめ10選｜満足度の高い人気作品を厳選紹介
-
-ルール
-
-・28〜45文字程度
-・検索キーワードを自然に含める
-・おすすめ◯選を入れる
-・サブタイトルはテーマごとに変える
-・毎回同じ文言を使わない
-・クリックしたくなる自然なタイトルにする
+28〜45文字程度。
+検索キーワードを自然に含める。
+おすすめ◯選を入れる。
+サブタイトルはテーマごとに変える。
+毎回同じ文言を使わない。
 
 【人間味ある文体ルール】
 ・導入文は、読者が夜にスマホで作品を探している場面から自然に入る
@@ -534,7 +635,16 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 <h2 class="wp-block-heading">編集部の選定基準</h2>
 <!-- /wp:heading -->
 
-今回のランキングで重視したポイントを説明する。
+選定基準は番号付きリストにしない。
+必ず以下の形式で出力する。
+
+<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"}} -->
+<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">
+<li>選定基準を1つ説明する</li>
+<li>選定基準を1つ説明する</li>
+<li>選定基準を1つ説明する</li>
+</ul>
+<!-- /wp:list -->
 
 <!-- wp:heading {{"textAlign":"center"}} -->
 <h2 class="wp-block-heading has-text-align-center">素人×{theme_name}おすすめ作品一覧</h2>
@@ -576,6 +686,7 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 総評では、今回のテーマでどんな人がどの作品を選ぶべきかを整理する。
 特におすすめの作品を2〜3本挙げて、選ぶ理由を説明する。
 初心者向け・テーマ重視向け・刺激重視向けに分けて、おすすめ作品を整理する。
+Markdownの太字や番号付きリストは使わない。
 
 【関連記事ルール】
 既存記事履歴にURL付き記事がある場合のみ、今回テーマと近いものを最大3件選んで関連記事として出力する。
@@ -592,113 +703,17 @@ URLがない記事、存在しないURL、架空URLは絶対に作らない。
 {json.dumps(history_items, ensure_ascii=False, indent=2)}
 
 【SEO差別化ルール】
-
 作品紹介だけの記事にしないこと。
-
-作品紹介に入る前に、
-・このテーマが人気な理由
-・選び方
-・比較ポイント
-を解説すること。
-
-各作品で異なる評価軸を使用すること。
-
-使用できる評価軸例
-
-【完成度】
-完成度
-満足度
-見やすさ
-テンポ
-構成力
-安定感
-情報量
-まとまり
-リピートしやすさ
-
-【出演者】
-出演者の魅力
-自然さ
-存在感
-親近感
-表情の豊かさ
-雰囲気
-個性
-距離感
-キャラクター性
-
-【リアリティ】
-リアルさ
-生活感
-説得力
-自然な流れ
-ドキュメント感
-空気感
-臨場感
-偶発性
-素朴さ
-
-【企画】
-企画性
-独自性
-発想の面白さ
-ルール設定
-ゲーム性
-検証要素
-展開の分かりやすさ
-見せ場までの導線
-
-【ストーリー】
-物語性
-関係性
-展開力
-ドラマ性
-感情移入しやすさ
-シチュエーション性
-流れの自然さ
-
-【初心者向け】
-入りやすさ
-クセの少なさ
-万人向け
-ジャンル入門向け
-見疲れしにくさ
-選びやすさ
-分かりやすさ
-
-【フェチ・属性】
-ジャンル特化度
-テーマ再現度
-属性の強さ
-ビジュアル面の満足度
-設定の分かりやすさ
-好みとの一致度
-
-【レビュー】
-評価の安定感
-レビュー人気
-話題性
-満足度の高さ
-評価点とのバランス
-レビュー件数との信頼感
-
-【比較】
-初心者向け
-上級者向け
-刺激重視
-自然さ重視
-企画重視
-関係性重視
-テンポ重視
-見やすさ重視
+作品紹介に入る前に、このテーマが人気な理由、選び方、比較ポイントを解説すること。
 
 各作品で異なる評価軸を最低2つ使用すること。
 同じ評価軸を連続使用しないこと。
 同一記事内で同じ評価軸の使用回数は3回までにすること。
 「リアル感」「没入感」「非日常感」「感情変化」「クライマックス」の繰り返しを避けること。
-"""
 
-import time
+使用できる評価軸例：
+完成度、満足度、見やすさ、テンポ、構成力、安定感、情報量、まとまり、リピートしやすさ、出演者の魅力、自然さ、存在感、親近感、表情の豊かさ、雰囲気、個性、距離感、キャラクター性、生活感、説得力、自然な流れ、ドキュメント感、空気感、臨場感、偶発性、素朴さ、企画性、独自性、発想の面白さ、ルール設定、ゲーム性、検証要素、展開の分かりやすさ、見せ場までの導線、物語性、関係性、展開力、ドラマ性、感情移入しやすさ、シチュエーション性、入りやすさ、クセの少なさ、万人向け、ジャンル入門向け、見疲れしにくさ、選びやすさ、分かりやすさ、ジャンル特化度、テーマ再現度、属性の強さ、ビジュアル面の満足度、設定の分かりやすさ、好みとの一致度、評価の安定感、レビュー人気、話題性、評価点とのバランス、レビュー件数との信頼感
+"""
 
 response = None
 last_error = None
