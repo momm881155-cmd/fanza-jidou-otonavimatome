@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×熟女",
+  "name": "素人×フェラ",
   "base_genre": "素人",
-  "theme_genre": "熟女",
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "熟女"
+    "フェラ"
   ],
   "sort_key": "score",
-  "count_hint": 35
+  "count_hint": 84
 }
