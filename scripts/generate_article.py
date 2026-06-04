@@ -579,10 +579,25 @@ URLがない記事、存在しないURL、架空URLは絶対に作らない。
 {json.dumps(history_items, ensure_ascii=False, indent=2)}
 """
 
-response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    contents=prompt,
-)
+import time
+
+response = None
+last_error = None
+
+for attempt in range(5):
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
+        break
+    except Exception as e:
+        last_error = e
+        print(f"Gemini error attempt {attempt + 1}/5: {e}")
+        time.sleep(10 * (attempt + 1))
+
+if response is None:
+    raise last_error
 
 print("===== GEMINI RESPONSE =====")
 print(response)
