@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import base64
 from pathlib import Path
 
 import requests
@@ -63,10 +64,21 @@ payload = {
     "status": "draft"
 }
 
+token = base64.b64encode(
+    f"{WP_USERNAME}:{WP_APP_PASSWORD}".encode("utf-8")
+).decode("utf-8")
+
+headers = {
+    "Authorization": f"Basic {token}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "User-Agent": "GitHubActions/1.0"
+}
+
 response = requests.post(
     endpoint,
-    auth=(WP_USERNAME, WP_APP_PASSWORD),
-    json=payload,
+    headers=headers,
+    data=json.dumps(payload),
     timeout=60
 )
 
