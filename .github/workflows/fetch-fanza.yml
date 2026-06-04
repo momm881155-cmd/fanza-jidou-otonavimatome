@@ -3,12 +3,16 @@ name: Fetch FANZA Works
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "0 11 * * *"
+
 permissions:
   contents: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -56,10 +60,32 @@ jobs:
       - name: Generate article
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/generate_article.py
+        run: |
+          for i in 1 2 3; do
+            echo "Generate attempt $i"
+
+            if python scripts/generate_article.py; then
+              echo "Generate success"
+              break
+            fi
+
+            if [ "$i" -eq 3 ]; then
+              echo "Generate failed after 3 attempts"
+              exit 1
+            fi
+
+            sleep 60
+          done
 
       - name: Save history
         run: python scripts/save_history.py
+
+      - name: Post to WordPress
+        env:
+          WP_SITE_URL: ${{ secrets.WP_SITE_URL }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: python scripts/post_to_wordpress.py
 
       - name: Commit data
         run: |
