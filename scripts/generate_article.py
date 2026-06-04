@@ -232,7 +232,6 @@ def build_article_works(works, reviews):
             "appeal_axis": infer_axis(genres, theme_genre),
             "description_hint": "テーマに関連する特徴を持つ作品。ジャンル傾向と評価情報から特徴を整理する。",
             "review_trend_hint": build_review_hint(review_texts),
-            "review_trend_hint": "レビューでは作品全体の雰囲気や見やすさに関する評価が見られる。",
             "heading_placeholder": f"[WORK_HEADING_{number}]",
             "item_placeholder": f"[WORK_ITEM_{number}]",
             "button_placeholder": f"[WORK_BUTTON_{number}]",
@@ -308,14 +307,12 @@ def shortcode_button(url):
     return f'<!-- wp:shortcode -->\n[fanza_button url="{url}" text="動画を見る"]\n<!-- /wp:shortcode -->'
 
 def post_process_article(article, internal_works, theme_name):
-    # GitHubの空アンカー削除
     article = re.sub(
         r'<!-- wp:paragraph -->\s*<p><a href="https://github\.com/[^"]*"></a></p>\s*<!-- /wp:paragraph -->',
         '',
         article
     )
 
-    # プレースホルダーを正規ショートコードへ
     for w in internal_works:
         number = w["number"]
         title = w.get("title") or w.get("safe_title") or f"作品{number}"
@@ -330,7 +327,6 @@ def post_process_article(article, internal_works, theme_name):
             f'<a href="{url}" target="_blank" rel="nofollow sponsored noopener">{str(title).replace(chr(34), "&quot;")}</a>'
         )
 
-    # 段落化されたショートコードを戻す
     article = re.sub(
         r'<!-- wp:paragraph -->\s*<p>(\[fanza_heading[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
         r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
@@ -342,7 +338,6 @@ def post_process_article(article, internal_works, theme_name):
         article
     )
 
-    # 壊れたfanza_buttonを、作品順に正しいURLで補正
     for w in internal_works:
         url = w.get("url") or "#"
         correct = shortcode_button(url)
@@ -354,26 +349,22 @@ def post_process_article(article, internal_works, theme_name):
             flags=re.DOTALL,
         )
 
-    # 通常リストを最低限青囲みに補正
     article = article.replace(
         '<!-- wp:list -->\n<ul class="wp-block-list">',
         '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">'
     )
 
-    # 比較表にreview-tableを付与
     article = article.replace(
         '<!-- wp:table -->\n<figure class="wp-block-table">',
         '<!-- wp:table {"className":"review-table"} -->\n<figure class="wp-block-table review-table">'
     )
 
-    # 赤太字
     article = re.sub(
         r'「<strong>(.*?)</strong>」',
         r'「<strong><span class="bold-red">\1</span></strong>」',
         article
     )
 
-    # title / eye_catch がなければ付与
     if "<!-- title:" not in article:
         article = f"<!-- title: {build_default_title(theme_name, len(internal_works))} -->\n" + article
 
@@ -385,23 +376,6 @@ def post_process_article(article, internal_works, theme_name):
                 f'<!-- eye_catch_source: {sanitize_text(image_work.get("title"))} -->\n'
                 + article
             )
-
-    # 手動投稿でも画像が見えるように画像ブロックを冒頭に入れる
-    if "<!-- wp:image" not in article:
-        image_work = next((w for w in internal_works if w.get("image")), None)
-        if image_work:
-            img = image_work.get("image")
-            alt = sanitize_text(image_work.get("title"))
-            image_block = (
-                '<!-- wp:image {"sizeSlug":"large"} -->\n'
-                f'<figure class="wp-block-image size-large"><img src="{img}" alt="{alt}"/></figure>\n'
-                '<!-- /wp:image -->\n'
-            )
-            pos = article.find("<!-- wp:paragraph -->")
-            if pos != -1:
-                article = article[:pos] + image_block + article[pos:]
-            else:
-                article = image_block + article
 
     return article
 
@@ -434,6 +408,8 @@ prompt = f"""
 ・レビューは評価傾向として要約する
 ・作品情報の羅列ではなく、比較・判断・向き不向きを重視する
 ・具体的すぎる描写は新規生成しない
+・記事本文内にアイキャッチ画像、メイン画像、サンプル画像を挿入しない
+・画像はWordPressのfeatured_mediaで設定する前提とする
 
 【プレースホルダールール】
 作品見出し、作品情報、作品ボタン、作品リンクは必ず以下のプレースホルダーを使う。
@@ -484,7 +460,6 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 ・ロボットっぽい定型文を避ける
 ・「本作は〜です」「〜と言えるでしょう」を連発しない
 ・作品ごとに appeal_axis、review_trend_hint、genres を使って差を出す
-・判断軸は「選びやすさ」「没入感」「リアル感」「非日常感」「疑似恋愛感」を使う
 ・文章は冷静な比較解説を基本にしつつ、少しだけ熱量を出す
 
 【強調ルール】
@@ -540,7 +515,6 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
 <!-- /wp:separator -->
 
-
 【記事構成】
 導入文 400〜700字
 
@@ -554,7 +528,7 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 <h2 class="wp-block-heading">失敗しない選び方</h2>
 <!-- /wp:heading -->
 
-始めてみる人に選び方を解説する。
+初めて見る人にも分かるように、選び方を解説する。
 
 <!-- wp:heading -->
 <h2 class="wp-block-heading">編集部の選定基準</h2>
@@ -562,9 +536,10 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 
 今回のランキングで重視したポイントを説明する。
 
-<!-- wp:heading {"textAlign":"center"} -->
+<!-- wp:heading {{"textAlign":"center"}} -->
 <h2 class="wp-block-heading has-text-align-center">素人×{theme_name}おすすめ作品一覧</h2>
 <!-- /wp:heading -->
+
 各作品をランキング順に紹介する。
 
 作品ごとに以下を必ず入れる。
@@ -588,8 +563,8 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 比較表の作品名には [WORK_LINK_番号] を使う。
 
 <!-- wp:table {{"className":"review-table"}} -->
-<figure class="wp-block-table review-table"><table class="has-fixed-layout"><thead><tr><th>作品</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>
-<tr><td>[WORK_LINK_01]</td><td>特徴</td><td>★★★★★<br>おすすめ理由</td></tr>
+<figure class="wp-block-table review-table"><table class="has-fixed-layout"><thead><tr><th>作品</th><th>向いている人</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>
+<tr><td>[WORK_LINK_01]</td><td>向いている人</td><td>特徴</td><td>★★★★★<br>おすすめ理由</td></tr>
 </tbody></table></figure>
 <!-- /wp:table -->
 
@@ -600,6 +575,7 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 まとめ本文で作品名を出す場合は [WORK_LINK_番号] を使う。
 総評では、今回のテーマでどんな人がどの作品を選ぶべきかを整理する。
 特におすすめの作品を2〜3本挙げて、選ぶ理由を説明する。
+初心者向け・テーマ重視向け・刺激重視向けに分けて、おすすめ作品を整理する。
 
 【関連記事ルール】
 既存記事履歴にURL付き記事がある場合のみ、今回テーマと近いものを最大3件選んで関連記事として出力する。
@@ -614,16 +590,15 @@ URLがない記事、存在しないURL、架空URLは絶対に作らない。
 
 【既存記事履歴】
 {json.dumps(history_items, ensure_ascii=False, indent=2)}
+
 【SEO差別化ルール】
 
 作品紹介だけの記事にしないこと。
 
 作品紹介に入る前に、
-
 ・このテーマが人気な理由
 ・選び方
 ・比較ポイント
-
 を解説すること。
 
 各作品で異なる評価軸を使用すること。
@@ -635,47 +610,92 @@ URLがない記事、存在しないURL、架空URLは絶対に作らない。
 満足度
 見やすさ
 テンポ
+構成力
 安定感
+情報量
+まとまり
+リピートしやすさ
 
 【出演者】
 出演者の魅力
 自然さ
 存在感
 親近感
+表情の豊かさ
 雰囲気
+個性
+距離感
+キャラクター性
 
 【リアリティ】
 リアルさ
 生活感
 説得力
-没入しやすさ
+自然な流れ
+ドキュメント感
+空気感
+臨場感
+偶発性
+素朴さ
 
 【企画】
 企画性
 独自性
-発想
+発想の面白さ
+ルール設定
 ゲーム性
+検証要素
+展開の分かりやすさ
+見せ場までの導線
 
 【ストーリー】
+物語性
 関係性
+展開力
 ドラマ性
-感情移入
+感情移入しやすさ
+シチュエーション性
+流れの自然さ
 
 【初心者向け】
 入りやすさ
 クセの少なさ
 万人向け
+ジャンル入門向け
+見疲れしにくさ
+選びやすさ
+分かりやすさ
+
+【フェチ・属性】
+ジャンル特化度
+テーマ再現度
+属性の強さ
+ビジュアル面の満足度
+設定の分かりやすさ
+好みとの一致度
 
 【レビュー】
 評価の安定感
 レビュー人気
 話題性
+満足度の高さ
+評価点とのバランス
+レビュー件数との信頼感
+
+【比較】
+初心者向け
+上級者向け
+刺激重視
+自然さ重視
+企画重視
+関係性重視
+テンポ重視
+見やすさ重視
 
 各作品で異なる評価軸を最低2つ使用すること。
-
 同じ評価軸を連続使用しないこと。
-
-「リアル感」「没入感」「非日常感」の繰り返しを避けること。
+同一記事内で同じ評価軸の使用回数は3回までにすること。
+「リアル感」「没入感」「非日常感」「感情変化」「クライマックス」の繰り返しを避けること。
 """
 
 import time
