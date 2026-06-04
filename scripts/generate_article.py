@@ -61,6 +61,28 @@ def sanitize_text(text):
         "熟女": "大人女性",
         "レイプ": "強制系",
         "凌辱": "強制系",
+        "AV": "映像作品",
+　　　　"AV": "映像作品",
+　　　　"av": "映像作品",
+　　　　"アダルト": "作品",
+　　　　"エロ": "魅力",
+　　　　"裸": "身体表現",
+　　　　"おっぱい": "スタイル",
+　　　　"乳": "スタイル",
+　　　　"尻": "スタイル",
+　　　"ペニス": "テーマ要素",
+　　　"勃起": "テーマ要素",
+　　　"挿入": "見せ場",
+　　　"ピストン": "動きのある場面",
+　　　"イキ": "リアクション",
+　　　"イク": "リアクション",
+　　　"喘ぎ": "リアクション",
+　　　"快感": "見せ場",
+　　　"性欲": "テーマ性",
+　　　"性": "テーマ",
+　　　"肉体": "スタイル",
+　　　"ラブホ": "室内シーン",
+　　　"風俗": "非日常系",
     }
 
     for before, after in replacements.items():
@@ -412,7 +434,7 @@ URL付き関連記事が出せない場合の形式：
 -->
 
 【テーマ】
-{json.dumps(current_theme, ensure_ascii=False, indent=2)}
+{sanitize_text(json.dumps(current_theme, ensure_ascii=False))}
 
 【記事用作品データ】
 {json.dumps(article_works, ensure_ascii=False, indent=2)}
