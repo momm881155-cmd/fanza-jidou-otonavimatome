@@ -276,7 +276,7 @@ article = response.text.strip()
 if not article:
     raise Exception("Gemini returned empty article")
 
-output_path = OUTPUT_DIR / "article.html"
+output_path = DATA_DIR / "generated_article.md"
 
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(article)
