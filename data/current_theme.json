@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×潮吹き",
+  "type": "genre",
+  "name": "素人×ナンパ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "潮吹き"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "ナンパ",
   "required": [
     "素人",
-    "中出し",
-    "潮吹き"
+    "ナンパ"
   ],
   "sort_key": "score",
-  "count_hint": 18
+  "count_hint": 84
 }
