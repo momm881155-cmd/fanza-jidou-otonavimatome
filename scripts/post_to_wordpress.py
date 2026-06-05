@@ -29,12 +29,6 @@ headers_json = {
     "User-Agent": "GitHubActions/1.0"
 }
 
-headers_auth = {
-    "Authorization": f"Basic {token}",
-    "Accept": "application/json",
-    "User-Agent": "GitHubActions/1.0"
-}
-
 
 def extract_comment(name, text):
     m = re.search(
@@ -54,15 +48,30 @@ def remove_comment(name, text):
     )
 
 
+def parse_json_response(res, label):
+    print(f"{label} STATUS =", res.status_code)
+    print(f"{label} RESPONSE =", res.text[:3000])
+
+    try:
+        return res.json()
+    except Exception:
+        raise Exception(f"{label} returned non-JSON response")
+
+
 def upload_featured_image(image_url, title="featured-image"):
     if not image_url:
+        print("No eye_catch_image found")
         return None
+
+    print("eye_catch_image =", image_url)
 
     img_res = requests.get(
         image_url,
         headers={"User-Agent": "Mozilla/5.0"},
         timeout=60
     )
+
+    print("IMAGE DOWNLOAD STATUS =", img_res.status_code)
 
     if img_res.status_code != 200:
         print("Image download failed:", img_res.status_code, image_url)
@@ -93,26 +102,32 @@ def upload_featured_image(image_url, title="featured-image"):
         timeout=120
     )
 
+    media = parse_json_response(media_res, "MEDIA UPLOAD")
+
     if media_res.status_code not in [200, 201]:
-        print("Media upload failed:", media_res.status_code)
-        print(media_res.text)
+        print("Media upload failed")
         return None
 
-    media = media_res.json()
     media_id = media.get("id")
 
-    if media_id:
-        alt_payload = {
-            "alt_text": title,
-            "caption": title,
-            "description": title
-        }
-        requests.post(
-            f"{WP_SITE_URL}/wp-json/wp/v2/media/{media_id}",
-            headers=headers_json,
-            data=json.dumps(alt_payload),
-            timeout=60
-        )
+    if not media_id:
+        print("Media uploaded but id not found")
+        return None
+
+    alt_payload = {
+        "alt_text": title,
+        "caption": title,
+        "description": title
+    }
+
+    alt_res = requests.post(
+        f"{WP_SITE_URL}/wp-json/wp/v2/media/{media_id}",
+        headers=headers_json,
+        data=json.dumps(alt_payload),
+        timeout=60
+    )
+
+    print("MEDIA ALT STATUS =", alt_res.status_code)
 
     return media_id
 
@@ -125,6 +140,9 @@ with open(ARTICLE_PATH, "r", encoding="utf-8") as f:
 title = extract_comment("title", content)
 eye_catch_image = extract_comment("eye_catch_image", content)
 eye_catch_source = extract_comment("eye_catch_source", content)
+
+print("TITLE =", title)
+print("EYE_CATCH_IMAGE =", eye_catch_image)
 
 if not title:
     raise Exception("title not found")
@@ -159,14 +177,16 @@ response = requests.post(
     timeout=60
 )
 
-if response.status_code not in [200, 201]:
-    print(response.text)
-    raise Exception(f"WordPress post failed: {response.status_code}")
+post = parse_json_response(response, "POST CREATE")
 
-post = response.json()
+if response.status_code not in [200, 201]:
+    raise Exception(f"WordPress post failed: {response.status_code}")
 
 post_url = post.get("link")
 post_id = post.get("id")
+
+if not post_id:
+    raise Exception("WordPress post created response has no id. Check POST CREATE RESPONSE above.")
 
 print("WordPress post created")
 print("post_id =", post_id)
