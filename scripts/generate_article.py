@@ -359,17 +359,20 @@ def fix_bold_red(article):
 
 def style_section_lists(article):
     styles = {
-        "おすすめポイント": ("icon-list-circle", "circle"),
-        "気になるポイント": ("icon-list-cross", "cross"),
-        "こんな人におすすめ": ("icon-list-thumb-up", "thumb"),
+        "おすすめポイント": "icon-list-circle",
+        "気になるポイント": "icon-list-cross",
+        "こんな人におすすめ": "icon-list-thumb-up",
     }
 
-    for heading, (style_class, _) in styles.items():
+    for heading, style_class in styles.items():
+
         pattern = (
-            r'(<h4 class="wp-block-heading">' + re.escape(heading) + r'</h4>\s*'
-            r'<!-- /wp:heading -->\s*)'
-            r'<!-- wp:list(?: [^>]*)? -->\s*'
-            r'<ul class="[^"]*wp-block-list[^"]*">'
+            r'(<h4[^>]*>\s*'
+            + re.escape(heading)
+            + r'\s*</h4>\s*'
+            r'<!--\s*/wp:heading\s*-->\s*)'
+            r'<!--\s*wp:list(?:\s+\{.*?\})?\s*-->\s*'
+            r'<ul(?:\s+class="[^"]*")?>'
         )
 
         replacement = (
@@ -378,7 +381,12 @@ def style_section_lists(article):
             f'<ul class="wp-block-list is-style-blank-box-blue has-border is-style-{style_class} has-list-style">'
         )
 
-        article = re.sub(pattern, replacement, article, flags=re.DOTALL)
+        article = re.sub(
+            pattern,
+            replacement,
+            article,
+            flags=re.DOTALL
+        )
 
     return article
 
