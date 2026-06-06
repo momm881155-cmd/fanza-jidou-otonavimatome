@@ -126,8 +126,21 @@ def collect_review_texts(content_id, reviews):
 
 
 def infer_axis(genres, theme_genre):
-    joined = " ".join(genres + [theme_genre])
+    if not isinstance(genres, list):
+        genres = []
 
+    safe_genres = []
+    for g in genres:
+        if g is None:
+            continue
+        g = str(g).strip()
+        if g:
+            safe_genres.append(g)
+
+    theme_genre = "" if theme_genre is None else str(theme_genre).strip()
+
+    joined = " ".join(safe_genres + [theme_genre])
+    
     if "大人女性" in joined or "既婚女性" in joined:
         return "落ち着いた雰囲気、生活感、説得力"
     if "主観系" in joined or "ドキュメント風" in joined:
