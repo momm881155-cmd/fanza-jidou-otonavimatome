@@ -88,11 +88,18 @@ def sanitize_text(text):
 def safe_list(values, limit=8):
     if not isinstance(values, list):
         return []
+
     result = []
+
     for v in values[:limit]:
+        if v is None:
+            continue
+
         s = sanitize_text(v)
+
         if s:
             result.append(s)
+
     return result
 
 
