@@ -83,15 +83,6 @@ def sanitize_text(text):
     text = re.sub(r"https?://\S+", "", text)
     text = re.sub(r"\s+", " ", text).strip()
 
-    return text
-
-
-    for before in sorted(replacements.keys(), key=len, reverse=True):
-        text = text.replace(before, rng.choice(replacements[before]))
-
-    text = re.sub(r"https?://\S+", "", text)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
 
 
 def safe_list(values, limit=8):
@@ -366,7 +357,6 @@ def style_section_lists(article):
 
     return article
 
-
 def remove_article_images(article):
     article = re.sub(
         r'<!-- wp:image[\s\S]*?<!-- /wp:image -->\s*',
@@ -381,7 +371,24 @@ def remove_article_images(article):
     return article
 
 
+def validate_article_structure(article, works_count):
+    table_pos = article.find("【比較】今回紹介したおすすめ作品")
+    summary_pos = article.find("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
+
+    if table_pos == -1:
+        raise Exception("比較表見出しがありません")
+
+    if summary_pos == -1:
+        raise Exception("まとめ見出しがありません")
+
+    if summary_pos < table_pos:
+        raise Exception("まとめが比較表より前に出ています")
+
+    return True
+
+
 def post_process_article(article, internal_works, theme_name):
+
     article = fix_markdown_artifacts(article)
     article = remove_article_images(article)
 
@@ -614,6 +621,26 @@ AVおすすめ◯選を入れる。
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
 <!-- /wp:separator -->
 
+【構成崩れ防止ルール】
+・記事は必ず以下の順番で出力する
+・導入文
+・このテーマの作品が人気な理由
+・失敗しない選び方
+・編集部の選定基準
+・素人×テーマ名おすすめ作品一覧
+・作品紹介01〜10
+・比較表
+・まとめ
+・関連記事
+
+・作品紹介は必ず [WORK_HEADING_01] から [WORK_HEADING_10] まで番号順に連続して出力する
+・作品紹介の途中に比較表、まとめ、関連記事を入れてはいけない
+・比較表より後に作品紹介を書いてはいけない
+・まとめより後に作品紹介を書いてはいけない
+・関連記事は記事の最後にだけ出力する
+・各作品で [WORK_HEADING_番号]、[WORK_ITEM_番号]、[WORK_BUTTON_番号] は必ず1回だけ使う
+・同じ作品プレースホルダーを2回以上使ってはいけない
+
 【記事構成】
 導入文 400〜500字
 
@@ -759,8 +786,9 @@ article = response.text.strip()
 if not article:
     raise Exception("Gemini returned empty article")
 
-article = post_process_article(article, internal_works, theme_name)
+validate_article_structure(article, len(internal_works))
 
+article = post_process_article(article, internal_works, theme_name)
 output_path = DATA_DIR / "generated_article.md"
 
 with open(output_path, "w", encoding="utf-8") as f:
