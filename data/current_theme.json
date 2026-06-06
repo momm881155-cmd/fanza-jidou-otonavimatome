@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×盗撮・のぞき",
+  "type": "genre",
+  "name": "素人×電マ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "盗撮・のぞき"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "電マ",
   "required": [
     "素人",
-    "中出し",
-    "盗撮・のぞき"
+    "電マ"
   ],
   "sort_key": "score",
-  "count_hint": 19
+  "count_hint": 18
 }
