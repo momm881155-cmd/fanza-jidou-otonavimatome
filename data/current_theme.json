@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×ハメ撮り",
+  "type": "genre",
+  "name": "素人×羞恥",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "ハメ撮り"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "羞恥",
   "required": [
     "素人",
-    "中出し",
-    "ハメ撮り"
+    "羞恥"
   ],
   "sort_key": "score",
-  "count_hint": 25
+  "count_hint": 24
 }

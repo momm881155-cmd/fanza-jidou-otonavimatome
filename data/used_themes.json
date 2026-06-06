@@ -146,6 +146,15 @@
       ],
       "count_hint": 25,
       "used_at": "2026-06-05"
+    },
+    {
+      "name": "素人×羞恥",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "羞恥",
+      "theme_genres": null,
+      "count_hint": 24,
+      "used_at": "2026-06-06"
     }
   ]
 }
