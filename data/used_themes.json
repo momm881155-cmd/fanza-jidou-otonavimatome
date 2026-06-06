@@ -155,6 +155,18 @@
       "theme_genres": null,
       "count_hint": 24,
       "used_at": "2026-06-06"
+    },
+    {
+      "name": "素人×中出し×盗撮・のぞき",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "盗撮・のぞき"
+      ],
+      "count_hint": 19,
+      "used_at": "2026-06-06"
     }
   ]
 }

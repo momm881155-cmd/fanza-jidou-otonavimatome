@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×羞恥",
+  "type": "combo",
+  "name": "素人×中出し×盗撮・のぞき",
   "base_genre": "素人",
-  "theme_genre": "羞恥",
+  "theme_genres": [
+    "中出し",
+    "盗撮・のぞき"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "羞恥"
+    "中出し",
+    "盗撮・のぞき"
   ],
   "sort_key": "score",
-  "count_hint": 24
+  "count_hint": 19
 }
