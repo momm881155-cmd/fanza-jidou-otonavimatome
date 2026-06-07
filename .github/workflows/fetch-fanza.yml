@@ -81,15 +81,15 @@ jobs:
             sleep 60
           done
 
-      - name: Save history
-        run: python scripts/save_history.py
-
       - name: Post to WordPress
         env:
           WP_SITE_URL: ${{ secrets.WP_SITE_URL }}
           WP_USERNAME: ${{ secrets.WP_USERNAME }}
           WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
         run: python scripts/post_to_wordpress.py
+
+      - name: Save history
+        run: python scripts/save_history.py
 
       - name: Commit data
         run: |
