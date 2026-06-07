@@ -393,6 +393,7 @@ def remove_article_images(article):
 
 
 def validate_article_structure(article, works_count):
+
     table_pos = article.find("【比較】今回紹介したおすすめ作品")
     summary_pos = article.find("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
 
@@ -404,6 +405,19 @@ def validate_article_structure(article, works_count):
 
     if summary_pos < table_pos:
         raise Exception("まとめが比較表より前に出ています")
+
+    # 各作品プレースホルダー存在確認
+    for i in range(1, works_count + 1):
+        num = f"{i:02d}"
+
+        if article.count(f"[WORK_HEADING_{num}]") != 1:
+            raise Exception(f"WORK_HEADING_{num} が不正")
+
+        if article.count(f"[WORK_ITEM_{num}]") != 1:
+            raise Exception(f"WORK_ITEM_{num} が不正")
+
+        if article.count(f"[WORK_BUTTON_{num}]") != 1:
+            raise Exception(f"WORK_BUTTON_{num} が不正")
 
     return True
 
