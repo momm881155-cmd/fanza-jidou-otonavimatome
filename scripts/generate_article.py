@@ -393,7 +393,6 @@ def remove_article_images(article):
 
 
 def validate_article_structure(article, works_count):
-
     table_pos = article.find("【比較】今回紹介したおすすめ作品")
     summary_pos = article.find("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
 
@@ -406,18 +405,40 @@ def validate_article_structure(article, works_count):
     if summary_pos < table_pos:
         raise Exception("まとめが比較表より前に出ています")
 
-    # 各作品プレースホルダー存在確認
+    positions = []
+
     for i in range(1, works_count + 1):
         num = f"{i:02d}"
 
-        if article.count(f"[WORK_HEADING_{num}]") != 1:
-            raise Exception(f"WORK_HEADING_{num} が不正")
+        heading = f"[WORK_HEADING_{num}]"
+        item = f"[WORK_ITEM_{num}]"
+        button = f"[WORK_BUTTON_{num}]"
 
-        if article.count(f"[WORK_ITEM_{num}]") != 1:
-            raise Exception(f"WORK_ITEM_{num} が不正")
+        if article.count(heading) != 1:
+            raise Exception(f"{heading} の数が不正です")
 
-        if article.count(f"[WORK_BUTTON_{num}]") != 1:
-            raise Exception(f"WORK_BUTTON_{num} が不正")
+        if article.count(item) != 1:
+            raise Exception(f"{item} の数が不正です")
+
+        if article.count(button) != 1:
+            raise Exception(f"{button} の数が不正です")
+
+        heading_pos = article.find(heading)
+        item_pos = article.find(item)
+        button_pos = article.find(button)
+
+        if not heading_pos < item_pos < button_pos:
+            raise Exception(f"{num} の見出し・作品情報・ボタンの順番が不正です")
+
+        positions.append(heading_pos)
+
+    if positions != sorted(positions):
+        raise Exception("作品紹介の順番が崩れています")
+
+    last_button_pos = article.find(f"[WORK_BUTTON_{works_count:02d}]")
+
+    if table_pos < last_button_pos:
+        raise Exception("比較表が作品紹介の途中に出ています")
 
     return True
 
@@ -549,22 +570,11 @@ prompt = f"""
 必ずWordPressブロックHTMLのみで出力すること。
 番号付きリストは禁止。
 Markdownの太字は禁止。
-作品紹介本文では「作品01」「作品02」「作品09」などの作品番号表記は禁止。
-作品番号や順位を主語にしない。
-作品を指す場合は、
-「本作は」
-「本作の魅力は」
-「本作最大の特徴は」
-「特に評価したいのは」
-「まず注目したいのは」
-「魅力として挙げられるのは」
-など自然な表現を使う。
-・「本作は〜です」を連発しない
-・「本作は」の使用は記事内で最大2回まで
-・作品紹介の書き出しは毎回変える
-・「作品01は」「1位の作品は」のような機械的な書き出しは禁止
-比較表やまとめで作品リンクを出す場合は、必ず [WORK_LINK_番号] を使う。
-
+・作品番号や順位を主語にした文章は禁止
+・作品紹介の導入文は毎回変える
+・同一表現の連続使用は禁止
+・自然な文章で作品の特徴を説明する
+・比較表とまとめの作品名は必ず [WORK_LINK_番号] を使用する
 【プレースホルダールール】
 作品見出し、作品情報、作品ボタン、作品リンクは必ず以下のプレースホルダーを使う。
 URLやショートコードを自分で作らない。
@@ -591,7 +601,7 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 検索キーワードを自然に含める。
 サブタイトルはテーマごとに変える。
 毎回同じ文言を使わない。
-・タイトル前半に必ず「{theme_name} AVおすすめ10選」を含める
+・タイトル前半に必ず「{theme_name} AVおすすめ{len(internal_works)}選」を含める
 ・「徹底解説」「失敗しない選び方」の多用は禁止
 ・高評価、人気、比較、厳選、初心者向け のいずれかを含める
 ・検索意図を優先した実用的なタイトルにする
@@ -668,24 +678,10 @@ SEOタイトルは必ずテーマに合わせて毎回考えること。
 <!-- /wp:separator -->
 
 【構成崩れ防止ルール】
-・記事は必ず以下の順番で出力する
-・導入文
-・このテーマの作品が人気な理由
-・失敗しない選び方
-・編集部の選定基準
-・素人×テーマ名おすすめ作品一覧
-・作品紹介01〜10
-・比較表
-・まとめ
-・関連記事
-
-・作品紹介は必ず [WORK_HEADING_01] から [WORK_HEADING_10] まで番号順に連続して出力する
-・作品紹介の途中に比較表、まとめ、関連記事を入れてはいけない
-・比較表より後に作品紹介を書いてはいけない
-・まとめより後に作品紹介を書いてはいけない
+・記事順序は必ず「導入文 → 人気な理由 → 選び方 → 選定基準 → 作品一覧 → 比較表 → まとめ → 関連記事」にする
+・作品紹介は [WORK_HEADING_01] から [WORK_HEADING_10] まで番号順に連続して出力する
 ・関連記事は記事の最後にだけ出力する
-・各作品で [WORK_HEADING_番号]、[WORK_ITEM_番号]、[WORK_BUTTON_番号] は必ず1回だけ使う
-・同じ作品プレースホルダーを2回以上使ってはいけない
+・各作品で [WORK_HEADING_番号]、[WORK_ITEM_番号]、[WORK_BUTTON_番号] は必ず1回だけ使用する
 
 【記事構成】
 導入文 200〜250字
