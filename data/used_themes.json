@@ -188,6 +188,15 @@
       ],
       "count_hint": 16,
       "used_at": "2026-06-07"
+    },
+    {
+      "name": "素人×女子校生",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "女子校生",
+      "theme_genres": null,
+      "count_hint": 23,
+      "used_at": "2026-06-07"
     }
   ]
 }
