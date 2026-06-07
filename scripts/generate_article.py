@@ -20,6 +20,7 @@ def load_json(name, default=None):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+
 def sanitize_text(text):
     if text is None:
         return ""
@@ -91,16 +92,12 @@ def safe_list(values, limit=8):
         return []
 
     result = []
-
     for v in values[:limit]:
         if v is None:
             continue
-
         s = sanitize_text(v)
-
         if s:
             result.append(s)
-
     return result
 
 
@@ -146,9 +143,8 @@ def infer_axis(genres, theme_genre):
             safe_genres.append(g)
 
     theme_genre = "" if theme_genre is None else str(theme_genre).strip()
-
     joined = " ".join(safe_genres + [theme_genre])
-    
+
     if "大人女性" in joined or "既婚女性" in joined:
         return "落ち着いた雰囲気、生活感、説得力"
     if "主観系" in joined or "ドキュメント風" in joined:
@@ -228,10 +224,6 @@ def build_article_works(works, reviews):
             "appeal_axis": infer_axis(genres, theme_genre),
             "description_hint": "テーマに関連する特徴を持つ作品。ジャンル傾向と評価情報から特徴を整理する。",
             "review_trend_hint": build_review_hint(review_texts),
-            "heading_placeholder": f"[WORK_HEADING_{number}]",
-            "item_placeholder": f"[WORK_ITEM_{number}]",
-            "button_placeholder": f"[WORK_BUTTON_{number}]",
-            "link_placeholder": f"[WORK_LINK_{number}]",
         })
 
     return internal, prompt_items
@@ -298,226 +290,344 @@ def build_default_title(theme_name, count):
 
 def shortcode_heading(number, title):
     safe = str(title or "").replace('"', '&quot;')
-    return f'<!-- wp:shortcode -->\n[fanza_heading number="{number}" title="{safe}"]\n<!-- /wp:shortcode -->'
+    return f'<!-- wp:shortcode -->\n[fanza_heading number="{number}" title="{safe}"]\n<!-- /wp:shortcode -->\n'
 
 
 def shortcode_item(cid):
-    return f'<!-- wp:shortcode -->\n[fanza_item cid="{cid}"]\n<!-- /wp:shortcode -->'
+    return f'<!-- wp:shortcode -->\n[fanza_item cid="{cid}"]\n<!-- /wp:shortcode -->\n'
 
 
 def shortcode_button(url):
-    return f'<!-- wp:shortcode -->\n[fanza_button url="{url}" text="動画を見る"]\n<!-- /wp:shortcode -->'
+    return f'<!-- wp:shortcode -->\n[fanza_button url="{url}" text="動画を見る"]\n<!-- /wp:shortcode -->\n'
 
 
-def fix_markdown_artifacts(article):
-    article = article.replace("＊＊", "**")
-
-    article = re.sub(
-        r'\*\*(.+?)\*\*',
-        r'<strong><span class="bold-red">\1</span></strong>',
-        article
-    )
-
-    article = re.sub(r'^\s*#{1,6}\s*(.+)$', r'\1', article, flags=re.MULTILINE)
-
-    article = re.sub(
-        r'(?m)^\s*\d+\.\s+(.+)$',
-        r'<!-- wp:paragraph -->\n<p>\1</p>\n<!-- /wp:paragraph -->',
-        article
-    )
-
-    article = re.sub(r'(?m)^\s*[-*]\s+(.+)$', r'<li>\1</li>', article)
-
-    return article
+def wp_paragraph(text):
+    text = sanitize_text(text)
+    if not text:
+        return ""
+    return f'<!-- wp:paragraph -->\n<p>{text}</p>\n<!-- /wp:paragraph -->\n'
 
 
-def fix_bold_red(article):
-    for _ in range(5):
-        article = article.replace('<span class="bold-red"><span class="bold-red">', '<span class="bold-red">')
-        article = article.replace('</span></span></strong>', '</span></strong>')
+def wp_heading(text, level=2, center=False):
+    text = sanitize_text(text)
+    if not text:
+        return ""
 
-    article = re.sub(
-        r'「<strong>(?!<span class="bold-red">)(.*?)</strong>」',
-        r'「<strong><span class="bold-red">\1</span></strong>」',
-        article
-    )
-
-    return article
-
-
-def style_section_lists(article):
-    styles = {
-        "おすすめポイント": "icon-list-circle",
-        "気になるポイント": "icon-list-cross",
-        "こんな人におすすめ": "icon-list-thumb-up",
-    }
-
-    for heading, style_class in styles.items():
-
-        pattern = (
-    r'(<h4[^>]*>\s*'
-    + re.escape(heading)
-    + r'\s*</h4>\s*'
-    r'<!--\s*/wp:heading\s*-->\s*)'
-    r'[\s\S]*?'
-    r'<!--\s*wp:list(?:\s+\{.*?\})?\s*-->\s*'
-    r'<ul[^>]*>'
-)
-
-        replacement = (
-            r'\1'
-            f'<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"{style_class}"}} -->\n'
-            f'<ul class="wp-block-list is-style-blank-box-blue has-border is-style-{style_class} has-list-style">'
+    if center:
+        return (
+            '<!-- wp:heading {"textAlign":"center"} -->\n'
+            f'<h{level} class="wp-block-heading has-text-align-center">{text}</h{level}>\n'
+            '<!-- /wp:heading -->\n'
         )
 
-        article = re.sub(
-            pattern,
-            replacement,
-            article,
-            flags=re.DOTALL
+    if level == 2:
+        return f'<!-- wp:heading -->\n<h2 class="wp-block-heading">{text}</h2>\n<!-- /wp:heading -->\n'
+
+    return (
+        f'<!-- wp:heading {{"level":{level}}} -->\n'
+        f'<h{level} class="wp-block-heading">{text}</h{level}>\n'
+        '<!-- /wp:heading -->\n'
+    )
+
+
+def wp_list(items, style_class="icon-list-circle"):
+    if not isinstance(items, list):
+        items = []
+
+    lis = []
+    for item in items:
+        item = sanitize_text(item)
+        if item:
+            lis.append(f"<li>{item}</li>")
+
+    if not lis:
+        return ""
+
+    return (
+        f'<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"{style_class}"}} -->\n'
+        f'<ul class="wp-block-list is-style-blank-box-blue has-border is-style-{style_class} has-list-style">\n'
+        + "\n".join(lis) +
+        '\n</ul>\n<!-- /wp:list -->\n'
+    )
+
+
+def wp_separator():
+    return '<!-- wp:separator -->\n<hr class="wp-block-separator has-alpha-channel-opacity"/>\n<!-- /wp:separator -->\n'
+
+
+def clamp_list(values, min_count=0, max_count=3, fallback=""):
+    if not isinstance(values, list):
+        values = []
+    result = [sanitize_text(v) for v in values if sanitize_text(v)]
+    result = result[:max_count]
+    while len(result) < min_count and fallback:
+        result.append(fallback)
+    return result
+
+
+def get_work_label(w):
+    title = sanitize_text(w.get("title"))
+    if len(title) > 48:
+        return title[:48] + "…"
+    return title or sanitize_text(w.get("safe_title")) or "作品"
+
+
+def build_compare_table(internal_works, compare_items=None):
+    compare_items = compare_items if isinstance(compare_items, list) else []
+    rows = []
+
+    for idx, w in enumerate(internal_works):
+        item = compare_items[idx] if idx < len(compare_items) and isinstance(compare_items[idx], dict) else {}
+        url = w.get("url") or "#"
+        title = get_work_label(w)
+        fit = sanitize_text(item.get("fit")) or "テーマ重視で選びたい方"
+        feature = sanitize_text(item.get("feature")) or ("、".join(w.get("genres", [])[:3]) or sanitize_text(w.get("theme_genre")) or "ジャンルとの相性で選びやすい")
+        rating = sanitize_text(item.get("rating")) or "★★★★☆"
+        reason = sanitize_text(item.get("reason")) or "特徴が分かりやすい"
+
+        rows.append(
+            f'<tr><td><a href="{url}" target="_blank" rel="nofollow sponsored noopener">{title}</a></td>'
+            f'<td>{fit}</td><td>{feature}</td><td>{rating}<br>{reason}</td></tr>'
         )
 
-    return article
-
-def remove_article_images(article):
-    article = re.sub(
-        r'<!-- wp:image[\s\S]*?<!-- /wp:image -->\s*',
-        '',
-        article
+    return (
+        '<!-- wp:table {"className":"review-table"} -->\n'
+        '<figure class="wp-block-table review-table"><table class="has-fixed-layout">'
+        '<thead><tr><th>作品</th><th>向いている人</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>\n'
+        + "\n".join(rows) +
+        '\n</tbody></table></figure>\n<!-- /wp:table -->\n'
     )
-    article = re.sub(
-        r'<figure class="wp-block-image[\s\S]*?</figure>\s*',
-        '',
-        article
+
+
+def build_related_block(related_items):
+    related_items = related_items if isinstance(related_items, list) else []
+    rows = []
+    for item in related_items[:3]:
+        if not isinstance(item, dict):
+            continue
+        title = sanitize_text(item.get("title"))
+        url = item.get("url") or ""
+        if title and url:
+            rows.append(f'<li><a href="{url}">{title}</a></li>')
+
+    if not rows:
+        return ""
+
+    return (
+        '<!-- wp:heading {"level":3} -->\n'
+        '<h3 class="wp-block-heading">あわせて読みたい記事</h3>\n'
+        '<!-- /wp:heading -->\n'
+        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n'
+        '<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">\n'
+        + "\n".join(rows) +
+        '\n</ul>\n<!-- /wp:list -->\n'
     )
-    return article
 
 
-def validate_article_structure(article, works_count):
-    table_pos = article.find("【比較】今回紹介したおすすめ作品")
-    summary_pos = article.find("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
+def extract_json(text):
+    text = (text or "").strip()
+    text = re.sub(r"^```json\s*", "", text)
+    text = re.sub(r"^```\s*", "", text)
+    text = re.sub(r"\s*```$", "", text)
 
-    if table_pos == -1:
-        raise Exception("比較表見出しがありません")
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        m = re.search(r"\{[\s\S]*\}", text)
+        if not m:
+            raise
+        return json.loads(m.group(0))
 
-    if summary_pos == -1:
-        raise Exception("まとめ見出しがありません")
 
-    if summary_pos < table_pos:
-        raise Exception("まとめが比較表より前に出ています")
+def validate_json_data(data, works_count):
+    if not isinstance(data, dict):
+        raise Exception("Gemini JSON is not an object")
 
-    positions = []
+    required = ["title", "intro", "reason", "choice", "selection", "works", "summary"]
+    for key in required:
+        if key not in data:
+            raise Exception(f"JSON key missing: {key}")
 
-    for i in range(1, works_count + 1):
-        num = f"{i:02d}"
+    if not isinstance(data.get("works"), list):
+        raise Exception("JSON works is not a list")
 
-        heading = f"[WORK_HEADING_{num}]"
-        item = f"[WORK_ITEM_{num}]"
-        button = f"[WORK_BUTTON_{num}]"
+    if len(data.get("works", [])) < works_count:
+        raise Exception(f"JSON works count is short: {len(data.get('works', []))} < {works_count}")
 
-        if article.count(heading) != 1:
-            raise Exception(f"{heading} の数が不正です")
-
-        if article.count(item) != 1:
-            raise Exception(f"{item} の数が不正です")
-
-        if article.count(button) != 1:
-            raise Exception(f"{button} の数が不正です")
-
-        heading_pos = article.find(heading)
-        item_pos = article.find(item)
-        button_pos = article.find(button)
-
-        if not heading_pos < item_pos < button_pos:
-            raise Exception(f"{num} の見出し・作品情報・ボタンの順番が不正です")
-
-        positions.append(heading_pos)
-
-    if positions != sorted(positions):
-        raise Exception("作品紹介の順番が崩れています")
-
-    last_button_pos = article.find(f"[WORK_BUTTON_{works_count:02d}]")
-
-    if table_pos < last_button_pos:
-        raise Exception("比較表が作品紹介の途中に出ています")
+    for idx, work in enumerate(data.get("works", [])[:works_count], start=1):
+        if not isinstance(work, dict):
+            raise Exception(f"work {idx} is not object")
+        for key in ["body", "good", "bad", "recommend"]:
+            if key not in work:
+                raise Exception(f"work {idx} key missing: {key}")
+            if not isinstance(work.get(key), list):
+                raise Exception(f"work {idx} {key} is not list")
 
     return True
 
 
-def post_process_article(article, internal_works, theme_name):
+def validate_wp_blocks(article):
+    blocks = ["paragraph", "heading", "list", "table", "separator", "shortcode"]
+    for block in blocks:
+        open_count = len(re.findall(rf'<!--\s*wp:{block}(?:\s+[^>]*)?\s*-->', article))
+        close_count = len(re.findall(rf'<!--\s*/wp:{block}\s*-->', article))
+        if open_count != close_count:
+            raise Exception(f"{block} block mismatch: open={open_count} close={close_count}")
+    return True
 
-    article = fix_markdown_artifacts(article)
-    article = remove_article_images(article)
 
-    article = re.sub(
-        r'<!-- wp:paragraph -->\s*<p><a href="https://github\.com/[^"]*"></a></p>\s*<!-- /wp:paragraph -->',
-        '',
-        article
-    )
+def build_article_from_json(data, internal_works, theme_name):
+    article = ""
 
-    for w in internal_works:
+    title = sanitize_text(data.get("title") or build_default_title(theme_name, len(internal_works)))
+    article += f"<!-- title: {title} -->\n"
+
+    image_work = next((w for w in internal_works if w.get("image")), None)
+    if image_work:
+        article += f'<!-- eye_catch_image: {image_work.get("image")} -->\n'
+        article += f'<!-- eye_catch_source: {sanitize_text(image_work.get("title"))[:80]} -->\n'
+
+    article += wp_paragraph(data.get("intro"))
+
+    article += wp_heading("このテーマの作品が人気な理由")
+    article += wp_paragraph(data.get("reason"))
+
+    article += wp_heading("失敗しない選び方")
+    article += wp_paragraph(data.get("choice"))
+
+    article += wp_heading("編集部の選定基準")
+    article += wp_list(clamp_list(data.get("selection"), min_count=3, max_count=3, fallback="テーマとの相性を見て選定しています。"), "icon-list-circle")
+
+    article += wp_heading(f"素人×{theme_name}おすすめ作品一覧", center=True)
+
+    works_data = data.get("works", [])
+    for i, work_text in enumerate(works_data[:len(internal_works)], start=1):
+        w = internal_works[i - 1]
         number = w["number"]
-        title = w.get("title") or w.get("safe_title") or f"作品{number}"
-        cid = w.get("content_id") or ""
-        url = w.get("url") or "#"
 
-        article = article.replace(f"[WORK_HEADING_{number}]", shortcode_heading(number, title))
-        article = article.replace(f"[WORK_ITEM_{number}]", shortcode_item(cid))
-        article = article.replace(f"[WORK_BUTTON_{number}]", shortcode_button(url))
-        article = article.replace(
-            f"[WORK_LINK_{number}]",
-            f'<a href="{url}" target="_blank" rel="nofollow sponsored noopener">{str(title).replace(chr(34), "&quot;")}</a>'
-        )
+        article += shortcode_heading(number, w.get("title"))
+        article += shortcode_item(w.get("content_id"))
 
-    article = re.sub(
-        r'<!-- wp:paragraph -->\s*<p>(\[fanza_heading[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
-        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
-        article
-    )
-    article = re.sub(
-        r'<!-- wp:paragraph -->\s*<p>(\[fanza_item[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
-        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
-        article
-    )
-    article = re.sub(
-        r'<!-- wp:paragraph -->\s*<p>(\[fanza_button[^\]]+\])</p>\s*<!-- /wp:paragraph -->',
-        r'<!-- wp:shortcode -->\n\1\n<!-- /wp:shortcode -->',
-        article
-    )
+        for p in clamp_list(work_text.get("body"), min_count=3, max_count=4, fallback="ジャンルやレビュー傾向をもとに、特徴を整理して紹介します。"):
+            article += wp_paragraph(p)
 
-    article = article.replace(
-        '<!-- wp:list -->\n<ul class="wp-block-list">',
-        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">'
-    )
+        article += wp_heading("おすすめポイント", 4)
+        article += wp_list(clamp_list(work_text.get("good"), min_count=3, max_count=3, fallback="テーマとの相性が分かりやすい"), "icon-list-circle")
 
-    article = re.sub(
-        r'<!-- wp:list \{"className":"wp-block-list"\} -->\s*<ul class="wp-block-list">',
-        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">',
-        article
-    )
+        article += wp_heading("気になるポイント", 4)
+        article += wp_list(clamp_list(work_text.get("bad"), min_count=1, max_count=2, fallback="好みによって評価が分かれる可能性がある"), "icon-list-cross")
 
-    article = style_section_lists(article)
+        article += wp_heading("こんな人におすすめ", 4)
+        article += wp_list(clamp_list(work_text.get("recommend"), min_count=3, max_count=3, fallback="テーマ重視で選びたい方"), "icon-list-thumb-up")
 
-    article = article.replace(
-        '<!-- wp:table -->\n<figure class="wp-block-table">',
-        '<!-- wp:table {"className":"review-table"} -->\n<figure class="wp-block-table review-table">'
-    )
+        article += shortcode_button(w.get("url"))
+        article += wp_separator()
 
-    article = fix_bold_red(article)
+    article += wp_heading("【比較】今回紹介したおすすめ作品")
+    article += build_compare_table(internal_works, data.get("compare", []))
 
-    if "<!-- title:" not in article:
-        article = f"<!-- title: {build_default_title(theme_name, len(internal_works))} -->\n" + article
+    article += wp_heading("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
+    for p in clamp_list(data.get("summary"), min_count=2, max_count=3, fallback="比較表を参考に、好みに合う作品から確認するのがおすすめです。"):
+        article += wp_paragraph(p)
 
-    if "<!-- eye_catch_image:" not in article:
-        image_work = next((w for w in internal_works if w.get("image")), None)
-        if image_work:
-            article = (
-                f'<!-- eye_catch_image: {image_work.get("image")} -->\n'
-                f'<!-- eye_catch_source: {sanitize_text(image_work.get("title"))} -->\n'
-                + article
-            )
+    article += build_related_block(data.get("related", []))
 
+    validate_wp_blocks(article)
     return article
+
+
+def build_prompt(current_theme, prompt_items, history_items, theme_name, works_count):
+    safe_theme = sanitize_text(json.dumps(current_theme, ensure_ascii=False))
+
+    return f"""
+あなたは映像作品紹介ブログのSEO編集者です。
+以下のテーマ・記事用作品データ・既存記事履歴をもとに、記事本文用のJSONだけを作成してください。
+
+【絶対ルール】
+・出力はJSONのみ
+・Markdownは禁止
+・WordPressブロックHTMLは禁止
+・コードブロックは禁止
+・説明文、前置き、補足は禁止
+・JSONのキー名は指定どおりにする
+・作品数は必ず {works_count} 件
+・works 配列は必ず {works_count} 件出力する
+・compare 配列も必ず {works_count} 件出力する
+・作品紹介では作品番号や順位を主語にしない
+・「作品01」「作品02」「第1位」「上位作品」などは禁止
+・「本作は」「この作品は」で始める文を多用しない
+・評価軸名で作品を説明しない
+・完成度、満足度、テーマ再現度、ビジュアル面の満足度などの評価レポート風表現は禁止
+・作品ごとの差はジャンル、設定、レビュー傾向、メーカー傾向から説明する
+・抽象評価ではなく具体的な特徴で比較する
+・「〜に焦点を当てた作品」「〜を表現した作品」の連続使用は禁止
+・具体的すぎる描写は新規生成しない
+・レビュー本文の直接引用は禁止
+・レビューは傾向として要約する
+・未成年を示唆する表現や違法性を強める表現は作らない
+・入力にある危険な表現を増幅しない
+・作品タイトルは本文に直接書かない
+
+【文章ルール】
+・introは200〜250字
+・reasonは250〜350字
+・choiceは250〜350字
+・selectionは3件
+・各works.bodyは3段落分。各段落は120〜180字程度
+・各works.goodは3件
+・各works.badは1〜2件
+・各works.recommendは3件
+・summaryは2〜3段落、合計400字以内
+・煽りすぎず、冷静な比較解説にする
+・作品情報の羅列ではなく、選ぶ理由と向き不向きを整理する
+
+【JSON形式】
+次の形式だけで返してください。
+{{
+  "title": "SEOタイトル。テーマ名、AVおすすめ、{works_count}選を自然に含める。28〜45字程度。高評価、人気、比較、厳選、初心者向けのいずれかを含める。",
+  "intro": "導入文",
+  "reason": "このテーマの作品が人気な理由",
+  "choice": "失敗しない選び方",
+  "selection": ["選定基準1", "選定基準2", "選定基準3"],
+  "works": [
+    {{
+      "body": ["ランクイン理由", "同テーマ内での強みや違い", "向いている人・向いていない人"],
+      "good": ["おすすめポイント1", "おすすめポイント2", "おすすめポイント3"],
+      "bad": ["気になるポイント1"],
+      "recommend": ["おすすめの人1", "おすすめの人2", "おすすめの人3"]
+    }}
+  ],
+  "compare": [
+    {{
+      "fit": "向いている人",
+      "feature": "特徴",
+      "rating": "★★★★★",
+      "reason": "おすすめ理由"
+    }}
+  ],
+  "summary": ["まとめ段落1", "まとめ段落2"],
+  "related": [
+    {{"title": "既存記事タイトル", "url": "既存記事URL"}}
+  ]
+}}
+
+【関連記事ルール】
+・relatedは既存記事履歴からURL付き記事がある場合のみ最大3件選ぶ
+・存在しないURLや架空URLは作らない
+・使える関連記事がなければ related は空配列にする
+
+【テーマ】
+{safe_theme}
+
+【テーマ名】
+{theme_name}
+
+【記事用作品データ】
+{json.dumps(prompt_items, ensure_ascii=False, indent=2)}
+
+【既存記事履歴】
+{json.dumps(history_items, ensure_ascii=False, indent=2)}
+"""
 
 
 current_theme = load_json("current_theme.json", {})
@@ -528,297 +638,17 @@ article_history = load_json("article_history.json", [])
 internal_works, prompt_items = build_article_works(works, reviews)
 history_items = normalize_history_items(article_history)
 theme_name = guess_theme_name(current_theme, prompt_items)
-safe_theme = sanitize_text(json.dumps(current_theme, ensure_ascii=False))
+works_count = len(internal_works)
 
-prompt = f"""
-あなたは映像作品紹介ブログのSEO編集者です。
+if works_count == 0:
+    raise Exception("記事用作品データがありません")
 
-以下のテーマ・記事用作品データ・既存記事履歴をもとに、WordPressにそのまま貼れる記事本文を作成してください。
+prompt = build_prompt(current_theme, prompt_items, history_items, theme_name, works_count)
 
-【重要】
-入力データは安全化されています。具体的すぎる描写を増やさず、作品の特徴・比較・向き不向き・レビュー傾向を整理してください。
-
-【最重要ルール】
-・出力は記事本文のみ
-・前置きや説明は不要
-・WordPressのコードエディターに貼れる形式で出力する
-・本文内に<h1>は使わない
-・h2/h3/h4タグを使う
-・作品ごとに同じ言い回しを繰り返さない
-・レビュー本文の直接引用は禁止
-・レビューが無い時に、レビュー数は少ないまたはレビュー数が無いなどの文言は1記事一回までしか使用しない
-・レビューは評価傾向として要約する
-・作品情報の羅列ではなく、比較・判断・向き不向きを重視する
-・具体的すぎる描写は新規生成しない
-・記事本文内にアイキャッチ画像、メイン画像、サンプル画像を挿入しない
-・画像はWordPressのfeatured_mediaで設定する前提とする
-
-【出力禁止ルール】
-以下のMarkdown記法は禁止。
-・#
-・##
-・###
-・####
-・*
-・**
-・***
-・1.
-・2.
-・3.
-・- 
-・Markdownリンク
-
-必ずWordPressブロックHTMLのみで出力すること。
-番号付きリストは禁止。
-Markdownの太字は禁止。
-・作品番号や順位を主語にした文章は禁止
-・作品紹介の導入文は毎回変える
-・同一表現の連続使用は禁止
-・自然な文章で作品の特徴を説明する
-・比較表とまとめの作品名は必ず [WORK_LINK_番号] を使用する
-【プレースホルダールール】
-作品見出し、作品情報、作品ボタン、作品リンクは必ず以下のプレースホルダーを使う。
-URLやショートコードを自分で作らない。
-
-作品冒頭：
-[WORK_HEADING_01]
-[WORK_ITEM_01]
-
-作品末尾：
-[WORK_BUTTON_01]
-
-比較表やまとめ内の作品リンク：
-[WORK_LINK_01]
-
-2位以降も、02、03、04のように作品データのnumberに合わせる。
-
-【タイトル・アイキャッチルール】
-本文の最初に必ず以下を出力する。
-
-<!-- title: SEOタイトル -->
-
-SEOタイトルは必ずテーマに合わせて毎回考えること。
-28〜45文字程度。
-検索キーワードを自然に含める。
-サブタイトルはテーマごとに変える。
-毎回同じ文言を使わない。
-・タイトルにはテーマ名、AVおすすめ、紹介作品数に合った「◯選」を自然に含める
-・紹介作品数と違う数字をタイトルに入れない
-・作品数が分からない場合は「おすすめ作品」「厳選作品」など自然な表現を使用する
-・「徹底解説」「失敗しない選び方」の多用は禁止
-・高評価、人気、比較、厳選、初心者向け のいずれかを含める
-・検索意図を優先した実用的なタイトルにする
-
-【人間味ある文体ルール】
-・読者目線を意識するが、過度な呼びかけは禁止
-・説明文だけで終わらず、「なぜこの作品を選ぶ価値があるのか」を添える
-・各作品の本文は、最初に結論、その後に特徴、最後に向き不向きを自然に入れる
-・ロボットっぽい定型文を避ける
-・「本作は〜です」「〜と言えるでしょう」を連発しない
-・作品ごとに appeal_axis、review_trend_hint、genres を使って差を出す
-・文章は冷静な比較解説を基本にしつつ、少しだけ熱量を出す
-【導入文ルール】
-・導入文は200〜250文字
-・冒頭1文でテーマの特徴を説明する
-・読者の日常描写は禁止
-・仕事終わり、夜、スマホ、休日などのストーリー描写は禁止
-・小説風の書き出しは禁止
-・作品数が多く選びにくい理由を説明する
-・この記事で分かることを説明する
-・導入文は作品紹介の前提説明として書く
-
-【強調ルール】
-重要な「」内のフレーズは以下の形式にする。
-
-「<strong><span class="bold-red">強調したい文章</span></strong>」
-
-【装飾ルール】
-おすすめポイントは以下の形式。
-
-<!-- wp:heading {{"level":4}} -->
-<h4 class="wp-block-heading">おすすめポイント</h4>
-<!-- /wp:heading -->
-
-<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"}} -->
-<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">
-<li>...</li>
-<li>...</li>
-<li>...</li>
-</ul>
-<!-- /wp:list -->
-
-気になるポイントは以下の形式。
-
-<!-- wp:heading {{"level":4}} -->
-<h4 class="wp-block-heading">気になるポイント</h4>
-<!-- /wp:heading -->
-
-<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"icon-list-cross"}} -->
-<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-cross has-list-style">
-<li>...</li>
-<li>...</li>
-</ul>
-<!-- /wp:list -->
-
-こんな人におすすめは以下の形式。
-
-<!-- wp:heading {{"level":4}} -->
-<h4 class="wp-block-heading">こんな人におすすめ</h4>
-<!-- /wp:heading -->
-
-<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"icon-list-thumb-up"}} -->
-<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-thumb-up has-list-style">
-<li>...</li>
-<li>...</li>
-<li>...</li>
-</ul>
-<!-- /wp:list -->
-
-作品ごとの区切りには以下を入れる。
-
-<!-- wp:separator -->
-<hr class="wp-block-separator has-alpha-channel-opacity"/>
-<!-- /wp:separator -->
-
-【構成崩れ防止ルール】
-・記事順序は必ず「導入文 → 人気な理由 → 選び方 → 選定基準 → 作品一覧 → 比較表 → まとめ → 関連記事」にする
-・作品紹介は記事用作品データに含まれる作品数と同じ数だけ出力する
-・作品紹介は記事用作品データの number 順に連続して出力する
-・記事用作品データに含まれる全作品を漏れなく紹介する
-・存在しない番号の [WORK_HEADING_番号]、[WORK_ITEM_番号]、[WORK_BUTTON_番号] は出力しない
-・関連記事は記事の最後にだけ出力する
-・各作品で [WORK_HEADING_番号]、[WORK_ITEM_番号]、[WORK_BUTTON_番号] は必ず1回だけ使用する
-
-【記事構成】
-導入文 200〜250字
-
-<!-- wp:heading -->
-<h2 class="wp-block-heading">このテーマの作品が人気な理由</h2>
-<!-- /wp:heading -->
-
-テーマ特有の魅力や人気の理由を250〜350字で解説する。
-冗長な説明は禁止。
-魅力を3つ以内に整理する。
-
-<!-- wp:heading -->
-<h2 class="wp-block-heading">失敗しない選び方</h2>
-<!-- /wp:heading -->
-
-初めて見る人にも分かるように選び方を解説する。
-250〜350字。
-選ぶ際に確認したいポイントを3つ以内に整理する。
-
-<!-- wp:heading -->
-<h2 class="wp-block-heading">編集部の選定基準</h2>
-<!-- /wp:heading -->
-
-選定基準は番号付きリストにしない。
-必ず以下の形式で出力する。
-
-<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"}} -->
-<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">
-<li>選定基準を1つ説明する</li>
-<li>選定基準を1つ説明する</li>
-<li>選定基準を1つ説明する</li>
-</ul>
-<!-- /wp:list -->
-
-<!-- wp:heading {{"textAlign":"center"}} -->
-<h2 class="wp-block-heading has-text-align-center">素人×{theme_name}おすすめ作品一覧</h2>
-<!-- /wp:heading -->
-
-各作品をランキング順に紹介する。
-
-作品ごとに以下を必ず入れる。
-1. [WORK_HEADING_番号]
-2. [WORK_ITEM_番号]
-3. 作品紹介本文 2〜4段落
-作品紹介本文は必ず以下の順番で書く。
-1段落目：この作品がランクインした理由
-2段落目：同テーマ内での強み・他作品との違い
-3段落目：向いている人・向いていない人
-4. おすすめポイント
-5. 気になるポイント
-6. こんな人におすすめ
-7. [WORK_BUTTON_番号]
-8. 区切り線
-
-<!-- wp:heading -->
-<h2 class="wp-block-heading">【比較】今回紹介したおすすめ作品</h2>
-<!-- /wp:heading -->
-
-比較表の作品名には [WORK_LINK_番号] を使う。
-
-<!-- wp:table {{"className":"review-table"}} -->
-<figure class="wp-block-table review-table"><table class="has-fixed-layout"><thead><tr><th>作品</th><th>向いている人</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>
-<tr><td>[WORK_LINK_01]</td><td>向いている人</td><td>特徴</td><td>★★★★★<br>おすすめ理由</td></tr>
-</tbody></table></figure>
-<!-- /wp:table -->
-
-<!-- wp:heading -->
-<h2 class="wp-block-heading">【まとめ】迷ったらまずは比較表から選ぶのがおすすめ</h2>
-<!-- /wp:heading -->
-
-まとめ本文で作品名を出す場合は [WORK_LINK_番号] を使う。
-
-【まとめルール】
-まとめは3段落以内。
-紹介作品を再度すべて解説しない。
-作品リンクは最大3作品まで。
-初心者向け・テーマ重視向け・刺激重視向けの3カテゴリに整理して簡潔に紹介する。
-1カテゴリにつき1作品のみ紹介する。
-まとめ全体は400文字以内にする。
-Markdownの太字や番号付きリストは使わない。
-
-【関連記事ルール】
-既存記事履歴にURL付き記事がある場合のみ、今回テーマと近いものを最大3件選んで関連記事として出力する。
-
-関連記事見出しは以下にする。
-
-<!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">あわせて読みたい記事</h3>
-<!-- /wp:heading -->
-
-関連記事はul/li形式で出力する。
-URLがない記事、存在しないURL、架空URLは絶対に作らない。
-既存記事履歴に使えるURLがない場合は、関連記事本文は出力しない。
-related_theme_candidates も出力しない。
-
-【テーマ】
-{safe_theme}
-
-【記事用作品データ】
-{json.dumps(prompt_items, ensure_ascii=False, indent=2)}
-
-【既存記事履歴】
-{json.dumps(history_items, ensure_ascii=False, indent=2)}
-
-【SEO差別化ルール】
-作品紹介だけの記事にしないこと。
-作品紹介に入る前に、このテーマが人気な理由、選び方、比較ポイントを解説すること。
-
-【文章差別化ルール】
-
-・評価軸名で作品を説明しない
-
-・完成度、満足度、テーマ再現度、ビジュアル面の満足度などの評価レポート風表現は禁止
-
-・作品ごとの差はジャンル、設定、レビュー傾向、メーカー傾向から説明する
-
-・抽象評価ではなく具体的な特徴で比較する
-
-・「〜に焦点を当てた作品」「〜を表現した作品」の連続使用は禁止
-
-・作品紹介の冒頭3文は毎回異なる構文にする
-
-・作品番号を使った表現は禁止（作品01、作品02、上位作品、第○位など）
-
-・「本作は」「この作品は」で書き始める回数は記事内で各3回まで
-"""
 print("===== PROMPT CHECK =====")
 print(prompt[:12000])
 
-response = None
+article_data = None
 last_error = None
 
 for attempt in range(5):
@@ -827,34 +657,32 @@ for attempt in range(5):
             model="gemini-2.5-flash",
             contents=prompt,
         )
+
+        if response is None:
+            raise Exception("Gemini returned None")
+
+        if not getattr(response, "text", None):
+            raise Exception(f"Gemini returned no text: {response}")
+
+        print("===== GEMINI RESPONSE TEXT =====")
+        print(response.text[:4000])
+
+        article_data = extract_json(response.text)
+        validate_json_data(article_data, works_count)
         break
+
     except Exception as e:
         last_error = e
-        print(f"Gemini error attempt {attempt + 1}/5: {e}")
+        article_data = None
+        print(f"Gemini JSON error attempt {attempt + 1}/5: {e}")
         time.sleep(10 * (attempt + 1))
 
-if response is None:
+if article_data is None:
     raise last_error
 
-print("===== GEMINI RESPONSE =====")
-print(response)
+article = build_article_from_json(article_data, internal_works, theme_name)
 
-if response is None:
-    raise Exception("Gemini returned None")
-
-if not getattr(response, "text", None):
-    raise Exception(f"Gemini returned no text: {response}")
-
-article = response.text.strip()
-
-if not article:
-    raise Exception("Gemini returned empty article")
-
-validate_article_structure(article, len(internal_works))
-
-article = post_process_article(article, internal_works, theme_name)
 output_path = DATA_DIR / "generated_article.md"
-
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(article)
 
