@@ -367,8 +367,8 @@ def clamp_list(values, min_count=0, max_count=3, fallback=""):
 
 def get_work_label(w):
     title = sanitize_text(w.get("title"))
-    if len(title) > 48:
-        return title[:48] + "…"
+    if len(title) > 24:
+        return title[:24] + "…"
     return title or sanitize_text(w.get("safe_title")) or "作品"
 
 
@@ -496,14 +496,8 @@ def build_article_from_json(data, internal_works, theme_name):
 
     article += wp_paragraph(data.get("intro"))
 
-    article += wp_heading("このテーマの作品が人気な理由")
-    article += wp_paragraph(data.get("reason"))
-
-    article += wp_heading("失敗しない選び方")
-    article += wp_paragraph(data.get("choice"))
-
-    article += wp_heading("編集部の選定基準")
-    article += wp_list(clamp_list(data.get("selection"), min_count=3, max_count=3, fallback="テーマとの相性を見て選定しています。"), "icon-list-circle")
+    article += wp_heading("【比較】今回紹介したおすすめ作品")
+    article += build_compare_table(internal_works, data.get("compare", []))
 
     article += wp_heading(f"素人×{theme_name}おすすめ作品一覧", center=True)
 
@@ -530,8 +524,11 @@ def build_article_from_json(data, internal_works, theme_name):
         article += shortcode_button(w.get("url"))
         article += wp_separator()
 
-    article += wp_heading("【比較】今回紹介したおすすめ作品")
-    article += build_compare_table(internal_works, data.get("compare", []))
+    article += wp_heading("失敗しない選び方")
+    article += wp_paragraph(data.get("choice"))
+
+    article += wp_heading("このテーマの作品が人気な理由")
+    article += wp_paragraph(data.get("reason"))
 
     article += wp_heading("【まとめ】迷ったらまずは比較表から選ぶのがおすすめ")
     for p in clamp_list(data.get("summary"), min_count=2, max_count=3, fallback="比較表を参考に、好みに合う作品から確認するのがおすすめです。"):
