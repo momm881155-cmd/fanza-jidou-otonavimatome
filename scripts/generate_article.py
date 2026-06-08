@@ -380,20 +380,27 @@ def build_compare_table(internal_works, compare_items=None):
         item = compare_items[idx] if idx < len(compare_items) and isinstance(compare_items[idx], dict) else {}
         url = w.get("url") or "#"
         title = get_work_label(w)
-        fit = sanitize_text(item.get("fit")) or "テーマ重視で選びたい方"
-        feature = sanitize_text(item.get("feature")) or ("、".join(w.get("genres", [])[:3]) or sanitize_text(w.get("theme_genre")) or "ジャンルとの相性で選びやすい")
+
+        feature = sanitize_text(item.get("feature")) or (
+            "、".join(w.get("genres", [])[:2]) or sanitize_text(w.get("theme_genre")) or "特徴あり"
+        )
         rating = sanitize_text(item.get("rating")) or "★★★★☆"
-        reason = sanitize_text(item.get("reason")) or "特徴が分かりやすい"
+
+        if len(feature) > 20:
+            feature = feature[:20] + "…"
 
         rows.append(
-            f'<tr><td><a href="{url}" target="_blank" rel="nofollow sponsored noopener">{title}</a></td>'
-            f'<td>{fit}</td><td>{feature}</td><td>{rating}<br>{reason}</td></tr>'
+            f'<tr>'
+            f'<td><a href="{url}" target="_blank" rel="nofollow sponsored noopener">{title}</a></td>'
+            f'<td>{feature}</td>'
+            f'<td>{rating}</td>'
+            f'</tr>'
         )
 
     return (
-        '<!-- wp:table {"className":"review-table"} -->\n'
-        '<figure class="wp-block-table review-table"><table class="has-fixed-layout">'
-        '<thead><tr><th>作品</th><th>向いている人</th><th>特徴</th><th>おすすめ度</th></tr></thead><tbody>\n'
+        '<!-- wp:table {"className":"review-table compact-review-table"} -->\n'
+        '<figure class="wp-block-table review-table compact-review-table"><table class="has-fixed-layout">'
+        '<thead><tr><th>作品</th><th>特徴</th><th>評価</th></tr></thead><tbody>\n'
         + "\n".join(rows) +
         '\n</tbody></table></figure>\n<!-- /wp:table -->\n'
     )
@@ -580,7 +587,9 @@ def build_prompt(current_theme, prompt_items, history_items, theme_name, works_c
 ・各works.recommendは3件
 ・summaryは2〜3段落、合計400字以内
 ・煽りすぎず、冷静な比較解説にする
-・作品情報の羅列ではなく、選ぶ理由と向き不向きを整理する
+・compareのfeatureは20文字以内
+・compareにfitやreasonは入れない
+・比較表はスマホ向けに短く、1作品1行で理解できる内容にする
 
 【JSON形式】
 次の形式だけで返してください。
@@ -599,13 +608,11 @@ def build_prompt(current_theme, prompt_items, history_items, theme_name, works_c
     }}
   ],
   "compare": [
-    {{
-      "fit": "向いている人",
-      "feature": "特徴",
-      "rating": "★★★★★",
-      "reason": "おすすめ理由"
-    }}
-  ],
+  {
+    "feature": "20文字以内の特徴",
+    "rating": "★★★★★"
+  }
+],
   "summary": ["まとめ段落1", "まとめ段落2"],
   "related": [
     {{"title": "既存記事タイトル", "url": "既存記事URL"}}
