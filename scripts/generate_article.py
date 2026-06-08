@@ -627,10 +627,10 @@ def build_prompt(current_theme, prompt_items, history_items, theme_name, works_c
     }}
   ],
   "compare": [
-  {
+  {{
     "feature": "20文字以内の特徴",
     "rating": "★★★★★"
-  }
+  }}
 ],
   "summary": ["まとめ段落1", "まとめ段落2"],
   "related": [
