@@ -163,7 +163,9 @@ endpoint = f"{WP_SITE_URL}/wp-json/wp/v2/posts"
 
 payload = {
     "title": title,
-    "content": content,
+    "content": {
+        "raw": content
+    },
     "status": "publish"
 }
 
