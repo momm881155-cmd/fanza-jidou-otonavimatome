@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×企画",
+  "name": "素人×盗撮・のぞき",
   "base_genre": "素人",
-  "theme_genre": "企画",
+  "theme_genre": "盗撮・のぞき",
   "required": [
     "素人",
-    "企画"
+    "盗撮・のぞき"
   ],
   "sort_key": "score",
-  "count_hint": 21
+  "count_hint": 46
 }
