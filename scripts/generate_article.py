@@ -169,7 +169,7 @@ def build_review_hint(raw_texts):
             safe_texts.append(s[:120])
 
     if not safe_texts:
-        return "レビュー本文は少なめ。評価点、レビュー件数、ジャンル、メーカー情報から特徴を整理する。"
+        return "レビュー本文には依存せず、評価点・ジャンル・メーカー情報・作品設定から特徴を整理する。レビュー不足を本文中の弱点として書かない。"
 
     return " / ".join(safe_texts[:3])
 
@@ -567,6 +567,7 @@ def build_prompt(current_theme, prompt_items, history_items, theme_name, works_c
 ・未成年を示唆する表現や違法性を強める表現は作らない
 ・入力にある危険な表現を増幅しない
 ・作品タイトルは本文に直接書かない
+・レビューが少ない、レビューがない、判断しにくい等を「気になるポイント」や弱点として書かない
 
 【文章ルール】
 ・introは200〜250字
