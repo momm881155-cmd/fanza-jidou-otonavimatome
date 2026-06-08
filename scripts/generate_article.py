@@ -518,7 +518,7 @@ def build_article_from_json(data, internal_works, theme_name):
 
     article += wp_paragraph(data.get("intro"))
 
-    article += wp_heading("【比較】今回紹介したおすすめ作品")
+    article += wp_heading("【比較表】今回紹介するおすすめ作品")
     article += build_compare_table(internal_works, data.get("compare", []))
 
     article += wp_heading(f"素人×{theme_name}おすすめ作品一覧", center=True)
