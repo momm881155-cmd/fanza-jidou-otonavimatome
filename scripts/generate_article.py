@@ -344,12 +344,12 @@ def wp_list(items, style_class="icon-list-circle"):
         return ""
 
     return (
-        f'<!-- wp:list {{"extraBorder":"blank-box-blue","extraStyle":"{style_class}"}} -->\n'
+        '<!-- wp:html -->\n'
         f'<ul class="wp-block-list is-style-blank-box-blue has-border is-style-{style_class} has-list-style">\n'
         + "\n".join(lis) +
-        '\n</ul>\n<!-- /wp:list -->\n'
+        '\n</ul>\n'
+        '<!-- /wp:html -->\n'
     )
-
 
 def wp_separator():
     return '<!-- wp:separator -->\n<hr class="wp-block-separator has-alpha-channel-opacity"/>\n<!-- /wp:separator -->\n'
@@ -367,8 +367,8 @@ def clamp_list(values, min_count=0, max_count=3, fallback=""):
 
 def get_work_label(w):
     title = sanitize_text(w.get("title"))
-    if len(title) > 24:
-        return title[:24] + "…"
+    if len(title) > 18:
+        return title[:18] + "…"
     return title or sanitize_text(w.get("safe_title")) or "作品"
 
 
@@ -421,15 +421,15 @@ def build_related_block(related_items):
         return ""
 
     return (
-        '<!-- wp:heading {"level":3} -->\n'
-        '<h3 class="wp-block-heading">あわせて読みたい記事</h3>\n'
-        '<!-- /wp:heading -->\n'
-        '<!-- wp:list {"extraBorder":"blank-box-blue","extraStyle":"icon-list-circle"} -->\n'
-        '<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">\n'
-        + "\n".join(rows) +
-        '\n</ul>\n<!-- /wp:list -->\n'
-    )
-
+    '<!-- wp:heading {"level":3} -->\n'
+    '<h3 class="wp-block-heading">あわせて読みたい記事</h3>\n'
+    '<!-- /wp:heading -->\n'
+    '<!-- wp:html -->\n'
+    '<ul class="wp-block-list is-style-blank-box-blue has-border is-style-icon-list-circle has-list-style">\n'
+    + "\n".join(rows) +
+    '\n</ul>\n'
+    '<!-- /wp:html -->\n'
+)
 
 def extract_json(text):
     text = (text or "").strip()
@@ -474,14 +474,36 @@ def validate_json_data(data, works_count):
 
 
 def validate_wp_blocks(article):
-    blocks = ["paragraph", "heading", "list", "table", "separator", "shortcode"]
-    for block in blocks:
-        open_count = len(re.findall(rf'<!--\s*wp:{block}(?:\s+[^>]*)?\s*-->', article))
-        close_count = len(re.findall(rf'<!--\s*/wp:{block}\s*-->', article))
-        if open_count != close_count:
-            raise Exception(f"{block} block mismatch: open={open_count} close={close_count}")
-    return True
+    blocks = [
+        "paragraph",
+        "heading",
+        "html",
+        "table",
+        "separator",
+        "shortcode"
+    ]
 
+    for block in blocks:
+        open_count = len(
+            re.findall(
+                rf'<!--\s*wp:{block}(?:\s+[^>]*)?\s*-->',
+                article
+            )
+        )
+
+        close_count = len(
+            re.findall(
+                rf'<!--\s*/wp:{block}\s*-->',
+                article
+            )
+        )
+
+        if open_count != close_count:
+            raise Exception(
+                f"{block} block mismatch: open={open_count} close={close_count}"
+            )
+
+    return True
 
 def build_article_from_json(data, internal_works, theme_name):
     article = ""
