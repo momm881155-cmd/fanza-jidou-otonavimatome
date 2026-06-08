@@ -26,7 +26,7 @@ headers_json = {
     "Authorization": f"Basic {token}",
     "Content-Type": "application/json",
     "Accept": "application/json",
-    "User-Agent": "GitHubActions/1.0"
+    "User-Agent": "Mozilla/5.0"
 }
 
 
@@ -92,7 +92,7 @@ def upload_featured_image(image_url, title="featured-image"):
         "Content-Disposition": f'attachment; filename="{filename}"',
         "Content-Type": content_type,
         "Accept": "application/json",
-        "User-Agent": "GitHubActions/1.0"
+        "User-Agent": "Mozilla/5.0"
     }
 
     media_res = requests.post(
