@@ -675,34 +675,23 @@ prompt = build_prompt(current_theme, prompt_items, history_items, theme_name, wo
 print("===== PROMPT CHECK =====")
 print(prompt[:12000])
 
-article_data = None
-last_error = None
+except Exception as e:
+    msg = str(e)
 
-for attempt in range(5):
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
+    if "RESOURCE_EXHAUSTED" in msg:
+        raise
 
-        if response is None:
-            raise Exception("Gemini returned None")
+    if "PROHIBITED_CONTENT" in msg:
+        raise
 
-        if not getattr(response, "text", None):
-            raise Exception(f"Gemini returned no text: {response}")
+    last_error = e
+    article_data = None
 
-        print("===== GEMINI RESPONSE TEXT =====")
-        print(response.text[:4000])
+    print(
+        f"Gemini JSON error attempt {attempt + 1}/5: {e}"
+    )
 
-        article_data = extract_json(response.text)
-        validate_json_data(article_data, works_count)
-        break
-
-    except Exception as e:
-        last_error = e
-        article_data = None
-        print(f"Gemini JSON error attempt {attempt + 1}/5: {e}")
-        time.sleep(10 * (attempt + 1))
+    time.sleep(10 * (attempt + 1))
 
 if article_data is None:
     raise last_error
