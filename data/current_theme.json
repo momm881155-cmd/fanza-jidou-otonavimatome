@@ -1,16 +1,11 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×美乳",
+  "type": "genre",
+  "name": "素人×OL",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "美乳"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "OL",
   "required": [
     "素人",
-    "中出し",
-    "美乳"
+    "OL"
   ],
   "sort_key": "score",
   "count_hint": 14
