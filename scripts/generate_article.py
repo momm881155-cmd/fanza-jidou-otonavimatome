@@ -4,6 +4,8 @@ import re
 import time
 from pathlib import Path
 from google import genai
+from google.genai import types
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -685,6 +687,14 @@ for attempt in range(5):
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
+            config=types.GenerateContentConfig(
+                safety_settings=[
+                    types.SafetySetting(
+                        category="HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                        threshold="BLOCK_NONE"
+                    )
+                ]
+            )
         )
 
         if response is None:
