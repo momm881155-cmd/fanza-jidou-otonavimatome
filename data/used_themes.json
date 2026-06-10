@@ -260,6 +260,15 @@
       "theme_genres": null,
       "count_hint": 14,
       "used_at": "2026-06-10"
+    },
+    {
+      "name": "素人×騎乗位",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "騎乗位",
+      "theme_genres": null,
+      "count_hint": 15,
+      "used_at": "2026-06-10"
     }
   ]
 }
