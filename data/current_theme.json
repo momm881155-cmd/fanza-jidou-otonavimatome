@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×熟女",
+  "type": "genre",
+  "name": "素人×童貞",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "熟女"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "童貞",
   "required": [
     "素人",
-    "中出し",
-    "熟女"
+    "童貞"
   ],
   "sort_key": "score",
-  "count_hint": 36
+  "count_hint": 18
 }
