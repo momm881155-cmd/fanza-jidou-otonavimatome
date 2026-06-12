@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×童貞",
+  "name": "素人×コスプレ",
   "base_genre": "素人",
-  "theme_genre": "童貞",
+  "theme_genre": "コスプレ",
   "required": [
     "素人",
-    "童貞"
+    "コスプレ"
   ],
   "sort_key": "score",
-  "count_hint": 18
+  "count_hint": 27
 }
