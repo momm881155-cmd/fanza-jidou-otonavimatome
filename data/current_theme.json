@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×寝取り・寝取られ・NTR",
+  "type": "genre",
+  "name": "素人×ごっくん",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "寝取り・寝取られ・NTR"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "ごっくん",
   "required": [
     "素人",
-    "中出し",
-    "寝取り・寝取られ・NTR"
+    "ごっくん"
   ],
   "sort_key": "score",
-  "count_hint": 14
+  "count_hint": 15
 }
