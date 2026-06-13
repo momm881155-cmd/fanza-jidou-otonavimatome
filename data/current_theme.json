@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×痴女",
+  "type": "combo",
+  "name": "素人×中出し×寝取り・寝取られ・NTR",
   "base_genre": "素人",
-  "theme_genre": "痴女",
+  "theme_genres": [
+    "中出し",
+    "寝取り・寝取られ・NTR"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "痴女"
+    "中出し",
+    "寝取り・寝取られ・NTR"
   ],
   "sort_key": "score",
-  "count_hint": 16
+  "count_hint": 14
 }
