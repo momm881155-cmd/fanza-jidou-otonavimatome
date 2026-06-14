@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ごっくん",
+  "type": "combo",
+  "name": "素人×中出し×妄想族",
   "base_genre": "素人",
-  "theme_genre": "ごっくん",
+  "theme_genres": [
+    "中出し",
+    "妄想族"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "ごっくん"
+    "中出し",
+    "妄想族"
   ],
   "sort_key": "score",
-  "count_hint": 15
+  "count_hint": 26
 }

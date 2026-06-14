@@ -341,6 +341,18 @@
       "theme_genres": null,
       "count_hint": 15,
       "used_at": "2026-06-13"
+    },
+    {
+      "name": "素人×中出し×妄想族",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "妄想族"
+      ],
+      "count_hint": 26,
+      "used_at": "2026-06-14"
     }
   ]
 }
