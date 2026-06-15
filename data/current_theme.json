@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×企画",
+  "name": "素人×妄想族×ナンパ",
   "base_genre": "素人",
   "theme_genres": [
-    "中出し",
-    "企画"
+    "妄想族",
+    "ナンパ"
   ],
-  "theme_genre": "中出し",
+  "theme_genre": "妄想族",
   "required": [
     "素人",
-    "中出し",
-    "企画"
+    "妄想族",
+    "ナンパ"
   ],
   "sort_key": "score",
-  "count_hint": 15
+  "count_hint": 14
 }
