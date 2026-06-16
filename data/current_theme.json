@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×妄想族×ナンパ",
+  "type": "genre",
+  "name": "素人×鬼畜",
   "base_genre": "素人",
-  "theme_genres": [
-    "妄想族",
-    "ナンパ"
-  ],
-  "theme_genre": "妄想族",
+  "theme_genre": "鬼畜",
   "required": [
     "素人",
-    "妄想族",
-    "ナンパ"
+    "鬼畜"
   ],
   "sort_key": "score",
-  "count_hint": 14
+  "count_hint": 30
 }

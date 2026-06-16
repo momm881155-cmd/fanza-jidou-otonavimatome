@@ -377,6 +377,15 @@
       ],
       "count_hint": 14,
       "used_at": "2026-06-15"
+    },
+    {
+      "name": "素人×鬼畜",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "鬼畜",
+      "theme_genres": null,
+      "count_hint": 30,
+      "used_at": "2026-06-16"
     }
   ]
 }
