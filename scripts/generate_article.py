@@ -274,7 +274,7 @@ def normalize_history_items(history):
                 "theme": theme,
             })
 
-    return normalized[-30:]
+    return normalized[-60:]
 
 
 def guess_theme_name(current_theme, prompt_items):
@@ -651,6 +651,13 @@ def build_prompt(current_theme, prompt_items, history_items, theme_name, works_c
 ・relatedは既存記事履歴からURL付き記事がある場合のみ最大3件選ぶ
 ・存在しないURLや架空URLは作らない
 ・使える関連記事がなければ related は空配列にする
+・関連記事は、今回のテーマ名やジャンル語と近い記事を優先する
+・NTR、人妻、寝取らせ、羞恥は近いテーマとして扱う
+・個撮、ハメ撮り、ナンパ、カップル、女子大生は近いテーマとして扱う
+・童貞、筆下ろし、清楚、OLは近いテーマとして扱う
+・関連性が同程度なら5選記事を優先する
+・関連記事は必ず3件選ぶ
+・記事タイトルに含まれる主要キーワードが一致する記事を優先する
 
 【テーマ】
 {safe_theme}
