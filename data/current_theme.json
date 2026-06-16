@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×鬼畜",
+  "name": "素人×M女",
   "base_genre": "素人",
-  "theme_genre": "鬼畜",
+  "theme_genre": "M女",
   "required": [
     "素人",
-    "鬼畜"
+    "M女"
   ],
   "sort_key": "score",
-  "count_hint": 30
+  "count_hint": 21
 }
