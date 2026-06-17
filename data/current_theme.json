@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×M女",
+  "name": "素人×3P・4P",
   "base_genre": "素人",
-  "theme_genre": "M女",
+  "theme_genre": "3P・4P",
   "required": [
     "素人",
-    "M女"
+    "3P・4P"
   ],
   "sort_key": "score",
-  "count_hint": 21
+  "count_hint": 31
 }
