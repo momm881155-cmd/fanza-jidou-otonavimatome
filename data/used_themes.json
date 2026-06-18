@@ -416,6 +416,15 @@
       ],
       "count_hint": 20,
       "used_at": "2026-06-18"
+    },
+    {
+      "name": "素人×エステ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "エステ",
+      "theme_genres": null,
+      "count_hint": 12,
+      "used_at": "2026-06-18"
     }
   ]
 }
