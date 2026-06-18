@@ -404,6 +404,18 @@
       "theme_genres": null,
       "count_hint": 31,
       "used_at": "2026-06-17"
+    },
+    {
+      "name": "素人×中出し×美少女",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "美少女"
+      ],
+      "count_hint": 20,
+      "used_at": "2026-06-18"
     }
   ]
 }
