@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×エステ",
+  "name": "素人×局部アップ",
   "base_genre": "素人",
-  "theme_genre": "エステ",
+  "theme_genre": "局部アップ",
   "required": [
     "素人",
-    "エステ"
+    "局部アップ"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 14
 }
