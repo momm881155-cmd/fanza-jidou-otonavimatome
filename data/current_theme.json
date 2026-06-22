@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×鬼畜",
+  "name": "素人×美少女×その他フェチ",
   "base_genre": "素人",
   "theme_genres": [
-    "中出し",
-    "鬼畜"
+    "美少女",
+    "その他フェチ"
   ],
-  "theme_genre": "中出し",
+  "theme_genre": "美少女",
   "required": [
     "素人",
-    "中出し",
-    "鬼畜"
+    "美少女",
+    "その他フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 13
+  "count_hint": 12
 }
