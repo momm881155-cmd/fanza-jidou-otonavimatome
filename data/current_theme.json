@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×美少女×その他フェチ",
+  "type": "genre",
+  "name": "素人×スレンダー",
   "base_genre": "素人",
-  "theme_genres": [
-    "美少女",
-    "その他フェチ"
-  ],
-  "theme_genre": "美少女",
+  "theme_genre": "スレンダー",
   "required": [
     "素人",
-    "美少女",
-    "その他フェチ"
+    "スレンダー"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 11
 }
