@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×スレンダー",
+  "name": "素人×ギャル",
   "base_genre": "素人",
-  "theme_genre": "スレンダー",
+  "theme_genre": "ギャル",
   "required": [
     "素人",
-    "スレンダー"
+    "ギャル"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 7
 }

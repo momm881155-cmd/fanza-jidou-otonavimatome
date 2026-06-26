@@ -500,6 +500,15 @@
       "theme_genres": null,
       "count_hint": 11,
       "used_at": "2026-06-24"
+    },
+    {
+      "name": "素人×ギャル",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ギャル",
+      "theme_genres": null,
+      "count_hint": 7,
+      "used_at": "2026-06-26"
     }
   ]
 }
