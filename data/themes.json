@@ -14,7 +14,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 83
+    "count_hint": 81
   },
   {
     "type": "combo",
@@ -167,7 +167,7 @@
       "デカチン・巨根"
     ],
     "sort_key": "score",
-    "count_hint": 16
+    "count_hint": 15
   },
   {
     "type": "combo",
@@ -341,23 +341,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×即ハメ",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "即ハメ"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "即ハメ"
-    ],
-    "sort_key": "score",
-    "count_hint": 13
-  },
-  {
-    "type": "combo",
     "name": "素人×中出し×尻フェチ",
     "base_genre": "素人",
     "theme_genres": [
@@ -372,6 +355,23 @@
     ],
     "sort_key": "score",
     "count_hint": 13
+  },
+  {
+    "type": "combo",
+    "name": "素人×中出し×即ハメ",
+    "base_genre": "素人",
+    "theme_genres": [
+      "中出し",
+      "即ハメ"
+    ],
+    "theme_genre": "中出し",
+    "required": [
+      "素人",
+      "中出し",
+      "即ハメ"
+    ],
+    "sort_key": "score",
+    "count_hint": 12
   },
   {
     "type": "combo",
@@ -834,23 +834,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×職業色々",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "職業色々"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "職業色々"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
     "name": "素人×女子大生×寝取り・寝取られ・NTR",
     "base_genre": "素人",
     "theme_genres": [
@@ -919,23 +902,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×コスプレ",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "コスプレ"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "コスプレ"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
     "name": "素人×巨乳×スレンダー",
     "base_genre": "素人",
     "theme_genres": [
@@ -995,7 +961,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 199
+    "count_hint": 196
   },
   {
     "type": "genre",
@@ -1007,7 +973,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 114
+    "count_hint": 111
   },
   {
     "type": "genre",
@@ -1043,7 +1009,7 @@
       "ナンパ"
     ],
     "sort_key": "score",
-    "count_hint": 43
+    "count_hint": 41
   },
   {
     "type": "genre",
@@ -1151,7 +1117,7 @@
       "デカチン・巨根"
     ],
     "sort_key": "score",
-    "count_hint": 22
+    "count_hint": 21
   },
   {
     "type": "genre",
@@ -1163,7 +1129,7 @@
       "潮吹き"
     ],
     "sort_key": "score",
-    "count_hint": 22
+    "count_hint": 21
   },
   {
     "type": "genre",
@@ -1175,7 +1141,7 @@
       "妄想族"
     ],
     "sort_key": "score",
-    "count_hint": 21
+    "count_hint": 19
   },
   {
     "type": "genre",
@@ -1251,18 +1217,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×即ハメ",
-    "base_genre": "素人",
-    "theme_genre": "即ハメ",
-    "required": [
-      "素人",
-      "即ハメ"
-    ],
-    "sort_key": "score",
-    "count_hint": 14
-  },
-  {
-    "type": "genre",
     "name": "素人×不倫",
     "base_genre": "素人",
     "theme_genre": "不倫",
@@ -1275,24 +1229,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×コスプレ",
+    "name": "素人×即ハメ",
     "base_genre": "素人",
-    "theme_genre": "コスプレ",
+    "theme_genre": "即ハメ",
     "required": [
       "素人",
-      "コスプレ"
-    ],
-    "sort_key": "score",
-    "count_hint": 12
-  },
-  {
-    "type": "genre",
-    "name": "素人×ドキュメンタリー",
-    "base_genre": "素人",
-    "theme_genre": "ドキュメンタリー",
-    "required": [
-      "素人",
-      "ドキュメンタリー"
+      "即ハメ"
     ],
     "sort_key": "score",
     "count_hint": 12
@@ -1308,6 +1250,30 @@
     ],
     "sort_key": "score",
     "count_hint": 12
+  },
+  {
+    "type": "genre",
+    "name": "素人×コスプレ",
+    "base_genre": "素人",
+    "theme_genre": "コスプレ",
+    "required": [
+      "素人",
+      "コスプレ"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "genre",
+    "name": "素人×ドキュメンタリー",
+    "base_genre": "素人",
+    "theme_genre": "ドキュメンタリー",
+    "required": [
+      "素人",
+      "ドキュメンタリー"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
   },
   {
     "type": "genre",
@@ -1359,18 +1325,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×職業色々",
-    "base_genre": "素人",
-    "theme_genre": "職業色々",
-    "required": [
-      "素人",
-      "職業色々"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "genre",
     "name": "素人×ごっくん",
     "base_genre": "素人",
     "theme_genre": "ごっくん",
@@ -1389,18 +1343,6 @@
     "required": [
       "素人",
       "その他フェチ"
-    ],
-    "sort_key": "score",
-    "count_hint": 8
-  },
-  {
-    "type": "genre",
-    "name": "素人×アナル",
-    "base_genre": "素人",
-    "theme_genre": "アナル",
-    "required": [
-      "素人",
-      "アナル"
     ],
     "sort_key": "score",
     "count_hint": 8
@@ -1443,24 +1385,24 @@
   },
   {
     "type": "genre",
-    "name": "素人×ギャル",
+    "name": "素人×職業色々",
     "base_genre": "素人",
-    "theme_genre": "ギャル",
+    "theme_genre": "職業色々",
     "required": [
       "素人",
-      "ギャル"
+      "職業色々"
     ],
     "sort_key": "score",
-    "count_hint": 7
+    "count_hint": 8
   },
   {
     "type": "genre",
-    "name": "素人×デビュー作品",
+    "name": "素人×アナル",
     "base_genre": "素人",
-    "theme_genre": "デビュー作品",
+    "theme_genre": "アナル",
     "required": [
       "素人",
-      "デビュー作品"
+      "アナル"
     ],
     "sort_key": "score",
     "count_hint": 7
@@ -1485,18 +1427,6 @@
     "required": [
       "素人",
       "痴女"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "genre",
-    "name": "素人×鬼畜",
-    "base_genre": "素人",
-    "theme_genre": "鬼畜",
-    "required": [
-      "素人",
-      "鬼畜"
     ],
     "sort_key": "score",
     "count_hint": 7

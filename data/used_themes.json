@@ -509,6 +509,18 @@
       "theme_genres": null,
       "count_hint": 7,
       "used_at": "2026-06-26"
+    },
+    {
+      "name": "素人×中出し×スレンダー",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "スレンダー"
+      ],
+      "count_hint": 9,
+      "used_at": "2026-06-27"
     }
   ]
 }
