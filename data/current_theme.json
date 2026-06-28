@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×スレンダー",
+  "type": "genre",
+  "name": "素人×女子大生",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "スレンダー"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "女子大生",
   "required": [
     "素人",
-    "中出し",
-    "スレンダー"
+    "女子大生"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 64
 }
