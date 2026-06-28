@@ -3,6 +3,7 @@ import re
 import json
 import base64
 import mimetypes
+import time
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -22,11 +23,13 @@ token = base64.b64encode(
     f"{WP_USERNAME}:{WP_APP_PASSWORD}".encode("utf-8")
 ).decode("utf-8")
 
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/137 Safari/537.36"
+
 headers_json = {
     "Authorization": f"Basic {token}",
     "Content-Type": "application/json",
     "Accept": "application/json",
-    "User-Agent": "Mozilla/5.0"
+    "User-Agent": UA,
 }
 
 
@@ -58,6 +61,84 @@ def parse_json_response(res, label):
         raise Exception(f"{label} returned non-JSON response")
 
 
+def is_imunify_block(data):
+    if not isinstance(data, dict):
+        return False
+
+    msg = str(data.get("message", ""))
+    return (
+        "Imunify360" in msg
+        or "bot-protection" in msg
+        or "Access denied" in msg
+    )
+
+
+def post_json_with_retry(url, payload, label, retries=5):
+    last_data = None
+    last_status = None
+
+    for attempt in range(retries):
+        print(f"{label} TRY {attempt + 1}/{retries}")
+
+        res = requests.post(
+            url,
+            headers=headers_json,
+            data=json.dumps(payload),
+            timeout=120
+        )
+
+        data = parse_json_response(res, label)
+        last_data = data
+        last_status = res.status_code
+
+        if res.status_code in [200, 201] and isinstance(data, dict) and data.get("id"):
+            print(f"{label} SUCCESS")
+            return data
+
+        if is_imunify_block(data):
+            wait = (attempt + 1) * 30
+            print(f"Imunify360 detected on {label}. Retry after {wait} seconds...")
+            time.sleep(wait)
+            continue
+
+        raise Exception(f"{label} failed: {res.status_code}\n{data}")
+
+    raise Exception(f"{label} failed after retries. status={last_status}, data={last_data}")
+
+
+def upload_media_binary_with_retry(endpoint, media_headers, image_bytes, retries=5):
+    last_data = None
+    last_status = None
+
+    for attempt in range(retries):
+        print(f"MEDIA UPLOAD TRY {attempt + 1}/{retries}")
+
+        res = requests.post(
+            endpoint,
+            headers=media_headers,
+            data=image_bytes,
+            timeout=120
+        )
+
+        data = parse_json_response(res, "MEDIA UPLOAD")
+        last_data = data
+        last_status = res.status_code
+
+        if res.status_code in [200, 201] and isinstance(data, dict) and data.get("id"):
+            print("MEDIA UPLOAD SUCCESS")
+            return data
+
+        if is_imunify_block(data):
+            wait = (attempt + 1) * 30
+            print(f"Imunify360 detected on MEDIA UPLOAD. Retry after {wait} seconds...")
+            time.sleep(wait)
+            continue
+
+        raise Exception(f"Media upload failed: {res.status_code}\n{data}")
+
+    raise Exception(f"Media upload failed after retries. status={last_status}, data={last_data}")
+
+
 def upload_featured_image(image_url, title="featured-image"):
     if not image_url:
         print("No eye_catch_image found")
@@ -67,7 +148,7 @@ def upload_featured_image(image_url, title="featured-image"):
 
     img_res = requests.get(
         image_url,
-        headers={"User-Agent": "Mozilla/5.0"},
+        headers={"User-Agent": UA},
         timeout=60
     )
 
@@ -92,21 +173,15 @@ def upload_featured_image(image_url, title="featured-image"):
         "Content-Disposition": f'attachment; filename="{filename}"',
         "Content-Type": content_type,
         "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0"
+        "User-Agent": UA,
     }
 
-    media_res = requests.post(
+    media = upload_media_binary_with_retry(
         media_endpoint,
-        headers=media_headers,
-        data=img_res.content,
-        timeout=120
+        media_headers,
+        img_res.content,
+        retries=5
     )
-
-    media = parse_json_response(media_res, "MEDIA UPLOAD")
-
-    if media_res.status_code not in [200, 201]:
-        print("Media upload failed")
-        return None
 
     media_id = media.get("id")
 
@@ -120,14 +195,17 @@ def upload_featured_image(image_url, title="featured-image"):
         "description": title
     }
 
-    alt_res = requests.post(
-        f"{WP_SITE_URL}/wp-json/wp/v2/media/{media_id}",
-        headers=headers_json,
-        data=json.dumps(alt_payload),
-        timeout=60
-    )
-
-    print("MEDIA ALT STATUS =", alt_res.status_code)
+    try:
+        alt_res = requests.post(
+            f"{WP_SITE_URL}/wp-json/wp/v2/media/{media_id}",
+            headers=headers_json,
+            data=json.dumps(alt_payload),
+            timeout=60
+        )
+        print("MEDIA ALT STATUS =", alt_res.status_code)
+        print("MEDIA ALT RESPONSE =", alt_res.text[:1000])
+    except Exception as e:
+        print("MEDIA ALT update failed but ignored:", e)
 
     return media_id
 
@@ -172,17 +250,12 @@ payload = {
 if featured_media_id:
     payload["featured_media"] = featured_media_id
 
-response = requests.post(
+post = post_json_with_retry(
     endpoint,
-    headers=headers_json,
-    data=json.dumps(payload),
-    timeout=60
+    payload,
+    "POST CREATE",
+    retries=5
 )
-
-post = parse_json_response(response, "POST CREATE")
-
-if response.status_code not in [200, 201]:
-    raise Exception(f"WordPress post failed: {response.status_code}")
 
 post_url = post.get("link")
 post_id = post.get("id")
