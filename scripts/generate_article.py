@@ -272,7 +272,7 @@ def normalize_history_items(history):
                 "theme": theme,
             })
 
-    return normalized[-15:]
+    return normalized[-12:]
 
 
 def guess_theme_name(current_theme, prompt_items):
