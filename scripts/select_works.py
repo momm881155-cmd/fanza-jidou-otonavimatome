@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any
 
 TOP_N = 10
-MIN_SELECTED = 7
+MIN_SELECTED = 5
 
 MAX_SERIES = 2
 MAX_MAKER = 3
