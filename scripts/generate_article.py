@@ -173,10 +173,10 @@ def build_review_hint(raw_texts):
     for t in raw_texts[:3]:
         s = sanitize_text(t)
         if s:
-            safe_texts.append(s[:30])
+            safe_texts.append(s[:60])
 
     if not safe_texts:
-        return "レビュー本文には依存せず、評価点・ジャンル・メーカー情報・作品設定から特徴を整理する。レビュー不足を本文中の弱点として書かない。"
+        return "レビュー本文には依存せず、評価点・ジャンル・メーカー情報・作品設定から特徴を整理する。レビュー不足を本文中の弱点として書かない。「特になし」などは書かない"
 
     return " / ".join(safe_texts[:3])
 
