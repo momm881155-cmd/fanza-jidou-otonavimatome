@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×制服",
+  "name": "素人×ローション・オイル",
   "base_genre": "素人",
-  "theme_genre": "制服",
+  "theme_genre": "ローション・オイル",
   "required": [
     "素人",
-    "制服"
+    "ローション・オイル"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 8
 }

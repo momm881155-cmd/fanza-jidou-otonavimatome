@@ -548,6 +548,15 @@
       "theme_genres": null,
       "count_hint": 9,
       "used_at": "2026-06-30"
+    },
+    {
+      "name": "素人×ローション・オイル",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ローション・オイル",
+      "theme_genres": null,
+      "count_hint": 8,
+      "used_at": "2026-07-01"
     }
   ]
 }
