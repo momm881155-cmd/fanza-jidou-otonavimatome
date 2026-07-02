@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ローション・オイル",
+  "type": "combo",
+  "name": "素人×美少女×スレンダー",
   "base_genre": "素人",
-  "theme_genre": "ローション・オイル",
+  "theme_genres": [
+    "美少女",
+    "スレンダー"
+  ],
+  "theme_genre": "美少女",
   "required": [
     "素人",
-    "ローション・オイル"
+    "美少女",
+    "スレンダー"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 13
 }
