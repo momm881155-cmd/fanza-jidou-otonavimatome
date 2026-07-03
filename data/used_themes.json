@@ -581,6 +581,15 @@
       ],
       "count_hint": 12,
       "used_at": "2026-07-02"
+    },
+    {
+      "name": "素人×ハメ撮り",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ハメ撮り",
+      "theme_genres": null,
+      "count_hint": 35,
+      "used_at": "2026-07-03"
     }
   ]
 }
