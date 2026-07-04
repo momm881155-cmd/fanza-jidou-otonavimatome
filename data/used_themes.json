@@ -590,6 +590,18 @@
       "theme_genres": null,
       "count_hint": 35,
       "used_at": "2026-07-03"
+    },
+    {
+      "name": "素人×中出し×水着",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "水着"
+      ],
+      "count_hint": 11,
+      "used_at": "2026-07-04"
     }
   ]
 }
