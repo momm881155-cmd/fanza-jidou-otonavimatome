@@ -611,6 +611,15 @@
       "theme_genres": null,
       "count_hint": 10,
       "used_at": "2026-07-04"
+    },
+    {
+      "name": "素人×バック",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "バック",
+      "theme_genres": null,
+      "count_hint": 11,
+      "used_at": "2026-07-05"
     }
   ]
 }

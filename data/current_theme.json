@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×SM",
+  "name": "素人×バック",
   "base_genre": "素人",
-  "theme_genre": "SM",
+  "theme_genre": "バック",
   "required": [
     "素人",
-    "SM"
+    "バック"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 11
 }
