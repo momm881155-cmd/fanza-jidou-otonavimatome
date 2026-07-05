@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×バック",
+  "name": "素人×顔射",
   "base_genre": "素人",
-  "theme_genre": "バック",
+  "theme_genre": "顔射",
   "required": [
     "素人",
-    "バック"
+    "顔射"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 8
 }
