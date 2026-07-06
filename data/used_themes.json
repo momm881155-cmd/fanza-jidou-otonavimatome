@@ -629,6 +629,15 @@
       "theme_genres": null,
       "count_hint": 8,
       "used_at": "2026-07-05"
+    },
+    {
+      "name": "素人×妄想族",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "妄想族",
+      "theme_genres": null,
+      "count_hint": 30,
+      "used_at": "2026-07-06"
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×顔射",
+  "name": "素人×妄想族",
   "base_genre": "素人",
-  "theme_genre": "顔射",
+  "theme_genre": "妄想族",
   "required": [
     "素人",
-    "顔射"
+    "妄想族"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 30
 }
