@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×妄想族",
+  "type": "combo",
+  "name": "素人×中出し×ドキュメンタリー",
   "base_genre": "素人",
-  "theme_genre": "妄想族",
+  "theme_genres": [
+    "中出し",
+    "ドキュメンタリー"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "妄想族"
+    "中出し",
+    "ドキュメンタリー"
   ],
   "sort_key": "score",
-  "count_hint": 30
+  "count_hint": 9
 }
