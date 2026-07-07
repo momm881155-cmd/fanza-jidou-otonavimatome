@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×M女",
+  "type": "genre",
+  "name": "素人×巨乳フェチ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "M女"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "巨乳フェチ",
   "required": [
     "素人",
-    "中出し",
-    "M女"
+    "巨乳フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 7
 }

@@ -14,7 +14,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 66
+    "count_hint": 63
   },
   {
     "type": "combo",
@@ -48,7 +48,7 @@
       "淫乱・ハード系"
     ],
     "sort_key": "score",
-    "count_hint": 31
+    "count_hint": 28
   },
   {
     "type": "combo",
@@ -252,57 +252,6 @@
       "人妻・主婦"
     ],
     "sort_key": "score",
-    "count_hint": 15
-  },
-  {
-    "type": "combo",
-    "name": "素人×中出し×美乳",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "美乳"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "美乳"
-    ],
-    "sort_key": "score",
-    "count_hint": 15
-  },
-  {
-    "type": "combo",
-    "name": "素人×巨乳×人妻・主婦",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "人妻・主婦"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "人妻・主婦"
-    ],
-    "sort_key": "score",
-    "count_hint": 15
-  },
-  {
-    "type": "combo",
-    "name": "素人×中出し×3P・4P",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "3P・4P"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "3P・4P"
-    ],
-    "sort_key": "score",
     "count_hint": 14
   },
   {
@@ -341,6 +290,40 @@
   },
   {
     "type": "combo",
+    "name": "素人×巨乳×人妻・主婦",
+    "base_genre": "素人",
+    "theme_genres": [
+      "巨乳",
+      "人妻・主婦"
+    ],
+    "theme_genre": "巨乳",
+    "required": [
+      "素人",
+      "巨乳",
+      "人妻・主婦"
+    ],
+    "sort_key": "score",
+    "count_hint": 14
+  },
+  {
+    "type": "combo",
+    "name": "素人×中出し×3P・4P",
+    "base_genre": "素人",
+    "theme_genres": [
+      "中出し",
+      "3P・4P"
+    ],
+    "theme_genre": "中出し",
+    "required": [
+      "素人",
+      "中出し",
+      "3P・4P"
+    ],
+    "sort_key": "score",
+    "count_hint": 13
+  },
+  {
+    "type": "combo",
     "name": "素人×中出し×フェラ",
     "base_genre": "素人",
     "theme_genres": [
@@ -358,17 +341,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×3P・4P",
+    "name": "素人×中出し×美乳",
     "base_genre": "素人",
     "theme_genres": [
-      "巨乳",
-      "3P・4P"
+      "中出し",
+      "美乳"
     ],
-    "theme_genre": "巨乳",
+    "theme_genre": "中出し",
     "required": [
       "素人",
-      "巨乳",
-      "3P・4P"
+      "中出し",
+      "美乳"
     ],
     "sort_key": "score",
     "count_hint": 12
@@ -426,23 +409,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×M女",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "M女"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "M女"
-    ],
-    "sort_key": "score",
-    "count_hint": 11
-  },
-  {
-    "type": "combo",
     "name": "素人×中出し×コスプレ",
     "base_genre": "素人",
     "theme_genres": [
@@ -460,17 +426,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×熟女",
+    "name": "素人×巨乳×3P・4P",
     "base_genre": "素人",
     "theme_genres": [
-      "中出し",
-      "熟女"
+      "巨乳",
+      "3P・4P"
     ],
-    "theme_genre": "中出し",
+    "theme_genre": "巨乳",
     "required": [
       "素人",
-      "中出し",
-      "熟女"
+      "巨乳",
+      "3P・4P"
     ],
     "sort_key": "score",
     "count_hint": 11
@@ -488,6 +454,23 @@
       "素人",
       "中出し",
       "企画"
+    ],
+    "sort_key": "score",
+    "count_hint": 10
+  },
+  {
+    "type": "combo",
+    "name": "素人×中出し×熟女",
+    "base_genre": "素人",
+    "theme_genres": [
+      "中出し",
+      "熟女"
+    ],
+    "theme_genre": "中出し",
+    "required": [
+      "素人",
+      "中出し",
+      "熟女"
     ],
     "sort_key": "score",
     "count_hint": 10
@@ -579,23 +562,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×熟女",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "熟女"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "熟女"
-    ],
-    "sort_key": "score",
-    "count_hint": 10
-  },
-  {
-    "type": "combo",
     "name": "素人×スレンダー×職業色々",
     "base_genre": "素人",
     "theme_genres": [
@@ -624,6 +590,23 @@
       "素人",
       "巨乳",
       "妄想族"
+    ],
+    "sort_key": "score",
+    "count_hint": 9
+  },
+  {
+    "type": "combo",
+    "name": "素人×巨乳×熟女",
+    "base_genre": "素人",
+    "theme_genres": [
+      "巨乳",
+      "熟女"
+    ],
+    "theme_genre": "巨乳",
+    "required": [
+      "素人",
+      "巨乳",
+      "熟女"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -1063,7 +1046,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 177
+    "count_hint": 170
   },
   {
     "type": "genre",
@@ -1075,7 +1058,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 104
+    "count_hint": 101
   },
   {
     "type": "genre",
@@ -1127,36 +1110,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×淫乱・ハード系",
-    "base_genre": "素人",
-    "theme_genre": "淫乱・ハード系",
-    "required": [
-      "素人",
-      "淫乱・ハード系"
-    ],
-    "sort_key": "score",
-    "count_hint": 33
-  },
-  {
-    "type": "genre",
     "name": "素人×フェラ",
     "base_genre": "素人",
     "theme_genre": "フェラ",
     "required": [
       "素人",
       "フェラ"
-    ],
-    "sort_key": "score",
-    "count_hint": 31
-  },
-  {
-    "type": "genre",
-    "name": "素人×人妻・主婦",
-    "base_genre": "素人",
-    "theme_genre": "人妻・主婦",
-    "required": [
-      "素人",
-      "人妻・主婦"
     ],
     "sort_key": "score",
     "count_hint": 31
@@ -1187,6 +1146,30 @@
   },
   {
     "type": "genre",
+    "name": "素人×人妻・主婦",
+    "base_genre": "素人",
+    "theme_genre": "人妻・主婦",
+    "required": [
+      "素人",
+      "人妻・主婦"
+    ],
+    "sort_key": "score",
+    "count_hint": 30
+  },
+  {
+    "type": "genre",
+    "name": "素人×淫乱・ハード系",
+    "base_genre": "素人",
+    "theme_genre": "淫乱・ハード系",
+    "required": [
+      "素人",
+      "淫乱・ハード系"
+    ],
+    "sort_key": "score",
+    "count_hint": 30
+  },
+  {
+    "type": "genre",
     "name": "素人×3P・4P",
     "base_genre": "素人",
     "theme_genre": "3P・4P",
@@ -1195,7 +1178,7 @@
       "3P・4P"
     ],
     "sort_key": "score",
-    "count_hint": 30
+    "count_hint": 29
   },
   {
     "type": "genre",
@@ -1291,7 +1274,7 @@
       "熟女"
     ],
     "sort_key": "score",
-    "count_hint": 19
+    "count_hint": 18
   },
   {
     "type": "genre",
@@ -1307,18 +1290,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×M女",
-    "base_genre": "素人",
-    "theme_genre": "M女",
-    "required": [
-      "素人",
-      "M女"
-    ],
-    "sort_key": "score",
-    "count_hint": 17
-  },
-  {
-    "type": "genre",
     "name": "素人×美乳",
     "base_genre": "素人",
     "theme_genre": "美乳",
@@ -1327,7 +1298,7 @@
       "美乳"
     ],
     "sort_key": "score",
-    "count_hint": 17
+    "count_hint": 14
   },
   {
     "type": "genre",
@@ -1388,6 +1359,18 @@
     ],
     "sort_key": "score",
     "count_hint": 11
+  },
+  {
+    "type": "genre",
+    "name": "素人×M女",
+    "base_genre": "素人",
+    "theme_genre": "M女",
+    "required": [
+      "素人",
+      "M女"
+    ],
+    "sort_key": "score",
+    "count_hint": 10
   },
   {
     "type": "genre",
