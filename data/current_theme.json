@@ -1,16 +1,11 @@
 {
-  "type": "combo",
-  "name": "素人×ナンパ×美少女",
+  "type": "genre",
+  "name": "素人×乱交",
   "base_genre": "素人",
-  "theme_genres": [
-    "ナンパ",
-    "美少女"
-  ],
-  "theme_genre": "ナンパ",
+  "theme_genre": "乱交",
   "required": [
     "素人",
-    "ナンパ",
-    "美少女"
+    "乱交"
   ],
   "sort_key": "score",
   "count_hint": 9
