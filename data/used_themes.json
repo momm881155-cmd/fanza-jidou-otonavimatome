@@ -701,6 +701,18 @@
       "theme_genres": null,
       "count_hint": 9,
       "used_at": "2026-07-09"
+    },
+    {
+      "name": "素人×ナンパ×潮吹き",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "ナンパ",
+      "theme_genres": [
+        "ナンパ",
+        "潮吹き"
+      ],
+      "count_hint": 11,
+      "used_at": "2026-07-10"
     }
   ]
 }

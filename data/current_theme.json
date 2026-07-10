@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×乱交",
+  "type": "combo",
+  "name": "素人×ナンパ×潮吹き",
   "base_genre": "素人",
-  "theme_genre": "乱交",
+  "theme_genres": [
+    "ナンパ",
+    "潮吹き"
+  ],
+  "theme_genre": "ナンパ",
   "required": [
     "素人",
-    "乱交"
+    "ナンパ",
+    "潮吹き"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 11
 }
