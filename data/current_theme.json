@@ -1,11 +1,11 @@
 {
   "type": "genre",
-  "name": "素人×オナニー",
+  "name": "素人×職業色々",
   "base_genre": "素人",
-  "theme_genre": "オナニー",
+  "theme_genre": "職業色々",
   "required": [
     "素人",
-    "オナニー"
+    "職業色々"
   ],
   "sort_key": "score",
   "count_hint": 9

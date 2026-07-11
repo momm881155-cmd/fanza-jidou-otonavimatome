@@ -734,6 +734,15 @@
       "theme_genres": null,
       "count_hint": 9,
       "used_at": "2026-07-11"
+    },
+    {
+      "name": "素人×職業色々",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "職業色々",
+      "theme_genres": null,
+      "count_hint": 9,
+      "used_at": "2026-07-11"
     }
   ]
 }
