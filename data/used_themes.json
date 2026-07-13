@@ -743,6 +743,15 @@
       "theme_genres": null,
       "count_hint": 9,
       "used_at": "2026-07-11"
+    },
+    {
+      "name": "素人×お姉さん",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "お姉さん",
+      "theme_genres": null,
+      "count_hint": 13,
+      "used_at": "2026-07-13"
     }
   ]
 }

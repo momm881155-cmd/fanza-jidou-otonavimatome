@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×職業色々",
+  "name": "素人×お姉さん",
   "base_genre": "素人",
-  "theme_genre": "職業色々",
+  "theme_genre": "お姉さん",
   "required": [
     "素人",
-    "職業色々"
+    "お姉さん"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 13
 }
