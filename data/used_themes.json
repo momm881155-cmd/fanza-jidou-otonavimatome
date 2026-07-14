@@ -752,6 +752,15 @@
       "theme_genres": null,
       "count_hint": 13,
       "used_at": "2026-07-13"
+    },
+    {
+      "name": "素人×水着",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "水着",
+      "theme_genres": null,
+      "count_hint": 12,
+      "used_at": "2026-07-14"
     }
   ]
 }

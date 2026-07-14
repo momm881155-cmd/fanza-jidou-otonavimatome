@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×お姉さん",
+  "name": "素人×水着",
   "base_genre": "素人",
-  "theme_genre": "お姉さん",
+  "theme_genre": "水着",
   "required": [
     "素人",
-    "お姉さん"
+    "水着"
   ],
   "sort_key": "score",
-  "count_hint": 13
+  "count_hint": 12
 }
