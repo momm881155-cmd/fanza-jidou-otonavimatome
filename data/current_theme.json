@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×水着",
+  "type": "combo",
+  "name": "素人×人妻・主婦×ハメ撮り",
   "base_genre": "素人",
-  "theme_genre": "水着",
+  "theme_genres": [
+    "人妻・主婦",
+    "ハメ撮り"
+  ],
+  "theme_genre": "人妻・主婦",
   "required": [
     "素人",
-    "水着"
+    "人妻・主婦",
+    "ハメ撮り"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 8
 }

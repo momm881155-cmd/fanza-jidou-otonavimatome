@@ -761,6 +761,18 @@
       "theme_genres": null,
       "count_hint": 12,
       "used_at": "2026-07-14"
+    },
+    {
+      "name": "素人×人妻・主婦×ハメ撮り",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "人妻・主婦",
+      "theme_genres": [
+        "人妻・主婦",
+        "ハメ撮り"
+      ],
+      "count_hint": 8,
+      "used_at": "2026-07-15"
     }
   ]
 }
