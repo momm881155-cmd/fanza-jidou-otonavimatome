@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×その他フェチ",
+  "name": "素人×巨乳",
   "base_genre": "素人",
-  "theme_genre": "その他フェチ",
+  "theme_genre": "巨乳",
   "required": [
     "素人",
-    "その他フェチ"
+    "巨乳"
   ],
   "sort_key": "score",
-  "count_hint": 15
+  "count_hint": 64
 }
