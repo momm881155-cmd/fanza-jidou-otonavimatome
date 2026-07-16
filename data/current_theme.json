@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×人妻・主婦×ハメ撮り",
+  "type": "genre",
+  "name": "素人×その他フェチ",
   "base_genre": "素人",
-  "theme_genres": [
-    "人妻・主婦",
-    "ハメ撮り"
-  ],
-  "theme_genre": "人妻・主婦",
+  "theme_genre": "その他フェチ",
   "required": [
     "素人",
-    "人妻・主婦",
-    "ハメ撮り"
+    "その他フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 15
 }

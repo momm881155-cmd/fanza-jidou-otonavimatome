@@ -773,6 +773,15 @@
       ],
       "count_hint": 8,
       "used_at": "2026-07-15"
+    },
+    {
+      "name": "素人×その他フェチ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "その他フェチ",
+      "theme_genres": null,
+      "count_hint": 15,
+      "used_at": "2026-07-16"
     }
   ]
 }
