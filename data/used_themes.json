@@ -791,6 +791,18 @@
       "theme_genres": null,
       "count_hint": 64,
       "used_at": "2026-07-16"
+    },
+    {
+      "name": "素人×人妻・主婦×3P・4P",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "人妻・主婦",
+      "theme_genres": [
+        "人妻・主婦",
+        "3P・4P"
+      ],
+      "count_hint": 7,
+      "used_at": "2026-07-17"
     }
   ]
 }
