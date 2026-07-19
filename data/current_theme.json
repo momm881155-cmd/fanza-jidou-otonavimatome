@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×巨乳",
+  "type": "genre",
+  "name": "素人×手コキ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "巨乳"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "手コキ",
   "required": [
     "素人",
-    "中出し",
-    "巨乳"
+    "手コキ"
   ],
   "sort_key": "score",
-  "count_hint": 30
+  "count_hint": 13
 }
