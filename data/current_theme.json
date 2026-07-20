@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×手コキ",
+  "type": "combo",
+  "name": "素人×フェラ×人妻・主婦",
   "base_genre": "素人",
-  "theme_genre": "手コキ",
+  "theme_genres": [
+    "フェラ",
+    "人妻・主婦"
+  ],
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "手コキ"
+    "フェラ",
+    "人妻・主婦"
   ],
   "sort_key": "score",
-  "count_hint": 13
+  "count_hint": 10
 }
