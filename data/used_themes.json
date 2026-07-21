@@ -860,6 +860,15 @@
       ],
       "count_hint": 7,
       "used_at": "2026-07-21"
+    },
+    {
+      "name": "素人×不倫",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "不倫",
+      "theme_genres": null,
+      "count_hint": 10,
+      "used_at": "2026-07-21"
     }
   ]
 }

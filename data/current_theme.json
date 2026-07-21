@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×騎乗位",
+  "type": "genre",
+  "name": "素人×不倫",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "騎乗位"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "不倫",
   "required": [
     "素人",
-    "中出し",
-    "騎乗位"
+    "不倫"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 10
 }
