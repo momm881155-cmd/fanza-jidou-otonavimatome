@@ -881,6 +881,15 @@
       ],
       "count_hint": 9,
       "used_at": "2026-07-22"
+    },
+    {
+      "name": "素人×投稿",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "投稿",
+      "theme_genres": null,
+      "count_hint": 8,
+      "used_at": "2026-07-22"
     }
   ]
 }

@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×フェラ×美少女",
+  "type": "genre",
+  "name": "素人×投稿",
   "base_genre": "素人",
-  "theme_genres": [
-    "フェラ",
-    "美少女"
-  ],
-  "theme_genre": "フェラ",
+  "theme_genre": "投稿",
   "required": [
     "素人",
-    "フェラ",
-    "美少女"
+    "投稿"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 8
 }
