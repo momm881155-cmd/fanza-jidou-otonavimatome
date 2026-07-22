@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×不倫",
+  "type": "combo",
+  "name": "素人×フェラ×美少女",
   "base_genre": "素人",
-  "theme_genre": "不倫",
+  "theme_genres": [
+    "フェラ",
+    "美少女"
+  ],
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "不倫"
+    "フェラ",
+    "美少女"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 9
 }
