@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×潮吹き",
+  "name": "素人×キス・接吻",
   "base_genre": "素人",
-  "theme_genre": "潮吹き",
+  "theme_genre": "キス・接吻",
   "required": [
     "素人",
-    "潮吹き"
+    "キス・接吻"
   ],
   "sort_key": "score",
-  "count_hint": 21
+  "count_hint": 7
 }
