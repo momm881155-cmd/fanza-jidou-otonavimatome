@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×キス・接吻",
+  "type": "combo",
+  "name": "素人×巨乳×ナンパ",
   "base_genre": "素人",
-  "theme_genre": "キス・接吻",
+  "theme_genres": [
+    "巨乳",
+    "ナンパ"
+  ],
+  "theme_genre": "巨乳",
   "required": [
     "素人",
-    "キス・接吻"
+    "巨乳",
+    "ナンパ"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 12
 }
