@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×ナンパ",
+  "type": "genre",
+  "name": "素人×イラマチオ",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "ナンパ"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "イラマチオ",
   "required": [
     "素人",
-    "巨乳",
-    "ナンパ"
+    "イラマチオ"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 8
 }
