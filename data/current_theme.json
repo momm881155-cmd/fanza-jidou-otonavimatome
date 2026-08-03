@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×イラマチオ",
+  "name": "素人×アクメ・オーガズム",
   "base_genre": "素人",
-  "theme_genre": "イラマチオ",
+  "theme_genre": "アクメ・オーガズム",
   "required": [
     "素人",
-    "イラマチオ"
+    "アクメ・オーガズム"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 10
 }

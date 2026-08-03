@@ -929,6 +929,15 @@
       "theme_genres": null,
       "count_hint": 8,
       "used_at": "2026-07-30"
+    },
+    {
+      "name": "素人×アクメ・オーガズム",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "アクメ・オーガズム",
+      "theme_genres": null,
+      "count_hint": 10,
+      "used_at": "2026-08-03"
     }
   ]
 }
