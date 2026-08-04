@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ナンパ",
+  "type": "combo",
+  "name": "素人×巨乳×熟女",
   "base_genre": "素人",
-  "theme_genre": "ナンパ",
+  "theme_genres": [
+    "巨乳",
+    "熟女"
+  ],
+  "theme_genre": "巨乳",
   "required": [
     "素人",
-    "ナンパ"
+    "巨乳",
+    "熟女"
   ],
   "sort_key": "score",
-  "count_hint": 33
+  "count_hint": 11
 }
