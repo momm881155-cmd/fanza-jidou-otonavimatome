@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×アクメ・オーガズム",
+  "name": "素人×ナンパ",
   "base_genre": "素人",
-  "theme_genre": "アクメ・オーガズム",
+  "theme_genre": "ナンパ",
   "required": [
     "素人",
-    "アクメ・オーガズム"
+    "ナンパ"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 33
 }

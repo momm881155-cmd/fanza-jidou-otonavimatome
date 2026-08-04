@@ -938,6 +938,15 @@
       "theme_genres": null,
       "count_hint": 10,
       "used_at": "2026-08-03"
+    },
+    {
+      "name": "素人×ナンパ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ナンパ",
+      "theme_genres": null,
+      "count_hint": 33,
+      "used_at": "2026-08-04"
     }
   ]
 }
