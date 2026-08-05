@@ -959,6 +959,18 @@
       ],
       "count_hint": 11,
       "used_at": "2026-08-04"
+    },
+    {
+      "name": "素人×M女×SM",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "M女",
+      "theme_genres": [
+        "M女",
+        "SM"
+      ],
+      "count_hint": 15,
+      "used_at": "2026-08-05"
     }
   ]
 }

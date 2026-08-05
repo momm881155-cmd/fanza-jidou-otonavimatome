@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×巨乳×熟女",
+  "name": "素人×M女×SM",
   "base_genre": "素人",
   "theme_genres": [
-    "巨乳",
-    "熟女"
+    "M女",
+    "SM"
   ],
-  "theme_genre": "巨乳",
+  "theme_genre": "M女",
   "required": [
     "素人",
-    "巨乳",
-    "熟女"
+    "M女",
+    "SM"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 15
 }
