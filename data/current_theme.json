@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×M女×SM",
+  "name": "素人×ナンパ×女子大生",
   "base_genre": "素人",
   "theme_genres": [
-    "M女",
-    "SM"
+    "ナンパ",
+    "女子大生"
   ],
-  "theme_genre": "M女",
+  "theme_genre": "ナンパ",
   "required": [
     "素人",
-    "M女",
-    "SM"
+    "ナンパ",
+    "女子大生"
   ],
   "sort_key": "score",
-  "count_hint": 15
+  "count_hint": 9
 }
