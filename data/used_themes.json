@@ -1028,6 +1028,15 @@
       "theme_genres": null,
       "count_hint": 11,
       "used_at": "2026-08-11"
+    },
+    {
+      "name": "素人×痴女",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "痴女",
+      "theme_genres": null,
+      "count_hint": 11,
+      "used_at": "2026-08-13"
     }
   ]
 }
