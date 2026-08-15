@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×人妻・主婦×ドキュメンタリー",
+  "type": "genre",
+  "name": "素人×フェラ",
   "base_genre": "素人",
-  "theme_genres": [
-    "人妻・主婦",
-    "ドキュメンタリー"
-  ],
-  "theme_genre": "人妻・主婦",
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "人妻・主婦",
-    "ドキュメンタリー"
+    "フェラ"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 39
 }
