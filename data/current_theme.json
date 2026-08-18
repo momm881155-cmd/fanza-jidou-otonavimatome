@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×フェラ",
+  "type": "combo",
+  "name": "素人×中出し×妄想族",
   "base_genre": "素人",
-  "theme_genre": "フェラ",
+  "theme_genres": [
+    "中出し",
+    "妄想族"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "フェラ"
+    "中出し",
+    "妄想族"
   ],
   "sort_key": "score",
-  "count_hint": 39
+  "count_hint": 15
 }
