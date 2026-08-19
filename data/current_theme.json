@@ -1,16 +1,11 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×妄想族",
+  "type": "genre",
+  "name": "素人×コスプレ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "妄想族"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "コスプレ",
   "required": [
     "素人",
-    "中出し",
-    "妄想族"
+    "コスプレ"
   ],
   "sort_key": "score",
   "count_hint": 15

@@ -1070,6 +1070,15 @@
       ],
       "count_hint": 15,
       "used_at": "2026-08-18"
+    },
+    {
+      "name": "素人×コスプレ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "コスプレ",
+      "theme_genres": null,
+      "count_hint": 15,
+      "used_at": "2026-08-19"
     }
   ]
 }
