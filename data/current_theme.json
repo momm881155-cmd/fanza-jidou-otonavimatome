@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×巨尻",
+  "name": "素人×ごっくん",
   "base_genre": "素人",
-  "theme_genre": "巨尻",
+  "theme_genre": "ごっくん",
   "required": [
     "素人",
-    "巨尻"
+    "ごっくん"
   ],
   "sort_key": "score",
-  "count_hint": 17
+  "count_hint": 16
 }

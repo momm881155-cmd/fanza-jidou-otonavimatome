@@ -1088,6 +1088,15 @@
       "theme_genres": null,
       "count_hint": 17,
       "used_at": "2026-08-19"
+    },
+    {
+      "name": "素人×ごっくん",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ごっくん",
+      "theme_genres": null,
+      "count_hint": 16,
+      "used_at": "2026-08-20"
     }
   ]
 }
