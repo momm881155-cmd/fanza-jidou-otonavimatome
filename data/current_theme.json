@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×フェラ×その他フェチ",
+  "name": "素人×人妻・主婦×熟女",
   "base_genre": "素人",
   "theme_genres": [
-    "フェラ",
-    "その他フェチ"
+    "人妻・主婦",
+    "熟女"
   ],
-  "theme_genre": "フェラ",
+  "theme_genre": "人妻・主婦",
   "required": [
     "素人",
-    "フェラ",
-    "その他フェチ"
+    "人妻・主婦",
+    "熟女"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 22
 }

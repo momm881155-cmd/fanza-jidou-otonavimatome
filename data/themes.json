@@ -239,23 +239,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×フェラ",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "フェラ"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "フェラ"
-    ],
-    "sort_key": "score",
-    "count_hint": 12
-  },
-  {
-    "type": "combo",
     "name": "素人×中出し×スレンダー",
     "base_genre": "素人",
     "theme_genres": [
@@ -301,6 +284,23 @@
       "素人",
       "中出し",
       "童貞"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "combo",
+    "name": "素人×巨乳×フェラ",
+    "base_genre": "素人",
+    "theme_genres": [
+      "巨乳",
+      "フェラ"
+    ],
+    "theme_genre": "巨乳",
+    "required": [
+      "素人",
+      "巨乳",
+      "フェラ"
     ],
     "sort_key": "score",
     "count_hint": 11
@@ -420,23 +420,6 @@
       "素人",
       "ナンパ",
       "フェラ"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "combo",
-    "name": "素人×フェラ×その他フェチ",
-    "base_genre": "素人",
-    "theme_genres": [
-      "フェラ",
-      "その他フェチ"
-    ],
-    "theme_genre": "フェラ",
-    "required": [
-      "素人",
-      "フェラ",
-      "その他フェチ"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -681,6 +664,23 @@
   },
   {
     "type": "combo",
+    "name": "素人×フェラ×その他フェチ",
+    "base_genre": "素人",
+    "theme_genres": [
+      "フェラ",
+      "その他フェチ"
+    ],
+    "theme_genre": "フェラ",
+    "required": [
+      "素人",
+      "フェラ",
+      "その他フェチ"
+    ],
+    "sort_key": "score",
+    "count_hint": 7
+  },
+  {
+    "type": "combo",
     "name": "素人×中出し×潮吹き",
     "base_genre": "素人",
     "theme_genres": [
@@ -837,7 +837,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 64
+    "count_hint": 63
   },
   {
     "type": "genre",
@@ -861,7 +861,7 @@
       "人妻・主婦"
     ],
     "sort_key": "score",
-    "count_hint": 52
+    "count_hint": 51
   },
   {
     "type": "genre",
@@ -873,7 +873,7 @@
       "フェラ"
     ],
     "sort_key": "score",
-    "count_hint": 46
+    "count_hint": 44
   },
   {
     "type": "genre",
@@ -949,24 +949,24 @@
   },
   {
     "type": "genre",
-    "name": "素人×その他フェチ",
-    "base_genre": "素人",
-    "theme_genre": "その他フェチ",
-    "required": [
-      "素人",
-      "その他フェチ"
-    ],
-    "sort_key": "score",
-    "count_hint": 24
-  },
-  {
-    "type": "genre",
     "name": "素人×3P・4P",
     "base_genre": "素人",
     "theme_genre": "3P・4P",
     "required": [
       "素人",
       "3P・4P"
+    ],
+    "sort_key": "score",
+    "count_hint": 22
+  },
+  {
+    "type": "genre",
+    "name": "素人×その他フェチ",
+    "base_genre": "素人",
+    "theme_genre": "その他フェチ",
+    "required": [
+      "素人",
+      "その他フェチ"
     ],
     "sort_key": "score",
     "count_hint": 22
@@ -1017,7 +1017,7 @@
       "スレンダー"
     ],
     "sort_key": "score",
-    "count_hint": 19
+    "count_hint": 18
   },
   {
     "type": "genre",
