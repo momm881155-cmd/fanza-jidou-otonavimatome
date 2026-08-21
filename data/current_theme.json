@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ごっくん",
+  "type": "combo",
+  "name": "素人×フェラ×その他フェチ",
   "base_genre": "素人",
-  "theme_genre": "ごっくん",
+  "theme_genres": [
+    "フェラ",
+    "その他フェチ"
+  ],
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "ごっくん"
+    "フェラ",
+    "その他フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 16
+  "count_hint": 9
 }
