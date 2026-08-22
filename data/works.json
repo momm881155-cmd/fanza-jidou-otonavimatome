@@ -14520,33 +14520,33 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "210~",
+        "price": "300~",
         "list_price": "300~",
         "deliveries": {
           "delivery": [
             {
               "type": "download",
-              "price": "476",
+              "price": "680",
               "list_price": "680"
             },
             {
               "type": "stream",
-              "price": "210",
+              "price": "300",
               "list_price": "300"
             },
             {
               "type": "hd",
-              "price": "686",
+              "price": "980",
               "list_price": "980"
             },
             {
               "type": "iosdl",
-              "price": "476",
+              "price": "680",
               "list_price": "680"
             },
             {
               "type": "androiddl",
-              "price": "476",
+              "price": "680",
               "list_price": "680"
             }
           ]
@@ -15019,14 +15019,7 @@
             "name": "kawaii"
           }
         ]
-      },
-      "campaign": [
-        {
-          "date_begin": "2026-08-22 00:00:00",
-          "date_end": "2026-08-22 23:59:59",
-          "title": "日替わりセール◇"
-        }
-      ]
+      }
     }
   },
   {
@@ -16288,28 +16281,28 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "686~",
+        "price": "980~",
         "list_price": "980~",
         "deliveries": {
           "delivery": [
             {
               "type": "hd",
-              "price": "1036",
+              "price": "1480",
               "list_price": "1480"
             },
             {
               "type": "download",
-              "price": "686",
+              "price": "980",
               "list_price": "980"
             },
             {
               "type": "iosdl",
-              "price": "686",
+              "price": "980",
               "list_price": "980"
             },
             {
               "type": "androiddl",
-              "price": "686",
+              "price": "980",
               "list_price": "980"
             }
           ]
@@ -16383,14 +16376,7 @@
             "name": "ゆるポケ"
           }
         ]
-      },
-      "campaign": [
-        {
-          "date_begin": "2026-08-22 00:00:00",
-          "date_end": "2026-08-22 23:59:59",
-          "title": "日替わりセール◇"
-        }
-      ]
+      }
     }
   },
   {
@@ -23676,39 +23662,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -38161,39 +38147,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -39042,39 +39028,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -42537,39 +42523,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -46216,39 +46202,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -49901,39 +49887,39 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "200~",
+        "list_price": "200~",
         "deliveries": {
           "delivery": [
             {
               "type": "4k",
-              "price": "1280",
-              "list_price": "1280"
-            },
-            {
-              "type": "hd",
               "price": "780",
               "list_price": "780"
             },
             {
-              "type": "download",
+              "type": "hd",
               "price": "580",
               "list_price": "580"
+            },
+            {
+              "type": "download",
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "200",
+              "list_price": "200"
             },
             {
               "type": "iosdl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "androiddl",
-              "price": "580",
-              "list_price": "580"
+              "price": "300",
+              "list_price": "300"
             }
           ]
         }
@@ -57122,48 +57108,48 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 1033,
-            "name": "お姉さん"
-          },
-          {
-            "id": 4024,
-            "name": "素人"
-          },
-          {
-            "id": 5002,
-            "name": "フェラ"
-          },
-          {
-            "id": 5004,
-            "name": "手コキ"
-          },
-          {
-            "id": 4023,
-            "name": "ドキュメンタリー"
-          },
-          {
-            "id": 4010,
-            "name": "その他フェチ"
-          },
-          {
-            "id": 2001,
-            "name": "巨乳"
-          },
-          {
-            "id": 2024,
-            "name": "巨尻"
-          },
-          {
-            "id": 1031,
-            "name": "痴女"
+            "id": 6533,
+            "name": "ハイビジョン"
           },
           {
             "id": 79015,
             "name": "4K"
           },
           {
-            "id": 6533,
-            "name": "ハイビジョン"
+            "id": 1031,
+            "name": "痴女"
+          },
+          {
+            "id": 2024,
+            "name": "巨尻"
+          },
+          {
+            "id": 2001,
+            "name": "巨乳"
+          },
+          {
+            "id": 4010,
+            "name": "その他フェチ"
+          },
+          {
+            "id": 4023,
+            "name": "ドキュメンタリー"
+          },
+          {
+            "id": 5004,
+            "name": "手コキ"
+          },
+          {
+            "id": 5002,
+            "name": "フェラ"
+          },
+          {
+            "id": 4024,
+            "name": "素人"
+          },
+          {
+            "id": 1033,
+            "name": "お姉さん"
           }
         ],
         "series": [
@@ -60686,32 +60672,32 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 2001,
-            "name": "巨乳"
-          },
-          {
-            "id": 6149,
-            "name": "超乳"
-          },
-          {
-            "id": 2007,
-            "name": "ぽっちゃり"
-          },
-          {
-            "id": 1031,
-            "name": "痴女"
-          },
-          {
-            "id": 5019,
-            "name": "パイズリ"
+            "id": 4025,
+            "name": "単体作品"
           },
           {
             "id": 6533,
             "name": "ハイビジョン"
           },
           {
-            "id": 4025,
-            "name": "単体作品"
+            "id": 5019,
+            "name": "パイズリ"
+          },
+          {
+            "id": 1031,
+            "name": "痴女"
+          },
+          {
+            "id": 2007,
+            "name": "ぽっちゃり"
+          },
+          {
+            "id": 6149,
+            "name": "超乳"
+          },
+          {
+            "id": 2001,
+            "name": "巨乳"
           }
         ],
         "maker": [
@@ -66523,52 +66509,52 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 5005,
-            "name": "アナル"
-          },
-          {
-            "id": 4024,
-            "name": "素人"
-          },
-          {
-            "id": 72,
-            "name": "異物挿入"
-          },
-          {
-            "id": 6941,
-            "name": "ディルド"
-          },
-          {
-            "id": 4001,
-            "name": "SM"
-          },
-          {
-            "id": 4017,
-            "name": "局部アップ"
-          },
-          {
-            "id": 5066,
-            "name": "電マ"
-          },
-          {
-            "id": 6967,
-            "name": "M女"
-          },
-          {
-            "id": 2006,
-            "name": "スレンダー"
-          },
-          {
-            "id": 2003,
-            "name": "小柄"
+            "id": 6533,
+            "name": "ハイビジョン"
           },
           {
             "id": 79015,
             "name": "4K"
           },
           {
-            "id": 6533,
-            "name": "ハイビジョン"
+            "id": 2003,
+            "name": "小柄"
+          },
+          {
+            "id": 2006,
+            "name": "スレンダー"
+          },
+          {
+            "id": 6967,
+            "name": "M女"
+          },
+          {
+            "id": 5066,
+            "name": "電マ"
+          },
+          {
+            "id": 4017,
+            "name": "局部アップ"
+          },
+          {
+            "id": 4001,
+            "name": "SM"
+          },
+          {
+            "id": 6941,
+            "name": "ディルド"
+          },
+          {
+            "id": 72,
+            "name": "異物挿入"
+          },
+          {
+            "id": 4024,
+            "name": "素人"
+          },
+          {
+            "id": 5005,
+            "name": "アナル"
           }
         ],
         "series": [
@@ -81344,32 +81330,32 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 6533,
-            "name": "ハイビジョン"
-          },
-          {
-            "id": 79015,
-            "name": "4K"
-          },
-          {
-            "id": 6548,
-            "name": "独占配信"
-          },
-          {
-            "id": 5001,
-            "name": "中出し"
-          },
-          {
-            "id": 4025,
-            "name": "単体作品"
+            "id": 4111,
+            "name": "寝取り・寝取られ・NTR"
           },
           {
             "id": 4139,
             "name": "ファン感謝・訪問"
           },
           {
-            "id": 4111,
-            "name": "寝取り・寝取られ・NTR"
+            "id": 4025,
+            "name": "単体作品"
+          },
+          {
+            "id": 5001,
+            "name": "中出し"
+          },
+          {
+            "id": 6548,
+            "name": "独占配信"
+          },
+          {
+            "id": 79015,
+            "name": "4K"
+          },
+          {
+            "id": 6533,
+            "name": "ハイビジョン"
           }
         ],
         "maker": [
@@ -91139,28 +91125,28 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 6533,
-            "name": "ハイビジョン"
-          },
-          {
-            "id": 5001,
-            "name": "中出し"
-          },
-          {
-            "id": 5002,
-            "name": "フェラ"
-          },
-          {
-            "id": 4139,
-            "name": "ファン感謝・訪問"
+            "id": 4059,
+            "name": "キス・接吻"
           },
           {
             "id": 4025,
             "name": "単体作品"
           },
           {
-            "id": 4059,
-            "name": "キス・接吻"
+            "id": 4139,
+            "name": "ファン感謝・訪問"
+          },
+          {
+            "id": 5002,
+            "name": "フェラ"
+          },
+          {
+            "id": 5001,
+            "name": "中出し"
+          },
+          {
+            "id": 6533,
+            "name": "ハイビジョン"
           }
         ],
         "maker": [
@@ -113584,36 +113570,36 @@
       "iteminfo": {
         "genre": [
           {
-            "id": 6533,
-            "name": "ハイビジョン"
-          },
-          {
-            "id": 6548,
-            "name": "独占配信"
-          },
-          {
-            "id": 6934,
-            "name": "お爺ちゃん"
-          },
-          {
-            "id": 6995,
-            "name": "妄想族"
-          },
-          {
-            "id": 5001,
-            "name": "中出し"
-          },
-          {
-            "id": 2001,
-            "name": "巨乳"
+            "id": 2024,
+            "name": "巨尻"
           },
           {
             "id": 6002,
             "name": "ハメ撮り"
           },
           {
-            "id": 2024,
-            "name": "巨尻"
+            "id": 2001,
+            "name": "巨乳"
+          },
+          {
+            "id": 5001,
+            "name": "中出し"
+          },
+          {
+            "id": 6995,
+            "name": "妄想族"
+          },
+          {
+            "id": 6934,
+            "name": "お爺ちゃん"
+          },
+          {
+            "id": 6548,
+            "name": "独占配信"
+          },
+          {
+            "id": 6533,
+            "name": "ハイビジョン"
           }
         ],
         "series": [
@@ -126949,13 +126935,13 @@
           "delivery": [
             {
               "type": "hd",
-              "price": "850",
-              "list_price": "850"
+              "price": "600",
+              "list_price": "600"
             },
             {
               "type": "download",
-              "price": "650",
-              "list_price": "650"
+              "price": "450",
+              "list_price": "450"
             },
             {
               "type": "stream",
@@ -126964,13 +126950,13 @@
             },
             {
               "type": "iosdl",
-              "price": "650",
-              "list_price": "650"
+              "price": "450",
+              "list_price": "450"
             },
             {
               "type": "androiddl",
-              "price": "650",
-              "list_price": "650"
+              "price": "450",
+              "list_price": "450"
             }
           ]
         }
