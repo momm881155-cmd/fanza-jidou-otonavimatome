@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×熟女",
+  "name": "素人×巨乳×女性向け",
   "base_genre": "素人",
   "theme_genres": [
-    "中出し",
-    "熟女"
+    "巨乳",
+    "女性向け"
   ],
-  "theme_genre": "中出し",
+  "theme_genre": "巨乳",
   "required": [
     "素人",
-    "中出し",
-    "熟女"
+    "巨乳",
+    "女性向け"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 8
 }
