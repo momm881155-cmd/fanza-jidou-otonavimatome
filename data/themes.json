@@ -239,6 +239,23 @@
   },
   {
     "type": "combo",
+    "name": "素人×フェラ×羞恥",
+    "base_genre": "素人",
+    "theme_genres": [
+      "フェラ",
+      "羞恥"
+    ],
+    "theme_genre": "フェラ",
+    "required": [
+      "素人",
+      "フェラ",
+      "羞恥"
+    ],
+    "sort_key": "score",
+    "count_hint": 10
+  },
+  {
+    "type": "combo",
     "name": "素人×人妻・主婦×3P・4P",
     "base_genre": "素人",
     "theme_genres": [
@@ -335,23 +352,6 @@
       "素人",
       "M女",
       "SM"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "combo",
-    "name": "素人×フェラ×羞恥",
-    "base_genre": "素人",
-    "theme_genres": [
-      "フェラ",
-      "羞恥"
-    ],
-    "theme_genre": "フェラ",
-    "required": [
-      "素人",
-      "フェラ",
-      "羞恥"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -494,40 +494,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×女性向け",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "女性向け"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "女性向け"
-    ],
-    "sort_key": "score",
-    "count_hint": 8
-  },
-  {
-    "type": "combo",
-    "name": "素人×盗撮・のぞき×女性向け",
-    "base_genre": "素人",
-    "theme_genres": [
-      "盗撮・のぞき",
-      "女性向け"
-    ],
-    "theme_genre": "盗撮・のぞき",
-    "required": [
-      "素人",
-      "盗撮・のぞき",
-      "女性向け"
-    ],
-    "sort_key": "score",
-    "count_hint": 8
-  },
-  {
-    "type": "combo",
     "name": "素人×その他フェチ×お姉さん",
     "base_genre": "素人",
     "theme_genres": [
@@ -596,23 +562,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×盗撮・のぞき",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "盗撮・のぞき"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "盗撮・のぞき"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
     "name": "素人×巨乳×美乳",
     "base_genre": "素人",
     "theme_genres": [
@@ -641,6 +590,23 @@
       "素人",
       "巨乳",
       "美少女"
+    ],
+    "sort_key": "score",
+    "count_hint": 7
+  },
+  {
+    "type": "combo",
+    "name": "素人×盗撮・のぞき×女性向け",
+    "base_genre": "素人",
+    "theme_genres": [
+      "盗撮・のぞき",
+      "女性向け"
+    ],
+    "theme_genre": "盗撮・のぞき",
+    "required": [
+      "素人",
+      "盗撮・のぞき",
+      "女性向け"
     ],
     "sort_key": "score",
     "count_hint": 7
@@ -689,7 +655,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 127
+    "count_hint": 126
   },
   {
     "type": "genre",
@@ -701,7 +667,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 60
+    "count_hint": 58
   },
   {
     "type": "genre",
@@ -725,7 +691,7 @@
       "人妻・主婦"
     ],
     "sort_key": "score",
-    "count_hint": 40
+    "count_hint": 41
   },
   {
     "type": "genre",
@@ -761,19 +727,7 @@
       "フェラ"
     ],
     "sort_key": "score",
-    "count_hint": 34
-  },
-  {
-    "type": "genre",
-    "name": "素人×盗撮・のぞき",
-    "base_genre": "素人",
-    "theme_genre": "盗撮・のぞき",
-    "required": [
-      "素人",
-      "盗撮・のぞき"
-    ],
-    "sort_key": "score",
-    "count_hint": 28
+    "count_hint": 35
   },
   {
     "type": "genre",
@@ -785,7 +739,19 @@
       "3P・4P"
     ],
     "sort_key": "score",
-    "count_hint": 25
+    "count_hint": 26
+  },
+  {
+    "type": "genre",
+    "name": "素人×盗撮・のぞき",
+    "base_genre": "素人",
+    "theme_genre": "盗撮・のぞき",
+    "required": [
+      "素人",
+      "盗撮・のぞき"
+    ],
+    "sort_key": "score",
+    "count_hint": 26
   },
   {
     "type": "genre",
@@ -845,6 +811,18 @@
       "羞恥"
     ],
     "sort_key": "score",
+    "count_hint": 20
+  },
+  {
+    "type": "genre",
+    "name": "素人×ドキュメンタリー",
+    "base_genre": "素人",
+    "theme_genre": "ドキュメンタリー",
+    "required": [
+      "素人",
+      "ドキュメンタリー"
+    ],
+    "sort_key": "score",
     "count_hint": 19
   },
   {
@@ -855,18 +833,6 @@
     "required": [
       "素人",
       "スレンダー"
-    ],
-    "sort_key": "score",
-    "count_hint": 18
-  },
-  {
-    "type": "genre",
-    "name": "素人×ドキュメンタリー",
-    "base_genre": "素人",
-    "theme_genre": "ドキュメンタリー",
-    "required": [
-      "素人",
-      "ドキュメンタリー"
     ],
     "sort_key": "score",
     "count_hint": 18
@@ -906,6 +872,18 @@
     ],
     "sort_key": "score",
     "count_hint": 15
+  },
+  {
+    "type": "genre",
+    "name": "素人×寝取り・寝取られ・NTR",
+    "base_genre": "素人",
+    "theme_genre": "寝取り・寝取られ・NTR",
+    "required": [
+      "素人",
+      "寝取り・寝取られ・NTR"
+    ],
+    "sort_key": "score",
+    "count_hint": 14
   },
   {
     "type": "genre",
@@ -951,18 +929,6 @@
     "required": [
       "素人",
       "コスプレ"
-    ],
-    "sort_key": "score",
-    "count_hint": 13
-  },
-  {
-    "type": "genre",
-    "name": "素人×寝取り・寝取られ・NTR",
-    "base_genre": "素人",
-    "theme_genre": "寝取り・寝取られ・NTR",
-    "required": [
-      "素人",
-      "寝取り・寝取られ・NTR"
     ],
     "sort_key": "score",
     "count_hint": 13
@@ -1035,18 +1001,6 @@
     "required": [
       "素人",
       "ごっくん"
-    ],
-    "sort_key": "score",
-    "count_hint": 10
-  },
-  {
-    "type": "genre",
-    "name": "素人×女性向け",
-    "base_genre": "素人",
-    "theme_genre": "女性向け",
-    "required": [
-      "素人",
-      "女性向け"
     ],
     "sort_key": "score",
     "count_hint": 10
@@ -1146,6 +1100,18 @@
     ],
     "sort_key": "score",
     "count_hint": 9
+  },
+  {
+    "type": "genre",
+    "name": "素人×女性向け",
+    "base_genre": "素人",
+    "theme_genre": "女性向け",
+    "required": [
+      "素人",
+      "女性向け"
+    ],
+    "sort_key": "score",
+    "count_hint": 8
   },
   {
     "type": "genre",

@@ -1169,6 +1169,15 @@
       ],
       "count_hint": 8,
       "used_at": "2026-08-24"
+    },
+    {
+      "name": "素人×熟女",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "熟女",
+      "theme_genres": null,
+      "count_hint": 14,
+      "used_at": "2026-08-24"
     }
   ]
 }

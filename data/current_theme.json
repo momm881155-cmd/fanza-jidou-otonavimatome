@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×女性向け",
+  "type": "genre",
+  "name": "素人×熟女",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "女性向け"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "熟女",
   "required": [
     "素人",
-    "巨乳",
-    "女性向け"
+    "熟女"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 14
 }
