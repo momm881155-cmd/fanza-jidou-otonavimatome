@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×熟女",
+  "name": "素人×人妻・主婦",
   "base_genre": "素人",
-  "theme_genre": "熟女",
+  "theme_genre": "人妻・主婦",
   "required": [
     "素人",
-    "熟女"
+    "人妻・主婦"
   ],
   "sort_key": "score",
-  "count_hint": 14
+  "count_hint": 35
 }
