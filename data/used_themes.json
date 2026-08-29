@@ -1196,6 +1196,15 @@
       "theme_genres": null,
       "count_hint": 13,
       "used_at": "2026-08-27"
+    },
+    {
+      "name": "素人×美少女",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "美少女",
+      "theme_genres": null,
+      "count_hint": 36,
+      "used_at": "2026-08-29"
     }
   ]
 }
