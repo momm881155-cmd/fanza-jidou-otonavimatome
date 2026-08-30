@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×美少女",
+  "name": "素人×ギャル",
   "base_genre": "素人",
-  "theme_genre": "美少女",
+  "theme_genre": "ギャル",
   "required": [
     "素人",
-    "美少女"
+    "ギャル"
   ],
   "sort_key": "score",
-  "count_hint": 36
+  "count_hint": 12
 }
