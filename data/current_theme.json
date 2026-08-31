@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ギャル",
+  "type": "combo",
+  "name": "素人×中出し×潮吹き",
   "base_genre": "素人",
-  "theme_genre": "ギャル",
+  "theme_genres": [
+    "中出し",
+    "潮吹き"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "ギャル"
+    "中出し",
+    "潮吹き"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 19
 }
