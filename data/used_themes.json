@@ -1250,6 +1250,15 @@
       ],
       "count_hint": 10,
       "used_at": "2026-09-02"
+    },
+    {
+      "name": "素人×SM",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "SM",
+      "theme_genres": null,
+      "count_hint": 10,
+      "used_at": "2026-09-03"
     }
   ]
 }
