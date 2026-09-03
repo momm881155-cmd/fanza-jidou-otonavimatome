@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×SM",
+  "name": "素人×ハメ撮り",
   "base_genre": "素人",
-  "theme_genre": "SM",
+  "theme_genre": "ハメ撮り",
   "required": [
     "素人",
-    "SM"
+    "ハメ撮り"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 20
 }
