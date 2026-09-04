@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×ハメ撮り",
+  "name": "素人×企画",
   "base_genre": "素人",
-  "theme_genre": "ハメ撮り",
+  "theme_genre": "企画",
   "required": [
     "素人",
-    "ハメ撮り"
+    "企画"
   ],
   "sort_key": "score",
-  "count_hint": 20
+  "count_hint": 28
 }
