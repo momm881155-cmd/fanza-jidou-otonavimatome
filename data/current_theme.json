@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×企画",
+  "type": "combo",
+  "name": "素人×盗撮・のぞき×エステ",
   "base_genre": "素人",
-  "theme_genre": "企画",
+  "theme_genres": [
+    "盗撮・のぞき",
+    "エステ"
+  ],
+  "theme_genre": "盗撮・のぞき",
   "required": [
     "素人",
-    "企画"
+    "盗撮・のぞき",
+    "エステ"
   ],
   "sort_key": "score",
-  "count_hint": 28
+  "count_hint": 11
 }

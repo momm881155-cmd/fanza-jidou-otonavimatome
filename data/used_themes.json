@@ -1277,6 +1277,18 @@
       "theme_genres": null,
       "count_hint": 28,
       "used_at": "2026-09-04"
+    },
+    {
+      "name": "素人×盗撮・のぞき×エステ",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "盗撮・のぞき",
+      "theme_genres": [
+        "盗撮・のぞき",
+        "エステ"
+      ],
+      "count_hint": 11,
+      "used_at": "2026-09-04"
     }
   ]
 }
