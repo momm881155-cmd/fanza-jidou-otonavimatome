@@ -1289,6 +1289,15 @@
       ],
       "count_hint": 11,
       "used_at": "2026-09-04"
+    },
+    {
+      "name": "素人×女性向け",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "女性向け",
+      "theme_genres": null,
+      "count_hint": 9,
+      "used_at": "2026-09-05"
     }
   ]
 }

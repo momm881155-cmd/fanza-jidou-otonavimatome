@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×盗撮・のぞき×エステ",
+  "type": "genre",
+  "name": "素人×女性向け",
   "base_genre": "素人",
-  "theme_genres": [
-    "盗撮・のぞき",
-    "エステ"
-  ],
-  "theme_genre": "盗撮・のぞき",
+  "theme_genre": "女性向け",
   "required": [
     "素人",
-    "盗撮・のぞき",
-    "エステ"
+    "女性向け"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 9
 }
