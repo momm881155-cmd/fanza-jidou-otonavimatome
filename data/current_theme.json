@@ -1,11 +1,16 @@
 {
-  "type": "genre",
-  "name": "素人×女性向け",
+  "type": "combo",
+  "name": "素人×中出し×ハメ撮り",
   "base_genre": "素人",
-  "theme_genre": "女性向け",
+  "theme_genres": [
+    "中出し",
+    "ハメ撮り"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "女性向け"
+    "中出し",
+    "ハメ撮り"
   ],
   "sort_key": "score",
   "count_hint": 9

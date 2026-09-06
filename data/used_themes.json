@@ -1298,6 +1298,18 @@
       "theme_genres": null,
       "count_hint": 9,
       "used_at": "2026-09-05"
+    },
+    {
+      "name": "素人×中出し×ハメ撮り",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "中出し",
+      "theme_genres": [
+        "中出し",
+        "ハメ撮り"
+      ],
+      "count_hint": 9,
+      "used_at": "2026-09-06"
     }
   ]
 }
