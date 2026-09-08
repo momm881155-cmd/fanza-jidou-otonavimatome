@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×ハメ撮り",
+  "type": "genre",
+  "name": "素人×パイズリ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "ハメ撮り"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "パイズリ",
   "required": [
     "素人",
-    "中出し",
-    "ハメ撮り"
+    "パイズリ"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 7
 }

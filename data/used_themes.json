@@ -1310,6 +1310,15 @@
       ],
       "count_hint": 9,
       "used_at": "2026-09-06"
+    },
+    {
+      "name": "素人×パイズリ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "パイズリ",
+      "theme_genres": null,
+      "count_hint": 7,
+      "used_at": "2026-09-08"
     }
   ]
 }
