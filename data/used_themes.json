@@ -1319,6 +1319,18 @@
       "theme_genres": null,
       "count_hint": 7,
       "used_at": "2026-09-08"
+    },
+    {
+      "name": "素人×ナンパ×企画",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "ナンパ",
+      "theme_genres": [
+        "ナンパ",
+        "企画"
+      ],
+      "count_hint": 20,
+      "used_at": "2026-09-09"
     }
   ]
 }
