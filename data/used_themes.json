@@ -1340,6 +1340,15 @@
       "theme_genres": null,
       "count_hint": 20,
       "used_at": "2026-09-09"
+    },
+    {
+      "name": "素人×童貞",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "童貞",
+      "theme_genres": null,
+      "count_hint": 16,
+      "used_at": "2026-09-12"
     }
   ]
 }
