@@ -11779,6 +11779,17 @@
         "美少女"
       ],
       "used_at": "2026-09-14"
+    },
+    {
+      "content_id": "usag00068",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "妄想族",
+      "theme_genres": [
+        "妄想族"
+      ],
+      "used_at": "2026-09-15"
     }
   ]
 }

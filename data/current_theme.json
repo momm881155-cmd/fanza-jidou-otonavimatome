@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×3P・4P",
+  "name": "素人×妄想族",
   "base_genre": "素人",
-  "theme_genre": "3P・4P",
+  "theme_genre": "妄想族",
   "required": [
     "素人",
-    "3P・4P"
+    "妄想族"
   ],
   "sort_key": "score",
-  "count_hint": 26
+  "count_hint": 49
 }
