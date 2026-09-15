@@ -1385,6 +1385,15 @@
       ],
       "count_hint": 17,
       "used_at": "2026-09-14"
+    },
+    {
+      "name": "素人×3P・4P",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "3P・4P",
+      "theme_genres": null,
+      "count_hint": 26,
+      "used_at": "2026-09-15"
     }
   ]
 }
