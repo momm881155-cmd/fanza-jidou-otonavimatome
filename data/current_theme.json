@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×ハメ撮り",
+  "type": "genre",
+  "name": "素人×ドキュメンタリー",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "ハメ撮り"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "ドキュメンタリー",
   "required": [
     "素人",
-    "巨乳",
-    "ハメ撮り"
+    "ドキュメンタリー"
   ],
   "sort_key": "score",
-  "count_hint": 140
+  "count_hint": 45
 }

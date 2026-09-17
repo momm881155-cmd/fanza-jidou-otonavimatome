@@ -1415,6 +1415,15 @@
       ],
       "count_hint": 140,
       "used_at": "2026-09-16"
+    },
+    {
+      "name": "素人×ドキュメンタリー",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ドキュメンタリー",
+      "theme_genres": null,
+      "count_hint": 45,
+      "used_at": "2026-09-17"
     }
   ]
 }
