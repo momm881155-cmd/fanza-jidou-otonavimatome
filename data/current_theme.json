@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×おもちゃ",
+  "name": "素人×騎乗位",
   "base_genre": "素人",
-  "theme_genre": "おもちゃ",
+  "theme_genre": "騎乗位",
   "required": [
     "素人",
-    "おもちゃ"
+    "騎乗位"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 17
 }
