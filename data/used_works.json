@@ -11882,6 +11882,94 @@
         "ドキュメンタリー"
       ],
       "used_at": "2026-09-17"
+    },
+    {
+      "content_id": "h_1472fanh00070",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "h_1472fanh00099",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "h_1472fanh00079",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "1sdam00174",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "1stcv00569",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "1sdam00177",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "1stcv00568",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
+    },
+    {
+      "content_id": "h_1711docd00097",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "おもちゃ",
+      "theme_genres": [
+        "おもちゃ"
+      ],
+      "used_at": "2026-09-18"
     }
   ]
 }

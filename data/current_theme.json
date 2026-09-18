@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×ドキュメンタリー",
+  "name": "素人×おもちゃ",
   "base_genre": "素人",
-  "theme_genre": "ドキュメンタリー",
+  "theme_genre": "おもちゃ",
   "required": [
     "素人",
-    "ドキュメンタリー"
+    "おもちゃ"
   ],
   "sort_key": "score",
-  "count_hint": 45
+  "count_hint": 10
 }
