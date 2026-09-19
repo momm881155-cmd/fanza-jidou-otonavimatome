@@ -1454,6 +1454,15 @@
       ],
       "count_hint": 29,
       "used_at": "2026-09-19"
+    },
+    {
+      "name": "素人×M女",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "M女",
+      "theme_genres": null,
+      "count_hint": 8,
+      "used_at": "2026-09-19"
     }
   ]
 }
