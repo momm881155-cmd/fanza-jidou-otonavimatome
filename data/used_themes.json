@@ -1484,6 +1484,18 @@
       "theme_genres": null,
       "count_hint": 112,
       "used_at": "2026-09-21"
+    },
+    {
+      "name": "素人×ハメ撮り×ドキュメンタリー",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "ハメ撮り",
+      "theme_genres": [
+        "ハメ撮り",
+        "ドキュメンタリー"
+      ],
+      "count_hint": 32,
+      "used_at": "2026-09-21"
     }
   ]
 }
