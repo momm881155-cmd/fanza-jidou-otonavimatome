@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×フェラ",
+  "type": "genre",
+  "name": "素人×潮吹き",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "フェラ"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "潮吹き",
   "required": [
     "素人",
-    "巨乳",
-    "フェラ"
+    "潮吹き"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 11
 }

@@ -1541,6 +1541,15 @@
       ],
       "count_hint": 9,
       "used_at": "2026-09-24"
+    },
+    {
+      "name": "素人×潮吹き",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "潮吹き",
+      "theme_genres": null,
+      "count_hint": 11,
+      "used_at": "2026-09-24"
     }
   ]
 }
