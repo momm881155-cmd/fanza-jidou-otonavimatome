@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×潮吹き",
+  "name": "素人×マッサージ・リフレ",
   "base_genre": "素人",
-  "theme_genre": "潮吹き",
+  "theme_genre": "マッサージ・リフレ",
   "required": [
     "素人",
-    "潮吹き"
+    "マッサージ・リフレ"
   ],
   "sort_key": "score",
-  "count_hint": 11
+  "count_hint": 7
 }
