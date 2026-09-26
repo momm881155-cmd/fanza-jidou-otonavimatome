@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×マッサージ・リフレ",
+  "name": "素人×ぽっちゃり",
   "base_genre": "素人",
-  "theme_genre": "マッサージ・リフレ",
+  "theme_genre": "ぽっちゃり",
   "required": [
     "素人",
-    "マッサージ・リフレ"
+    "ぽっちゃり"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 8
 }

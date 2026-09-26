@@ -1559,6 +1559,15 @@
       "theme_genres": null,
       "count_hint": 7,
       "used_at": "2026-09-25"
+    },
+    {
+      "name": "素人×ぽっちゃり",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ぽっちゃり",
+      "theme_genres": null,
+      "count_hint": 8,
+      "used_at": "2026-09-26"
     }
   ]
 }
