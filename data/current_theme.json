@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×ぽっちゃり",
+  "name": "素人×女子校生",
   "base_genre": "素人",
-  "theme_genre": "ぽっちゃり",
+  "theme_genre": "女子校生",
   "required": [
     "素人",
-    "ぽっちゃり"
+    "女子校生"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 16
 }
