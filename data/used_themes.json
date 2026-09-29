@@ -1601,6 +1601,15 @@
       ],
       "count_hint": 7,
       "used_at": "2026-09-28"
+    },
+    {
+      "name": "素人×イラマチオ",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "イラマチオ",
+      "theme_genres": null,
+      "count_hint": 7,
+      "used_at": "2026-09-29"
     }
   ]
 }

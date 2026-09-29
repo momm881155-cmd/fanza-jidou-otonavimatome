@@ -1,16 +1,11 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×女子大生",
+  "type": "genre",
+  "name": "素人×イラマチオ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "女子大生"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "イラマチオ",
   "required": [
     "素人",
-    "中出し",
-    "女子大生"
+    "イラマチオ"
   ],
   "sort_key": "score",
   "count_hint": 7
