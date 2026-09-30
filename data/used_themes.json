@@ -1610,6 +1610,18 @@
       "theme_genres": null,
       "count_hint": 7,
       "used_at": "2026-09-29"
+    },
+    {
+      "name": "素人×巨乳×コスプレ",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "巨乳",
+      "theme_genres": [
+        "巨乳",
+        "コスプレ"
+      ],
+      "count_hint": 14,
+      "used_at": "2026-09-30"
     }
   ]
 }
