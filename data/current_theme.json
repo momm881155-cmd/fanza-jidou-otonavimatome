@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×スレンダー",
+  "type": "genre",
+  "name": "素人×ローション・オイル",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "スレンダー"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "ローション・オイル",
   "required": [
     "素人",
-    "中出し",
-    "スレンダー"
+    "ローション・オイル"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 7
 }

@@ -13080,6 +13080,28 @@
         "スレンダー"
       ],
       "used_at": "2026-09-30"
+    },
+    {
+      "content_id": "1ofsd00040",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ローション・オイル",
+      "theme_genres": [
+        "ローション・オイル"
+      ],
+      "used_at": "2026-10-01"
+    },
+    {
+      "content_id": "1svvrt00086",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "ローション・オイル",
+      "theme_genres": [
+        "ローション・オイル"
+      ],
+      "used_at": "2026-10-01"
     }
   ]
 }
