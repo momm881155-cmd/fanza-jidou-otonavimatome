@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×ローション・オイル",
+  "type": "combo",
+  "name": "素人×中出し×巨乳",
   "base_genre": "素人",
-  "theme_genre": "ローション・オイル",
+  "theme_genres": [
+    "中出し",
+    "巨乳"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "ローション・オイル"
+    "中出し",
+    "巨乳"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 34
 }
