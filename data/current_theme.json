@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×巨乳",
+  "type": "genre",
+  "name": "素人×その他フェチ",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "巨乳"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "その他フェチ",
   "required": [
     "素人",
-    "中出し",
-    "巨乳"
+    "その他フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 34
+  "count_hint": 26
 }
