@@ -1664,6 +1664,18 @@
       "theme_genres": null,
       "count_hint": 26,
       "used_at": "2026-10-02"
+    },
+    {
+      "name": "素人×美少女×フェラ",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "美少女",
+      "theme_genres": [
+        "美少女",
+        "フェラ"
+      ],
+      "count_hint": 13,
+      "used_at": "2026-10-03"
     }
   ]
 }
