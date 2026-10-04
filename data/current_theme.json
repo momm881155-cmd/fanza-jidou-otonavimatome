@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×盗撮・のぞき",
+  "name": "素人×乱交",
   "base_genre": "素人",
-  "theme_genre": "盗撮・のぞき",
+  "theme_genre": "乱交",
   "required": [
     "素人",
-    "盗撮・のぞき"
+    "乱交"
   ],
   "sort_key": "score",
-  "count_hint": 20
+  "count_hint": 9
 }

@@ -14,7 +14,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 39
+    "count_hint": 38
   },
   {
     "type": "combo",
@@ -48,7 +48,7 @@
       "美少女"
     ],
     "sort_key": "score",
-    "count_hint": 27
+    "count_hint": 25
   },
   {
     "type": "combo",
@@ -65,7 +65,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 24
+    "count_hint": 23
   },
   {
     "type": "combo",
@@ -82,7 +82,7 @@
       "ナンパ"
     ],
     "sort_key": "score",
-    "count_hint": 24
+    "count_hint": 22
   },
   {
     "type": "combo",
@@ -154,23 +154,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×女子大生",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "女子大生"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "女子大生"
-    ],
-    "sort_key": "score",
-    "count_hint": 13
-  },
-  {
-    "type": "combo",
     "name": "素人×妄想族×コスプレ",
     "base_genre": "素人",
     "theme_genres": [
@@ -202,6 +185,23 @@
     ],
     "sort_key": "score",
     "count_hint": 13
+  },
+  {
+    "type": "combo",
+    "name": "素人×中出し×女子大生",
+    "base_genre": "素人",
+    "theme_genres": [
+      "中出し",
+      "女子大生"
+    ],
+    "theme_genre": "中出し",
+    "required": [
+      "素人",
+      "中出し",
+      "女子大生"
+    ],
+    "sort_key": "score",
+    "count_hint": 12
   },
   {
     "type": "combo",
@@ -528,23 +528,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×盗撮・のぞき×女性向け",
-    "base_genre": "素人",
-    "theme_genres": [
-      "盗撮・のぞき",
-      "女性向け"
-    ],
-    "theme_genre": "盗撮・のぞき",
-    "required": [
-      "素人",
-      "盗撮・のぞき",
-      "女性向け"
-    ],
-    "sort_key": "score",
-    "count_hint": 8
-  },
-  {
-    "type": "combo",
     "name": "素人×フェラ×羞恥",
     "base_genre": "素人",
     "theme_genres": [
@@ -630,40 +613,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×妄想族×アクメ・オーガズム",
-    "base_genre": "素人",
-    "theme_genres": [
-      "妄想族",
-      "アクメ・オーガズム"
-    ],
-    "theme_genre": "妄想族",
-    "required": [
-      "素人",
-      "妄想族",
-      "アクメ・オーガズム"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
-    "name": "素人×妄想族×スレンダー",
-    "base_genre": "素人",
-    "theme_genres": [
-      "妄想族",
-      "スレンダー"
-    ],
-    "theme_genre": "妄想族",
-    "required": [
-      "素人",
-      "妄想族",
-      "スレンダー"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
     "name": "素人×妄想族×ローション・オイル",
     "base_genre": "素人",
     "theme_genres": [
@@ -709,23 +658,6 @@
       "素人",
       "妄想族",
       "手コキ"
-    ],
-    "sort_key": "score",
-    "count_hint": 7
-  },
-  {
-    "type": "combo",
-    "name": "素人×妄想族×盗撮・のぞき",
-    "base_genre": "素人",
-    "theme_genres": [
-      "妄想族",
-      "盗撮・のぞき"
-    ],
-    "theme_genre": "妄想族",
-    "required": [
-      "素人",
-      "妄想族",
-      "盗撮・のぞき"
     ],
     "sort_key": "score",
     "count_hint": 7
@@ -800,17 +732,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×美少女×ナンパ",
+    "name": "素人×盗撮・のぞき×女性向け",
     "base_genre": "素人",
     "theme_genres": [
-      "美少女",
-      "ナンパ"
+      "盗撮・のぞき",
+      "女性向け"
     ],
-    "theme_genre": "美少女",
+    "theme_genre": "盗撮・のぞき",
     "required": [
       "素人",
-      "美少女",
-      "ナンパ"
+      "盗撮・のぞき",
+      "女性向け"
     ],
     "sort_key": "score",
     "count_hint": 7
@@ -842,7 +774,7 @@
       "妄想族"
     ],
     "sort_key": "score",
-    "count_hint": 112
+    "count_hint": 108
   },
   {
     "type": "genre",
@@ -854,7 +786,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 86
+    "count_hint": 83
   },
   {
     "type": "genre",
@@ -866,7 +798,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 60
+    "count_hint": 58
   },
   {
     "type": "genre",
@@ -878,7 +810,7 @@
       "美少女"
     ],
     "sort_key": "score",
-    "count_hint": 41
+    "count_hint": 39
   },
   {
     "type": "genre",
@@ -890,7 +822,7 @@
       "ナンパ"
     ],
     "sort_key": "score",
-    "count_hint": 35
+    "count_hint": 33
   },
   {
     "type": "genre",
@@ -930,36 +862,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×盗撮・のぞき",
-    "base_genre": "素人",
-    "theme_genre": "盗撮・のぞき",
-    "required": [
-      "素人",
-      "盗撮・のぞき"
-    ],
-    "sort_key": "score",
-    "count_hint": 20
-  },
-  {
-    "type": "genre",
     "name": "素人×スレンダー",
     "base_genre": "素人",
     "theme_genre": "スレンダー",
     "required": [
       "素人",
       "スレンダー"
-    ],
-    "sort_key": "score",
-    "count_hint": 19
-  },
-  {
-    "type": "genre",
-    "name": "素人×女子大生",
-    "base_genre": "素人",
-    "theme_genre": "女子大生",
-    "required": [
-      "素人",
-      "女子大生"
     ],
     "sort_key": "score",
     "count_hint": 18
@@ -987,6 +895,18 @@
     ],
     "sort_key": "score",
     "count_hint": 18
+  },
+  {
+    "type": "genre",
+    "name": "素人×女子大生",
+    "base_genre": "素人",
+    "theme_genre": "女子大生",
+    "required": [
+      "素人",
+      "女子大生"
+    ],
+    "sort_key": "score",
+    "count_hint": 17
   },
   {
     "type": "genre",
@@ -1086,12 +1006,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×美乳",
+    "name": "素人×盗撮・のぞき",
     "base_genre": "素人",
-    "theme_genre": "美乳",
+    "theme_genre": "盗撮・のぞき",
     "required": [
       "素人",
-      "美乳"
+      "盗撮・のぞき"
     ],
     "sort_key": "score",
     "count_hint": 13
@@ -1122,6 +1042,18 @@
   },
   {
     "type": "genre",
+    "name": "素人×美乳",
+    "base_genre": "素人",
+    "theme_genre": "美乳",
+    "required": [
+      "素人",
+      "美乳"
+    ],
+    "sort_key": "score",
+    "count_hint": 12
+  },
+  {
+    "type": "genre",
     "name": "素人×手コキ",
     "base_genre": "素人",
     "theme_genre": "手コキ",
@@ -1142,7 +1074,7 @@
       "アクメ・オーガズム"
     ],
     "sort_key": "score",
-    "count_hint": 10
+    "count_hint": 9
   },
   {
     "type": "genre",
@@ -1164,18 +1096,6 @@
     "required": [
       "素人",
       "乱交"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "genre",
-    "name": "素人×女性向け",
-    "base_genre": "素人",
-    "theme_genre": "女性向け",
-    "required": [
-      "素人",
-      "女性向け"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -1218,24 +1138,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×女子校生",
+    "name": "素人×女性向け",
     "base_genre": "素人",
-    "theme_genre": "女子校生",
+    "theme_genre": "女性向け",
     "required": [
       "素人",
-      "女子校生"
-    ],
-    "sort_key": "score",
-    "count_hint": 8
-  },
-  {
-    "type": "genre",
-    "name": "素人×淫乱・ハード系",
-    "base_genre": "素人",
-    "theme_genre": "淫乱・ハード系",
-    "required": [
-      "素人",
-      "淫乱・ハード系"
+      "女性向け"
     ],
     "sort_key": "score",
     "count_hint": 8
@@ -1260,6 +1168,30 @@
     "required": [
       "素人",
       "ローション・オイル"
+    ],
+    "sort_key": "score",
+    "count_hint": 7
+  },
+  {
+    "type": "genre",
+    "name": "素人×女子校生",
+    "base_genre": "素人",
+    "theme_genre": "女子校生",
+    "required": [
+      "素人",
+      "女子校生"
+    ],
+    "sort_key": "score",
+    "count_hint": 7
+  },
+  {
+    "type": "genre",
+    "name": "素人×淫乱・ハード系",
+    "base_genre": "素人",
+    "theme_genre": "淫乱・ハード系",
+    "required": [
+      "素人",
+      "淫乱・ハード系"
     ],
     "sort_key": "score",
     "count_hint": 7
