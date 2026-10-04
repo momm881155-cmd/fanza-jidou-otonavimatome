@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×美少女×フェラ",
+  "type": "genre",
+  "name": "素人×盗撮・のぞき",
   "base_genre": "素人",
-  "theme_genres": [
-    "美少女",
-    "フェラ"
-  ],
-  "theme_genre": "美少女",
+  "theme_genre": "盗撮・のぞき",
   "required": [
     "素人",
-    "美少女",
-    "フェラ"
+    "盗撮・のぞき"
   ],
   "sort_key": "score",
-  "count_hint": 13
+  "count_hint": 20
 }
