@@ -82,7 +82,7 @@
       "美少女"
     ],
     "sort_key": "score",
-    "count_hint": 19
+    "count_hint": 18
   },
   {
     "type": "combo",
@@ -116,7 +116,7 @@
       "コスプレ"
     ],
     "sort_key": "score",
-    "count_hint": 15
+    "count_hint": 14
   },
   {
     "type": "combo",
@@ -148,23 +148,6 @@
       "素人",
       "中出し",
       "企画"
-    ],
-    "sort_key": "score",
-    "count_hint": 12
-  },
-  {
-    "type": "combo",
-    "name": "素人×中出し×潮吹き",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "潮吹き"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "潮吹き"
     ],
     "sort_key": "score",
     "count_hint": 12
@@ -205,23 +188,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×妄想族×ローション・オイル",
-    "base_genre": "素人",
-    "theme_genres": [
-      "妄想族",
-      "ローション・オイル"
-    ],
-    "theme_genre": "妄想族",
-    "required": [
-      "素人",
-      "妄想族",
-      "ローション・オイル"
-    ],
-    "sort_key": "score",
-    "count_hint": 12
-  },
-  {
-    "type": "combo",
     "name": "素人×中出し×女子大生",
     "base_genre": "素人",
     "theme_genres": [
@@ -233,6 +199,40 @@
       "素人",
       "中出し",
       "女子大生"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "combo",
+    "name": "素人×中出し×潮吹き",
+    "base_genre": "素人",
+    "theme_genres": [
+      "中出し",
+      "潮吹き"
+    ],
+    "theme_genre": "中出し",
+    "required": [
+      "素人",
+      "中出し",
+      "潮吹き"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "combo",
+    "name": "素人×妄想族×ローション・オイル",
+    "base_genre": "素人",
+    "theme_genres": [
+      "妄想族",
+      "ローション・オイル"
+    ],
+    "theme_genre": "妄想族",
+    "required": [
+      "素人",
+      "妄想族",
+      "ローション・オイル"
     ],
     "sort_key": "score",
     "count_hint": 11
@@ -253,23 +253,6 @@
     ],
     "sort_key": "score",
     "count_hint": 11
-  },
-  {
-    "type": "combo",
-    "name": "素人×コスプレ×ローション・オイル",
-    "base_genre": "素人",
-    "theme_genres": [
-      "コスプレ",
-      "ローション・オイル"
-    ],
-    "theme_genre": "コスプレ",
-    "required": [
-      "素人",
-      "コスプレ",
-      "ローション・オイル"
-    ],
-    "sort_key": "score",
-    "count_hint": 10
   },
   {
     "type": "combo",
@@ -341,51 +324,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×美少女×コスプレ",
+    "name": "素人×コスプレ×ローション・オイル",
     "base_genre": "素人",
     "theme_genres": [
-      "美少女",
-      "コスプレ"
+      "コスプレ",
+      "ローション・オイル"
     ],
-    "theme_genre": "美少女",
+    "theme_genre": "コスプレ",
     "required": [
       "素人",
-      "美少女",
-      "コスプレ"
-    ],
-    "sort_key": "score",
-    "count_hint": 10
-  },
-  {
-    "type": "combo",
-    "name": "素人×中出し×フェラ",
-    "base_genre": "素人",
-    "theme_genres": [
-      "中出し",
-      "フェラ"
-    ],
-    "theme_genre": "中出し",
-    "required": [
-      "素人",
-      "中出し",
-      "フェラ"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "combo",
-    "name": "素人×妄想族×顔射",
-    "base_genre": "素人",
-    "theme_genres": [
-      "妄想族",
-      "顔射"
-    ],
-    "theme_genre": "妄想族",
-    "required": [
-      "素人",
-      "妄想族",
-      "顔射"
+      "コスプレ",
+      "ローション・オイル"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -426,6 +375,23 @@
   },
   {
     "type": "combo",
+    "name": "素人×美少女×コスプレ",
+    "base_genre": "素人",
+    "theme_genres": [
+      "美少女",
+      "コスプレ"
+    ],
+    "theme_genre": "美少女",
+    "required": [
+      "素人",
+      "美少女",
+      "コスプレ"
+    ],
+    "sort_key": "score",
+    "count_hint": 9
+  },
+  {
+    "type": "combo",
     "name": "素人×ナンパ×企画",
     "base_genre": "素人",
     "theme_genres": [
@@ -460,17 +426,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×中出し×ギャル",
+    "name": "素人×中出し×フェラ",
     "base_genre": "素人",
     "theme_genres": [
       "中出し",
-      "ギャル"
+      "フェラ"
     ],
     "theme_genre": "中出し",
     "required": [
       "素人",
       "中出し",
-      "ギャル"
+      "フェラ"
     ],
     "sort_key": "score",
     "count_hint": 8
@@ -545,6 +511,23 @@
   },
   {
     "type": "combo",
+    "name": "素人×妄想族×顔射",
+    "base_genre": "素人",
+    "theme_genres": [
+      "妄想族",
+      "顔射"
+    ],
+    "theme_genre": "妄想族",
+    "required": [
+      "素人",
+      "妄想族",
+      "顔射"
+    ],
+    "sort_key": "score",
+    "count_hint": 8
+  },
+  {
+    "type": "combo",
     "name": "素人×巨乳×熟女",
     "base_genre": "素人",
     "theme_genres": [
@@ -596,17 +579,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×フェラ×痴女",
+    "name": "素人×中出し×ギャル",
     "base_genre": "素人",
     "theme_genres": [
-      "フェラ",
-      "痴女"
+      "中出し",
+      "ギャル"
     ],
-    "theme_genre": "フェラ",
+    "theme_genre": "中出し",
     "required": [
       "素人",
-      "フェラ",
-      "痴女"
+      "中出し",
+      "ギャル"
     ],
     "sort_key": "score",
     "count_hint": 7
@@ -689,7 +672,7 @@
       "中出し"
     ],
     "sort_key": "score",
-    "count_hint": 94
+    "count_hint": 93
   },
   {
     "type": "genre",
@@ -701,7 +684,7 @@
       "妄想族"
     ],
     "sort_key": "score",
-    "count_hint": 82
+    "count_hint": 80
   },
   {
     "type": "genre",
@@ -725,7 +708,7 @@
       "美少女"
     ],
     "sort_key": "score",
-    "count_hint": 37
+    "count_hint": 35
   },
   {
     "type": "genre",
@@ -737,7 +720,7 @@
       "フェラ"
     ],
     "sort_key": "score",
-    "count_hint": 31
+    "count_hint": 29
   },
   {
     "type": "genre",
@@ -777,18 +760,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×スレンダー",
-    "base_genre": "素人",
-    "theme_genre": "スレンダー",
-    "required": [
-      "素人",
-      "スレンダー"
-    ],
-    "sort_key": "score",
-    "count_hint": 20
-  },
-  {
-    "type": "genre",
     "name": "素人×女子大生",
     "base_genre": "素人",
     "theme_genre": "女子大生",
@@ -809,42 +780,6 @@
       "ドキュメンタリー"
     ],
     "sort_key": "score",
-    "count_hint": 18
-  },
-  {
-    "type": "genre",
-    "name": "素人×コスプレ",
-    "base_genre": "素人",
-    "theme_genre": "コスプレ",
-    "required": [
-      "素人",
-      "コスプレ"
-    ],
-    "sort_key": "score",
-    "count_hint": 17
-  },
-  {
-    "type": "genre",
-    "name": "素人×ハメ撮り",
-    "base_genre": "素人",
-    "theme_genre": "ハメ撮り",
-    "required": [
-      "素人",
-      "ハメ撮り"
-    ],
-    "sort_key": "score",
-    "count_hint": 17
-  },
-  {
-    "type": "genre",
-    "name": "素人×潮吹き",
-    "base_genre": "素人",
-    "theme_genre": "潮吹き",
-    "required": [
-      "素人",
-      "潮吹き"
-    ],
-    "sort_key": "score",
     "count_hint": 17
   },
   {
@@ -858,6 +793,42 @@
     ],
     "sort_key": "score",
     "count_hint": 17
+  },
+  {
+    "type": "genre",
+    "name": "素人×コスプレ",
+    "base_genre": "素人",
+    "theme_genre": "コスプレ",
+    "required": [
+      "素人",
+      "コスプレ"
+    ],
+    "sort_key": "score",
+    "count_hint": 16
+  },
+  {
+    "type": "genre",
+    "name": "素人×ハメ撮り",
+    "base_genre": "素人",
+    "theme_genre": "ハメ撮り",
+    "required": [
+      "素人",
+      "ハメ撮り"
+    ],
+    "sort_key": "score",
+    "count_hint": 16
+  },
+  {
+    "type": "genre",
+    "name": "素人×潮吹き",
+    "base_genre": "素人",
+    "theme_genre": "潮吹き",
+    "required": [
+      "素人",
+      "潮吹き"
+    ],
+    "sort_key": "score",
+    "count_hint": 16
   },
   {
     "type": "genre",
@@ -897,15 +868,15 @@
   },
   {
     "type": "genre",
-    "name": "素人×顔射",
+    "name": "素人×スレンダー",
     "base_genre": "素人",
-    "theme_genre": "顔射",
+    "theme_genre": "スレンダー",
     "required": [
       "素人",
-      "顔射"
+      "スレンダー"
     ],
     "sort_key": "score",
-    "count_hint": 15
+    "count_hint": 14
   },
   {
     "type": "genre",
@@ -945,15 +916,15 @@
   },
   {
     "type": "genre",
-    "name": "素人×ローション・オイル",
+    "name": "素人×顔射",
     "base_genre": "素人",
-    "theme_genre": "ローション・オイル",
+    "theme_genre": "顔射",
     "required": [
       "素人",
-      "ローション・オイル"
+      "顔射"
     ],
     "sort_key": "score",
-    "count_hint": 13
+    "count_hint": 14
   },
   {
     "type": "genre",
@@ -993,12 +964,12 @@
   },
   {
     "type": "genre",
-    "name": "素人×痴女",
+    "name": "素人×ローション・オイル",
     "base_genre": "素人",
-    "theme_genre": "痴女",
+    "theme_genre": "ローション・オイル",
     "required": [
       "素人",
-      "痴女"
+      "ローション・オイル"
     ],
     "sort_key": "score",
     "count_hint": 12
@@ -1029,18 +1000,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×オナニー",
-    "base_genre": "素人",
-    "theme_genre": "オナニー",
-    "required": [
-      "素人",
-      "オナニー"
-    ],
-    "sort_key": "score",
-    "count_hint": 11
-  },
-  {
-    "type": "genre",
     "name": "素人×放尿・お漏らし",
     "base_genre": "素人",
     "theme_genre": "放尿・お漏らし",
@@ -1053,6 +1012,30 @@
   },
   {
     "type": "genre",
+    "name": "素人×痴女",
+    "base_genre": "素人",
+    "theme_genre": "痴女",
+    "required": [
+      "素人",
+      "痴女"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "genre",
+    "name": "素人×オナニー",
+    "base_genre": "素人",
+    "theme_genre": "オナニー",
+    "required": [
+      "素人",
+      "オナニー"
+    ],
+    "sort_key": "score",
+    "count_hint": 10
+  },
+  {
+    "type": "genre",
     "name": "素人×局部アップ",
     "base_genre": "素人",
     "theme_genre": "局部アップ",
@@ -1062,30 +1045,6 @@
     ],
     "sort_key": "score",
     "count_hint": 10
-  },
-  {
-    "type": "genre",
-    "name": "素人×ギャル",
-    "base_genre": "素人",
-    "theme_genre": "ギャル",
-    "required": [
-      "素人",
-      "ギャル"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "genre",
-    "name": "素人×騎乗位",
-    "base_genre": "素人",
-    "theme_genre": "騎乗位",
-    "required": [
-      "素人",
-      "騎乗位"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
   },
   {
     "type": "genre",
@@ -1107,6 +1066,30 @@
     "required": [
       "素人",
       "ぶっかけ"
+    ],
+    "sort_key": "score",
+    "count_hint": 8
+  },
+  {
+    "type": "genre",
+    "name": "素人×ギャル",
+    "base_genre": "素人",
+    "theme_genre": "ギャル",
+    "required": [
+      "素人",
+      "ギャル"
+    ],
+    "sort_key": "score",
+    "count_hint": 8
+  },
+  {
+    "type": "genre",
+    "name": "素人×騎乗位",
+    "base_genre": "素人",
+    "theme_genre": "騎乗位",
+    "required": [
+      "素人",
+      "騎乗位"
     ],
     "sort_key": "score",
     "count_hint": 8
