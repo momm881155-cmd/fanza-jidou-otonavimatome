@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×乱交",
+  "name": "素人×スレンダー",
   "base_genre": "素人",
-  "theme_genre": "乱交",
+  "theme_genre": "スレンダー",
   "required": [
     "素人",
-    "乱交"
+    "スレンダー"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 20
 }
