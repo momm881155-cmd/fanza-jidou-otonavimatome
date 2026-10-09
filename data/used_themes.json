@@ -1727,6 +1727,15 @@
       ],
       "count_hint": 13,
       "used_at": "2026-10-07"
+    },
+    {
+      "name": "素人×制服",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "制服",
+      "theme_genres": null,
+      "count_hint": 9,
+      "used_at": "2026-10-09"
     }
   ]
 }
