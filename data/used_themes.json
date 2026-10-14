@@ -1781,6 +1781,15 @@
       ],
       "count_hint": 25,
       "used_at": "2026-10-12"
+    },
+    {
+      "name": "素人×パイパン",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "パイパン",
+      "theme_genres": null,
+      "count_hint": 10,
+      "used_at": "2026-10-14"
     }
   ]
 }

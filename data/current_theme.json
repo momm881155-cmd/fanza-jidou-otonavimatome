@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×3P・4P",
+  "type": "genre",
+  "name": "素人×パイパン",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "3P・4P"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "パイパン",
   "required": [
     "素人",
-    "中出し",
-    "3P・4P"
+    "パイパン"
   ],
   "sort_key": "score",
-  "count_hint": 25
+  "count_hint": 10
 }
