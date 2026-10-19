@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×エステ",
+  "name": "素人×お姉さん",
   "base_genre": "素人",
-  "theme_genre": "エステ",
+  "theme_genre": "お姉さん",
   "required": [
     "素人",
-    "エステ"
+    "お姉さん"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 14
 }
