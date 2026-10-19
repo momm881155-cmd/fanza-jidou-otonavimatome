@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×ナンパ",
+  "type": "genre",
+  "name": "素人×エステ",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "ナンパ"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "エステ",
   "required": [
     "素人",
-    "巨乳",
-    "ナンパ"
+    "エステ"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 10
 }
