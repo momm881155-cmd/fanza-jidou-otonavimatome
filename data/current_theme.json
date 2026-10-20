@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×お姉さん",
+  "name": "素人×手コキ",
   "base_genre": "素人",
-  "theme_genre": "お姉さん",
+  "theme_genre": "手コキ",
   "required": [
     "素人",
-    "お姉さん"
+    "手コキ"
   ],
   "sort_key": "score",
-  "count_hint": 14
+  "count_hint": 10
 }
