@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×近親相姦",
+  "name": "素人×OL",
   "base_genre": "素人",
-  "theme_genre": "近親相姦",
+  "theme_genre": "OL",
   "required": [
     "素人",
-    "近親相姦"
+    "OL"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 15
 }
