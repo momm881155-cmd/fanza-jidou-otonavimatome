@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×熟女",
+  "name": "素人×人妻・主婦×M女",
   "base_genre": "素人",
   "theme_genres": [
-    "中出し",
-    "熟女"
+    "人妻・主婦",
+    "M女"
   ],
-  "theme_genre": "中出し",
+  "theme_genre": "人妻・主婦",
   "required": [
     "素人",
-    "中出し",
-    "熟女"
+    "人妻・主婦",
+    "M女"
   ],
   "sort_key": "score",
-  "count_hint": 19
+  "count_hint": 14
 }
