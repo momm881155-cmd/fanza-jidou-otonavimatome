@@ -1967,6 +1967,15 @@
       ],
       "count_hint": 10,
       "used_at": "2026-10-27"
+    },
+    {
+      "name": "素人×熟女",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "熟女",
+      "theme_genres": null,
+      "count_hint": 19,
+      "used_at": "2026-10-28"
     }
   ]
 }
