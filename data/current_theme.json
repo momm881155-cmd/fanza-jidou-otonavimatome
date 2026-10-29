@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×女子校生",
+  "name": "素人×中出し×ぶっかけ",
   "base_genre": "素人",
   "theme_genres": [
     "中出し",
-    "女子校生"
+    "ぶっかけ"
   ],
   "theme_genre": "中出し",
   "required": [
     "素人",
     "中出し",
-    "女子校生"
+    "ぶっかけ"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 7
 }
