@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×中出し×ぶっかけ",
+  "type": "genre",
+  "name": "素人×羞恥",
   "base_genre": "素人",
-  "theme_genres": [
-    "中出し",
-    "ぶっかけ"
-  ],
-  "theme_genre": "中出し",
+  "theme_genre": "羞恥",
   "required": [
     "素人",
-    "中出し",
-    "ぶっかけ"
+    "羞恥"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 21
 }
