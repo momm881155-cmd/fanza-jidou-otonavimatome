@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×羞恥",
+  "name": "素人×看護婦・ナース",
   "base_genre": "素人",
-  "theme_genre": "羞恥",
+  "theme_genre": "看護婦・ナース",
   "required": [
     "素人",
-    "羞恥"
+    "看護婦・ナース"
   ],
   "sort_key": "score",
-  "count_hint": 21
+  "count_hint": 7
 }
