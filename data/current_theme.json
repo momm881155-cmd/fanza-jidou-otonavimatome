@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×女子大生×寝取り・寝取られ・NTR",
+  "name": "素人×中出し×童貞",
   "base_genre": "素人",
   "theme_genres": [
-    "女子大生",
-    "寝取り・寝取られ・NTR"
+    "中出し",
+    "童貞"
   ],
-  "theme_genre": "女子大生",
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "女子大生",
-    "寝取り・寝取られ・NTR"
+    "中出し",
+    "童貞"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 14
 }
