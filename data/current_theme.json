@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×巨乳×巨尻",
+  "type": "genre",
+  "name": "素人×コスプレ",
   "base_genre": "素人",
-  "theme_genres": [
-    "巨乳",
-    "巨尻"
-  ],
-  "theme_genre": "巨乳",
+  "theme_genre": "コスプレ",
   "required": [
     "素人",
-    "巨乳",
-    "巨尻"
+    "コスプレ"
   ],
   "sort_key": "score",
-  "count_hint": 10
+  "count_hint": 8
 }
