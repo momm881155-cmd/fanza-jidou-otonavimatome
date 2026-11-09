@@ -15688,6 +15688,28 @@
         "コスプレ"
       ],
       "used_at": "2026-11-08"
+    },
+    {
+      "content_id": "1ftht00295",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "企画",
+      "theme_genres": [
+        "企画"
+      ],
+      "used_at": "2026-11-09"
+    },
+    {
+      "content_id": "1ftht00326",
+      "theme_name": null,
+      "theme_type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "企画",
+      "theme_genres": [
+        "企画"
+      ],
+      "used_at": "2026-11-09"
     }
   ]
 }

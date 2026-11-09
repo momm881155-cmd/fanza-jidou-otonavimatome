@@ -2105,6 +2105,15 @@
       "theme_genres": null,
       "count_hint": 8,
       "used_at": "2026-11-08"
+    },
+    {
+      "name": "素人×企画",
+      "type": "genre",
+      "base_genre": "素人",
+      "theme_genre": "企画",
+      "theme_genres": null,
+      "count_hint": 18,
+      "used_at": "2026-11-09"
     }
   ]
 }

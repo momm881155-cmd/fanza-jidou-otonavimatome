@@ -1,12 +1,12 @@
 {
   "type": "genre",
-  "name": "素人×コスプレ",
+  "name": "素人×企画",
   "base_genre": "素人",
-  "theme_genre": "コスプレ",
+  "theme_genre": "企画",
   "required": [
     "素人",
-    "コスプレ"
+    "企画"
   ],
   "sort_key": "score",
-  "count_hint": 8
+  "count_hint": 18
 }
