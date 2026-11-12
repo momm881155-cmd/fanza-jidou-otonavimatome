@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×イタズラ",
+  "type": "combo",
+  "name": "素人×中出し×ハメ撮り",
   "base_genre": "素人",
-  "theme_genre": "イタズラ",
+  "theme_genres": [
+    "中出し",
+    "ハメ撮り"
+  ],
+  "theme_genre": "中出し",
   "required": [
     "素人",
-    "イタズラ"
+    "中出し",
+    "ハメ撮り"
   ],
   "sort_key": "score",
-  "count_hint": 9
+  "count_hint": 20
 }
