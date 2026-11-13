@@ -1,17 +1,17 @@
 {
   "type": "combo",
-  "name": "素人×中出し×ハメ撮り",
+  "name": "素人×フェラ×その他フェチ",
   "base_genre": "素人",
   "theme_genres": [
-    "中出し",
-    "ハメ撮り"
+    "フェラ",
+    "その他フェチ"
   ],
-  "theme_genre": "中出し",
+  "theme_genre": "フェラ",
   "required": [
     "素人",
-    "中出し",
-    "ハメ撮り"
+    "フェラ",
+    "その他フェチ"
   ],
   "sort_key": "score",
-  "count_hint": 20
+  "count_hint": 7
 }
