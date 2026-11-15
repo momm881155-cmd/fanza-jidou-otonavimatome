@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×フェラ×その他フェチ",
+  "type": "genre",
+  "name": "素人×ギャル",
   "base_genre": "素人",
-  "theme_genres": [
-    "フェラ",
-    "その他フェチ"
-  ],
-  "theme_genre": "フェラ",
+  "theme_genre": "ギャル",
   "required": [
     "素人",
-    "フェラ",
-    "その他フェチ"
+    "ギャル"
   ],
   "sort_key": "score",
-  "count_hint": 7
+  "count_hint": 8
 }
