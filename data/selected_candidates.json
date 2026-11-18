@@ -6680,7 +6680,22 @@
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-2.jpg",
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-3.jpg",
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-4.jpg",
-            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-5.jpg"
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-5.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-6.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-7.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-8.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-9.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-10.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-11.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-12.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-13.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-14.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-15.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-16.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-17.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-18.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-19.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184-20.jpg"
           ]
         },
         "sample_l": {
@@ -6689,7 +6704,22 @@
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-2.jpg",
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-3.jpg",
             "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-4.jpg",
-            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-5.jpg"
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-5.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-6.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-7.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-8.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-9.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-10.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-11.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-12.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-13.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-14.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-15.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-16.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-17.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-18.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-19.jpg",
+            "https://pics.dmm.co.jp/digital/video/1sdam00184/1sdam00184jp-20.jpg"
           ]
         }
       },
@@ -33235,34 +33265,34 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "300~",
+        "list_price": "300~",
         "deliveries": {
           "delivery": [
             {
               "type": "hd",
-              "price": "1780",
-              "list_price": "1780"
+              "price": "1270",
+              "list_price": "1270"
             },
             {
               "type": "download",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "iosdl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             },
             {
               "type": "androiddl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             }
           ]
         }
@@ -35389,34 +35419,34 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "980~",
-        "list_price": "980~",
+        "price": "680~",
+        "list_price": "680~",
         "deliveries": {
           "delivery": [
             {
               "type": "hd",
-              "price": "1780",
-              "list_price": "1780"
-            },
-            {
-              "type": "download",
               "price": "1270",
               "list_price": "1270"
             },
             {
-              "type": "stream",
+              "type": "download",
               "price": "980",
               "list_price": "980"
             },
             {
+              "type": "stream",
+              "price": "680",
+              "list_price": "680"
+            },
+            {
               "type": "iosdl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             },
             {
               "type": "androiddl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             }
           ]
         }
@@ -39377,7 +39407,7 @@
   {
     "content_id": "nekk00012",
     "title": "【女性用風俗】【実録盗撮】ガチイキ性感マッサージ！性に悩める美少女を裏オプションでイキ狂わせるッ！＃002女風初体験3名205分",
-    "date": "2026-11-21 00:00:00",
+    "date": "2026-11-21 00:00:30",
     "url": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnekk00012&af_id=yamuchaoff-996&ch=api",
     "image": "https://pics.dmm.co.jp/digital/video/nekk00012/nekk00012pl.jpg",
     "raw": {
@@ -39484,7 +39514,7 @@
           ]
         }
       },
-      "date": "2026-11-21 00:00:00",
+      "date": "2026-11-21 00:00:30",
       "iteminfo": {
         "genre": [
           {
@@ -45683,34 +45713,34 @@
         "sp_flag": 1
       },
       "prices": {
-        "price": "500~",
-        "list_price": "500~",
+        "price": "300~",
+        "list_price": "300~",
         "deliveries": {
           "delivery": [
             {
               "type": "hd",
-              "price": "1780",
-              "list_price": "1780"
+              "price": "1270",
+              "list_price": "1270"
             },
             {
               "type": "download",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             },
             {
               "type": "stream",
-              "price": "500",
-              "list_price": "500"
+              "price": "300",
+              "list_price": "300"
             },
             {
               "type": "iosdl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             },
             {
               "type": "androiddl",
-              "price": "1270",
-              "list_price": "1270"
+              "price": "980",
+              "list_price": "980"
             }
           ]
         }
@@ -45767,7 +45797,7 @@
   {
     "content_id": "h_1832msoc00093",
     "title": "六本木メンズエステ・オイル手コキ・素股コース【くらしなひまり（24歳）31回目】",
-    "date": "2026-11-21 00:00:00",
+    "date": "2026-11-21 00:00:01",
     "url": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dh_1832msoc00093&af_id=yamuchaoff-996&ch=api",
     "image": null,
     "raw": {
@@ -45852,7 +45882,7 @@
           ]
         }
       },
-      "date": "2026-11-21 00:00:00",
+      "date": "2026-11-21 00:00:01",
       "iteminfo": {
         "genre": [
           {
@@ -49088,7 +49118,7 @@
   {
     "content_id": "prin00067",
     "title": "【同人AV】童貞くん おち●ぽミルク すっからかん！",
-    "date": "2026-11-21 00:00:00",
+    "date": "2026-11-21 00:00:32",
     "url": "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dprin00067&af_id=yamuchaoff-996&ch=api",
     "image": "https://pics.dmm.co.jp/digital/video/prin00067/prin00067pl.jpg",
     "raw": {
@@ -49184,7 +49214,7 @@
           ]
         }
       },
-      "date": "2026-11-21 00:00:00",
+      "date": "2026-11-21 00:00:32",
       "iteminfo": {
         "genre": [
           {

@@ -86,23 +86,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×ハメ撮り",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "ハメ撮り"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "ハメ撮り"
-    ],
-    "sort_key": "score",
-    "count_hint": 17
-  },
-  {
-    "type": "combo",
     "name": "素人×中出し×女子大生",
     "base_genre": "素人",
     "theme_genres": [
@@ -120,17 +103,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×巨乳×妄想族",
+    "name": "素人×巨乳×ハメ撮り",
     "base_genre": "素人",
     "theme_genres": [
       "巨乳",
-      "妄想族"
+      "ハメ撮り"
     ],
     "theme_genre": "巨乳",
     "required": [
       "素人",
       "巨乳",
-      "妄想族"
+      "ハメ撮り"
     ],
     "sort_key": "score",
     "count_hint": 15
@@ -256,6 +239,23 @@
   },
   {
     "type": "combo",
+    "name": "素人×巨乳×妄想族",
+    "base_genre": "素人",
+    "theme_genres": [
+      "巨乳",
+      "妄想族"
+    ],
+    "theme_genre": "巨乳",
+    "required": [
+      "素人",
+      "巨乳",
+      "妄想族"
+    ],
+    "sort_key": "score",
+    "count_hint": 12
+  },
+  {
+    "type": "combo",
     "name": "素人×中出し×脚フェチ",
     "base_genre": "素人",
     "theme_genres": [
@@ -290,23 +290,6 @@
   },
   {
     "type": "combo",
-    "name": "素人×美少女×妄想族",
-    "base_genre": "素人",
-    "theme_genres": [
-      "美少女",
-      "妄想族"
-    ],
-    "theme_genre": "美少女",
-    "required": [
-      "素人",
-      "美少女",
-      "妄想族"
-    ],
-    "sort_key": "score",
-    "count_hint": 11
-  },
-  {
-    "type": "combo",
     "name": "素人×エマニエル×脚フェチ",
     "base_genre": "素人",
     "theme_genres": [
@@ -318,23 +301,6 @@
       "素人",
       "エマニエル",
       "脚フェチ"
-    ],
-    "sort_key": "score",
-    "count_hint": 10
-  },
-  {
-    "type": "combo",
-    "name": "素人×フェラ×妄想族",
-    "base_genre": "素人",
-    "theme_genres": [
-      "フェラ",
-      "妄想族"
-    ],
-    "theme_genre": "フェラ",
-    "required": [
-      "素人",
-      "フェラ",
-      "妄想族"
     ],
     "sort_key": "score",
     "count_hint": 10
@@ -375,20 +341,20 @@
   },
   {
     "type": "combo",
-    "name": "素人×美少女×ハメ撮り",
+    "name": "素人×フェラ×妄想族",
     "base_genre": "素人",
     "theme_genres": [
-      "美少女",
-      "ハメ撮り"
+      "フェラ",
+      "妄想族"
     ],
-    "theme_genre": "美少女",
+    "theme_genre": "フェラ",
     "required": [
       "素人",
-      "美少女",
-      "ハメ撮り"
+      "フェラ",
+      "妄想族"
     ],
     "sort_key": "score",
-    "count_hint": 10
+    "count_hint": 9
   },
   {
     "type": "combo",
@@ -437,23 +403,6 @@
       "素人",
       "中出し",
       "童貞"
-    ],
-    "sort_key": "score",
-    "count_hint": 9
-  },
-  {
-    "type": "combo",
-    "name": "素人×巨乳×美少女",
-    "base_genre": "素人",
-    "theme_genres": [
-      "巨乳",
-      "美少女"
-    ],
-    "theme_genre": "巨乳",
-    "required": [
-      "素人",
-      "巨乳",
-      "美少女"
     ],
     "sort_key": "score",
     "count_hint": 9
@@ -545,17 +494,17 @@
   },
   {
     "type": "combo",
-    "name": "素人×美少女×その他フェチ",
+    "name": "素人×美少女×ハメ撮り",
     "base_genre": "素人",
     "theme_genres": [
       "美少女",
-      "その他フェチ"
+      "ハメ撮り"
     ],
     "theme_genre": "美少女",
     "required": [
       "素人",
       "美少女",
-      "その他フェチ"
+      "ハメ撮り"
     ],
     "sort_key": "score",
     "count_hint": 8
@@ -714,6 +663,23 @@
     "count_hint": 7
   },
   {
+    "type": "combo",
+    "name": "素人×美少女×妄想族",
+    "base_genre": "素人",
+    "theme_genres": [
+      "美少女",
+      "妄想族"
+    ],
+    "theme_genre": "美少女",
+    "required": [
+      "素人",
+      "美少女",
+      "妄想族"
+    ],
+    "sort_key": "score",
+    "count_hint": 7
+  },
+  {
     "type": "genre",
     "name": "素人×中出し",
     "base_genre": "素人",
@@ -735,7 +701,7 @@
       "巨乳"
     ],
     "sort_key": "score",
-    "count_hint": 73
+    "count_hint": 70
   },
   {
     "type": "genre",
@@ -763,6 +729,18 @@
   },
   {
     "type": "genre",
+    "name": "素人×フェラ",
+    "base_genre": "素人",
+    "theme_genre": "フェラ",
+    "required": [
+      "素人",
+      "フェラ"
+    ],
+    "sort_key": "score",
+    "count_hint": 31
+  },
+  {
+    "type": "genre",
     "name": "素人×妄想族",
     "base_genre": "素人",
     "theme_genre": "妄想族",
@@ -771,7 +749,7 @@
       "妄想族"
     ],
     "sort_key": "score",
-    "count_hint": 33
+    "count_hint": 29
   },
   {
     "type": "genre",
@@ -783,19 +761,7 @@
       "美少女"
     ],
     "sort_key": "score",
-    "count_hint": 33
-  },
-  {
-    "type": "genre",
-    "name": "素人×フェラ",
-    "base_genre": "素人",
-    "theme_genre": "フェラ",
-    "required": [
-      "素人",
-      "フェラ"
-    ],
-    "sort_key": "score",
-    "count_hint": 32
+    "count_hint": 29
   },
   {
     "type": "genre",
@@ -807,7 +773,7 @@
       "ハメ撮り"
     ],
     "sort_key": "score",
-    "count_hint": 29
+    "count_hint": 27
   },
   {
     "type": "genre",
@@ -931,18 +897,6 @@
   },
   {
     "type": "genre",
-    "name": "素人×その他フェチ",
-    "base_genre": "素人",
-    "theme_genre": "その他フェチ",
-    "required": [
-      "素人",
-      "その他フェチ"
-    ],
-    "sort_key": "score",
-    "count_hint": 15
-  },
-  {
-    "type": "genre",
     "name": "素人×脚フェチ",
     "base_genre": "素人",
     "theme_genre": "脚フェチ",
@@ -967,27 +921,15 @@
   },
   {
     "type": "genre",
-    "name": "素人×女子校生",
+    "name": "素人×その他フェチ",
     "base_genre": "素人",
-    "theme_genre": "女子校生",
+    "theme_genre": "その他フェチ",
     "required": [
       "素人",
-      "女子校生"
+      "その他フェチ"
     ],
     "sort_key": "score",
     "count_hint": 13
-  },
-  {
-    "type": "genre",
-    "name": "素人×オナニー",
-    "base_genre": "素人",
-    "theme_genre": "オナニー",
-    "required": [
-      "素人",
-      "オナニー"
-    ],
-    "sort_key": "score",
-    "count_hint": 12
   },
   {
     "type": "genre",
@@ -1003,12 +945,36 @@
   },
   {
     "type": "genre",
+    "name": "素人×オナニー",
+    "base_genre": "素人",
+    "theme_genre": "オナニー",
+    "required": [
+      "素人",
+      "オナニー"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "genre",
     "name": "素人×コスプレ",
     "base_genre": "素人",
     "theme_genre": "コスプレ",
     "required": [
       "素人",
       "コスプレ"
+    ],
+    "sort_key": "score",
+    "count_hint": 11
+  },
+  {
+    "type": "genre",
+    "name": "素人×女子校生",
+    "base_genre": "素人",
+    "theme_genre": "女子校生",
+    "required": [
+      "素人",
+      "女子校生"
     ],
     "sort_key": "score",
     "count_hint": 11
