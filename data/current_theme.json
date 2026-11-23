@@ -1,12 +1,17 @@
 {
-  "type": "genre",
-  "name": "素人×アクメ・オーガズム",
+  "type": "combo",
+  "name": "素人×M女×SM",
   "base_genre": "素人",
-  "theme_genre": "アクメ・オーガズム",
+  "theme_genres": [
+    "M女",
+    "SM"
+  ],
+  "theme_genre": "M女",
   "required": [
     "素人",
-    "アクメ・オーガズム"
+    "M女",
+    "SM"
   ],
   "sort_key": "score",
-  "count_hint": 12
+  "count_hint": 8
 }

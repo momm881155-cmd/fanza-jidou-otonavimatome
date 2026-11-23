@@ -2258,6 +2258,18 @@
       "theme_genres": null,
       "count_hint": 12,
       "used_at": "2026-11-22"
+    },
+    {
+      "name": "素人×M女×SM",
+      "type": "combo",
+      "base_genre": "素人",
+      "theme_genre": "M女",
+      "theme_genres": [
+        "M女",
+        "SM"
+      ],
+      "count_hint": 8,
+      "used_at": "2026-11-23"
     }
   ]
 }
