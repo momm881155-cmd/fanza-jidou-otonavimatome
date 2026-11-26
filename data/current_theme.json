@@ -1,17 +1,12 @@
 {
-  "type": "combo",
-  "name": "素人×妄想族×中出し",
+  "type": "genre",
+  "name": "素人×痴女",
   "base_genre": "素人",
-  "theme_genres": [
-    "妄想族",
-    "中出し"
-  ],
-  "theme_genre": "妄想族",
+  "theme_genre": "痴女",
   "required": [
     "素人",
-    "妄想族",
-    "中出し"
+    "痴女"
   ],
   "sort_key": "score",
-  "count_hint": 35
+  "count_hint": 18
 }
